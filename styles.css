@@ -694,7 +694,11 @@ h1 {
 }
 
 .article-shell {
-  width: min(980px, calc(100% - 32px));
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 280px;
+  gap: 28px;
+  align-items: start;
+  width: min(1280px, calc(100% - 32px));
   margin: -72px auto 42px;
 }
 
@@ -707,6 +711,69 @@ h1 {
   background: rgba(255, 255, 255, 0.96);
   box-shadow: var(--shadow);
   backdrop-filter: blur(14px);
+}
+
+.article-toc {
+  position: sticky;
+  top: 22px;
+  z-index: 2;
+}
+
+.toc-card {
+  max-height: calc(100vh - 44px);
+  overflow: auto;
+  padding: 18px 18px 20px;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.78);
+  box-shadow: 0 10px 30px rgba(31, 45, 80, 0.08);
+  backdrop-filter: blur(14px);
+}
+
+.toc-card p {
+  margin: 0 0 2px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.toc-card strong {
+  display: block;
+  margin-bottom: 14px;
+  color: #343a40;
+  font-size: 18px;
+}
+
+.toc-card nav {
+  display: grid;
+  gap: 7px;
+}
+
+.toc-card a {
+  display: block;
+  overflow: hidden;
+  color: #6b7280;
+  line-height: 1.45;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.toc-card a:hover {
+  color: var(--brand-dark);
+}
+
+.toc-section {
+  margin-top: 5px;
+  padding-left: 10px;
+  border-left: 3px solid var(--danger);
+  color: #9f1239;
+  font-size: 15px;
+  font-weight: 900;
+}
+
+.toc-item {
+  padding-left: 20px;
+  border-left: 1px dashed rgba(107, 114, 128, 0.28);
+  font-size: 14px;
 }
 
 .article-meta {
@@ -835,6 +902,20 @@ h1 {
 
   .article-card {
     padding: 28px 20px;
+  }
+
+  .article-shell {
+    grid-template-columns: 1fr;
+  }
+
+  .article-toc {
+    position: relative;
+    top: auto;
+    order: -1;
+  }
+
+  .toc-card {
+    max-height: 320px;
   }
 
   .timeline li {
