@@ -16,16 +16,36 @@
   <body>
     <header class="site-header">
       <nav class="nav">
-        <a class="brand" href="#home"><span>H</span>郝杏芸的博客</a>
-        <div class="nav-links" aria-label="主导航">
-          <a href="#home">首页</a>
-          <a href="#archive">归档</a>
-          <a href="#tags">标签</a>
-          <a href="#categories">分类</a>
-          <a href="#friends">友链</a>
-          <a href="#about">关于</a>
+        <a class="brand" href="#home"><img src="./assets/brand-icon.png" alt="" aria-hidden="true">郝杏芸的博客</a>
+        <div class="nav-tools">
+          <div class="nav-links" aria-label="主导航">
+            <a href="#home">首页</a>
+            <a href="#archive">归档</a>
+            <a href="#tags">标签</a>
+            <a href="#categories">分类</a>
+            <a href="#friends">友链</a>
+            <a href="#about">关于</a>
+          </div>
+          <button class="search-toggle" type="button" aria-label="打开搜索" aria-expanded="false" aria-controls="search-panel">
+            <svg aria-hidden="true" viewBox="0 0 24 24">
+              <path d="m21 21-4.35-4.35"></path>
+              <circle cx="11" cy="11" r="7"></circle>
+            </svg>
+          </button>
         </div>
       </nav>
+      <div class="search-panel" id="search-panel" hidden>
+        <div class="search-box" role="search">
+          <label for="site-search">搜索文章</label>
+          <div class="search-row">
+            <input id="site-search" type="search" placeholder="输入关键词..." autocomplete="off">
+            <button class="search-close" type="button" aria-label="关闭搜索">关闭</button>
+          </div>
+          <div class="search-results" id="search-results" aria-live="polite">
+            <p>暂无可搜索文章。</p>
+          </div>
+        </div>
+      </div>
       <section class="hero" id="home">
         <div class="hero-inner">
           <p class="eyebrow">Argon Style / Personal Blog</p>
@@ -103,5 +123,61 @@
       <p>Powered by GitHub Pages · https://haoxingyun-cppuisa.github.io/hxyz486/ · © 2026 郝杏芸</p>
       <p>目前还没有发布文章。</p>
     </footer>
+    <script>
+      const searchToggle = document.querySelector(".search-toggle");
+      const searchPanel = document.querySelector("#search-panel");
+      const searchInput = document.querySelector("#site-search");
+      const searchClose = document.querySelector(".search-close");
+      const searchResults = document.querySelector("#search-results");
+      const searchItems = [...document.querySelectorAll("[data-search-item]")].map((item) => ({
+        title: item.querySelector("h2")?.textContent.trim() || "未命名文章",
+        text: item.textContent.replace(/\s+/g, " ").trim(),
+        href: item.querySelector("a")?.getAttribute("href") || "#posts",
+      }));
+
+      function renderSearch(query = "") {
+        const keyword = query.trim().toLowerCase();
+        const matches = keyword
+          ? searchItems.filter((item) => item.text.toLowerCase().includes(keyword))
+          : searchItems;
+
+        if (!searchItems.length) {
+          searchResults.innerHTML = "<p>暂无可搜索文章。</p>";
+          return;
+        }
+
+        if (!matches.length) {
+          searchResults.innerHTML = "<p>没有找到匹配内容。</p>";
+          return;
+        }
+
+        searchResults.innerHTML = matches
+          .map((item) => `<a href="${item.href}">${item.title}</a>`)
+          .join("");
+      }
+
+      function openSearch() {
+        searchPanel.hidden = false;
+        searchToggle.setAttribute("aria-expanded", "true");
+        renderSearch(searchInput.value);
+        searchInput.focus();
+      }
+
+      function closeSearch() {
+        searchPanel.hidden = true;
+        searchToggle.setAttribute("aria-expanded", "false");
+        searchToggle.focus();
+      }
+
+      searchToggle.addEventListener("click", () => {
+        searchPanel.hidden ? openSearch() : closeSearch();
+      });
+
+      searchClose.addEventListener("click", closeSearch);
+      searchInput.addEventListener("input", (event) => renderSearch(event.target.value));
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && !searchPanel.hidden) closeSearch();
+      });
+    </script>
   </body>
 </html>

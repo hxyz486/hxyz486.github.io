@@ -29,6 +29,8 @@ body {
   margin: 0;
   background:
     linear-gradient(180deg, rgba(94, 114, 228, 0.08), rgba(255, 255, 255, 0) 420px),
+    linear-gradient(rgba(238, 242, 248, 0.82), rgba(238, 242, 248, 0.88)),
+    url("./assets/xhy-background.gif") center / cover fixed,
     var(--bg);
   color: var(--text);
   font-family: "Microsoft YaHei", "PingFang SC", "Segoe UI", sans-serif;
@@ -47,7 +49,7 @@ a {
   color: #fff;
   background:
     linear-gradient(115deg, rgba(24, 34, 76, 0.9), rgba(94, 114, 228, 0.58), rgba(17, 205, 239, 0.28)),
-    url("./assets/avatar.jpg") center 28% / cover fixed;
+    url("./assets/xhy-background.gif") center / cover fixed;
   overflow: hidden;
 }
 
@@ -88,15 +90,22 @@ a {
   font-weight: 800;
 }
 
-.brand span {
-  display: inline-grid;
+.brand img {
   width: 30px;
   height: 30px;
-  place-items: center;
   border-radius: 8px;
+  border: 2px solid rgba(255, 255, 255, 0.86);
   background: #fff;
-  color: var(--brand-dark);
-  font-weight: 900;
+  object-fit: cover;
+  box-shadow: 0 6px 14px rgba(15, 23, 42, 0.18);
+}
+
+.nav-tools {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 14px;
+  min-width: 0;
 }
 
 .nav-links {
@@ -115,6 +124,112 @@ a {
 .nav-links a:hover,
 .brand:hover {
   color: #bfdbfe;
+}
+
+.search-toggle {
+  display: inline-grid;
+  flex: 0 0 auto;
+  width: 36px;
+  height: 36px;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.34);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.16);
+  color: #fff;
+  cursor: pointer;
+}
+
+.search-toggle:hover,
+.search-toggle[aria-expanded="true"] {
+  background: rgba(255, 255, 255, 0.28);
+}
+
+.search-toggle svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2.2;
+}
+
+.search-panel {
+  position: fixed;
+  top: 92px;
+  right: max(16px, calc((100vw - 1180px) / 2));
+  z-index: 30;
+  width: min(360px, calc(100vw - 32px));
+}
+
+.search-box {
+  padding: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.94);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(16px);
+}
+
+.search-box label {
+  display: block;
+  margin-bottom: 10px;
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.search-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 8px;
+}
+
+.search-row input {
+  min-width: 0;
+  height: 42px;
+  padding: 0 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  color: var(--text);
+  font: inherit;
+}
+
+.search-row input:focus {
+  border-color: var(--brand);
+  outline: 3px solid rgba(94, 114, 228, 0.18);
+}
+
+.search-close {
+  height: 42px;
+  padding: 0 12px;
+  border: 0;
+  border-radius: 8px;
+  background: var(--brand);
+  color: #fff;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.search-results {
+  display: grid;
+  gap: 8px;
+  margin-top: 14px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.search-results p {
+  margin: 0;
+}
+
+.search-results a {
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: #f4f6ff;
+  color: var(--brand-dark);
+  font-weight: 700;
 }
 
 .hero {
@@ -496,6 +611,12 @@ h1 {
     flex-direction: column;
   }
 
+  .nav-tools {
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 100%;
+  }
+
   .nav-links {
     justify-content: flex-start;
     gap: 10px 14px;
@@ -536,6 +657,10 @@ h1 {
 @media (max-width: 520px) {
   .nav-links {
     font-size: 14px;
+  }
+
+  .nav-tools {
+    gap: 10px;
   }
 
   h1 {
