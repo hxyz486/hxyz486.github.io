@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="2025 FIC 初赛取证 WP，记录远程取证、手机、电脑与互联网部分的分析过程。">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="2025 FIC 初赛 WP">
+    <meta property="og:description" content="2025 FIC 初赛取证 WP。">
+    <meta property="og:url" content="https://hxyz486.github.io/posts/2025fic.html">
+    <link rel="canonical" href="https://hxyz486.github.io/posts/2025fic.html">
+    <link rel="icon" type="image/png" href="../assets/favicon.png">
+    <title>2025 FIC 初赛 WP - 郝杏芸的博客</title>
+    <link rel="stylesheet" href="../styles.css">
+  </head>
+  <body class="article-page">
+    <header class="article-header">
+      <nav class="nav article-nav">
+        <a class="brand" href="../index.html"><img src="../assets/brand-icon.png" alt="" aria-hidden="true">郝杏芸的博客</a>
+        <a class="back-home" href="../index.html#posts">返回首页</a>
+      </nav>
+      <div class="article-hero">
+        <p class="eyebrow">Forensics / Writeup</p>
+        <h1>2025 FIC 初赛 WP</h1>
+        <p class="hero-copy">远程取证、手机、电脑与互联网部分记录。</p>
+      </div>
+    </header>
+
+    <main class="article-shell">
+      <article class="article-card">
+        <div class="article-meta">
+          <time datetime="2026-05-31">2026-05-31</time>
+          <span>取证复现</span>
+          <span>Writeup</span>
+        </div>
+        <div class="article-body">
+<h3 id="section-0-1">1、请分析检材一，该取证录像文件的 SHA256 值为？</h3>
+<figure><img src="../assets/posts/2025fic/image-01.png" alt="2025 FIC 初赛 WP 配图" loading="lazy"></figure>
+<p>2753DA22FE23CADAADC14FE4C1D5096A153360D9F91097EA376846431F5C1567</p>
+<h3 id="section-0-2">2、请分析检材一，远程取证所使用的 OBS 工具版本号为？</h3>
+<figure><img src="../assets/posts/2025fic/image-02.png" alt="2025 FIC 初赛 WP 配图" loading="lazy"></figure>
+<p>29.1.3</p>
+<h3 id="section-0-3">3、请分析检材一，该检材所使用的远程取证的工具名称为？</h3>
+<figure><img src="../assets/posts/2025fic/image-03.png" alt="2025 FIC 初赛 WP 配图" loading="lazy"></figure>
+<p>网镜</p>
+<h3 id="section-0-4">4、请分析检材一，在该检材中，远程取证过程中校验的北京时间为？</h3>
+<figure><img src="../assets/posts/2025fic/image-04.png" alt="2025 FIC 初赛 WP 配图" loading="lazy"></figure>
+<p>2025/4/9 13:36:18</p>
+<h3 id="section-0-5">5、请分析检材一，远程取证的网站 IP 地址为？</h3>
+<figure><img src="../assets/posts/2025fic/image-05.png" alt="2025 FIC 初赛 WP 配图" loading="lazy"></figure>
+<p>172.16.10.200</p>
+<h3 id="section-0-6">6、请分析检材一，在该检材中，远程取证的网站密码为？</h3>
+<figure><img src="../assets/posts/2025fic/image-06.png" alt="2025 FIC 初赛 WP 配图" loading="lazy"></figure>
+<p>admin123</p>
+<h3 id="section-0-7">7、请分析检材二 “手机” 检材，该手机的 device_name 是？</h3>
+<p>全局搜索</p>
+<figure><img src="../assets/posts/2025fic/image-07.png" alt="2025 FIC 初赛 WP 配图" loading="lazy"></figure>
+<p>Redmi 6 Pro</p>
+<h3 id="section-0-8">8、请分析检材二 “手机” 检材，嫌疑人 pc 开机密码是什么？</h3>
+<p>笔记软件翻数据库，经典</p>
+<figure><img src="../assets/posts/2025fic/image-08.png" alt="2025 FIC 初赛 WP 配图" loading="lazy"></figure>
+<figure><img src="../assets/posts/2025fic/image-09.png" alt="2025 FIC 初赛 WP 配图" loading="lazy"></figure>
+<p>1qaz2wsx</p>
+<h3 id="section-0-9">9、请分析检材二 “手机” 检材，嫌疑人接头暗号是什么？</h3>
+<p>见上题</p>
+<figure><img src="../assets/posts/2025fic/image-10.png" alt="2025 FIC 初赛 WP 配图" loading="lazy"></figure>
+<p>爱能不能够永远单纯没有悲哀</p>
+<h3 id="section-0-10">10、请分析检材二 “手机” 检材，嫌疑人存放的秘钥环是多少？</h3>
+<p>这是真想不到，原理也不知道，师傅们要是知道的话可以告诉我</p>
+<figure><img src="../assets/posts/2025fic/image-11.png" alt="2025 FIC 初赛 WP 配图" loading="lazy"></figure>
+<p>1qaz2wsx3edc</p>
+<h3 id="section-0-11">11、请分析检材二 “手机” 检材，嫌疑人一生中最重要的日子是什么时候？</h3>
+<figure><img src="../assets/posts/2025fic/image-12.png" alt="2025 FIC 初赛 WP 配图" loading="lazy"></figure>
+<p>2026-02-26</p>
+<h3 id="section-0-12">12、请分析检材三 “手机” 检材，嫌疑人微信生成的聊天记录数据库文件名称是什么？</h3>
+<figure><img src="../assets/posts/2025fic/image-13.png" alt="2025 FIC 初赛 WP 配图" loading="lazy"></figure>
+<p>EnMicroMsg.db</p>
+<h3 id="section-0-13">13、请分析检材二 “手机” 检材，嫌疑人微信账号对应的 UIN 为多少？</h3>
+<figure><img src="../assets/posts/2025fic/image-14.png" alt="2025 FIC 初赛 WP 配图" loading="lazy"></figure>
+<p>1864810197</p>
+<h3 id="section-0-14">14、请分析检材二 “手机” 检材，嫌疑人微信聊天记录数据库的加密秘钥是什么？</h3>
+<p>哇，这真是，以前看过的，结果一直没用就忘记了 感谢WXjzc佬的博客，感谢西电的wp</p>
+<figure><img src="../assets/posts/2025fic/image-15.png" alt="2025 FIC 初赛 WP 配图" loading="lazy"></figure>
+<figure><img src="../assets/posts/2025fic/image-16.png" alt="2025 FIC 初赛 WP 配图" loading="lazy"></figure>
+<figure><img src="../assets/posts/2025fic/image-17.png" alt="2025 FIC 初赛 WP 配图" loading="lazy"></figure>
+<p>31ad809</p>
+<h3 id="section-0-15">15、请分析检材二 “手机” 检材，嫌疑人 “欠条.rar” 的解压密码是多少？</h3>
+<p>不看wp是真不会</p>
+<figure><img src="../assets/posts/2025fic/image-18.png" alt="2025 FIC 初赛 WP 配图" loading="lazy"></figure>
+<figure><img src="../assets/posts/2025fic/image-19.png" alt="2025 FIC 初赛 WP 配图" loading="lazy"></figure>
+<p>3170010703</p>
+<h3 id="section-0-16">16、请分析检材二 “手机” 检材，嫌疑人 “欠条.rar” 解压后，其中 VeraCrypt 容器的 MD5 值是多少？</h3>
+<figure><img src="../assets/posts/2025fic/image-20.png" alt="2025 FIC 初赛 WP 配图" loading="lazy"></figure>
+<p>83DA62AABC88CB1B23E9469142B67B80</p>
+<h3 id="section-0-17">17、请分析检材二 “手机” 检材，嫌疑人 “欠条.rar” 解压后，其中”1.png” 图上显示的 VeraCrypt 容器密码是多少？</h3>
+<p>能隐约看到</p>
+<figure><img src="../assets/posts/2025fic/image-21.png" alt="2025 FIC 初赛 WP 配图" loading="lazy"></figure>
+<p>#!@KE2sax@!da0h5hghg34&amp;@</p>
+<h3 id="section-0-18">18、请分析检材二 “手机” 检材，嫌疑人李某全名是什么？</h3>
+<figure><img src="../assets/posts/2025fic/image-22.png" alt="2025 FIC 初赛 WP 配图" loading="lazy"></figure>
+<p>李安弘</p>
+<h3 id="section-0-19">19、请分析检材二 “手机” 检材，嫌疑人欠款金额是多少？</h3>
+<p>80000</p>
+<h3 id="section-0-20">20、请分析检材三 “电脑” 检材，该电脑最后一次开机时间是？</h3>
+<p>挺离谱的，我跟其他师傅的不太一样，我火眼给了十个开关机时间（正常好像是7个），导致答案错误了</p>
+<figure><img src="../assets/posts/2025fic/image-23.png" alt="2025 FIC 初赛 WP 配图" loading="lazy"></figure>
+<p>2025/4/14 11:49:47</p>
+<h3 id="section-0-21">21、请分析检材三 “电脑” 检材，嫌疑人的备用机号码是多少？</h3>
+<p>阴成啥样了</p>
+<figure><img src="../assets/posts/2025fic/image-24.png" alt="2025 FIC 初赛 WP 配图" loading="lazy"></figure>
+<p>18877332134</p>
+<h3 id="section-0-22">22、请分析检材三 “电脑” 检材，域名 [dgy02.com](https://dgy02.com) 曾保存过一个密码，该密码是多少？</h3>
+<figure><img src="../assets/posts/2025fic/image-25.png" alt="2025 FIC 初赛 WP 配图" loading="lazy"></figure>
+<p>tcgg123456</p>
+<h3 id="section-0-23">23、请分析检材三 “电脑” 检材，其电脑安装的微信版本是多少？</h3>
+<figure><img src="../assets/posts/2025fic/image-26.png" alt="2025 FIC 初赛 WP 配图" loading="lazy"></figure>
+<p>4.0.0.21</p>
+<h3 id="section-0-24">24、请分析检材三 “电脑” 检材，该系统有哪些远程控制软件？</h3>
+<figure><img src="../assets/posts/2025fic/image-27.png" alt="2025 FIC 初赛 WP 配图" loading="lazy"></figure>
+<p>todesk、向日葵</p>
+<h3 id="section-0-25">25、请分析检材三 “电脑” 检材，电脑 2025 年 4 月 10 日 11 点 4 分 29 秒曾被向日葵远程控制，其记录的日志文件名为？</h3>
+<p>全局搜索</p>
+<figure><img src="../assets/posts/2025fic/image-28.png" alt="2025 FIC 初赛 WP 配图" loading="lazy"></figure>
+<p>sunlogin_service.log.2</p>
+<h3 id="section-0-26">26、请分析检材三 “电脑” 检材，电脑 2025 年 4 月 10 日 11 点 4 分 29 秒曾被向日葵远程控制，日志内记录对方公网 IP 地址和端口为？</h3>
+<figure><img src="../assets/posts/2025fic/image-29.png" alt="2025 FIC 初赛 WP 配图" loading="lazy"></figure>
+<p>116.192.161.222:2577</p>
+<h3 id="section-0-27">27、请分析检材三 “电脑” 检材，某文件的 MD5 值为 “2bdfcdbd6c63efc094ac154a28968b7d”，该文件名为？</h3>
+<p>直觉</p>
+<figure><img src="../assets/posts/2025fic/image-30.png" alt="2025 FIC 初赛 WP 配图" loading="lazy"></figure>
+<p>important.docx</p>
+<h3 id="section-0-28">28、请分析检材三 “电脑” 检材，上述文件存放了钱包助记词，第一个单词是什么？</h3>
+<p>不难，但还是直接AI了</p>
+<figure><img src="../assets/posts/2025fic/image-31.png" alt="2025 FIC 初赛 WP 配图" loading="lazy"></figure>
+<figure><img src="../assets/posts/2025fic/image-32.png" alt="2025 FIC 初赛 WP 配图" loading="lazy"></figure>
+<p>solution</p>
+<h3 id="section-0-29">29、请分析检材三 “我的测试机”，最近曾访问过的音频文件，该音频文件的文件名是什么？</h3>
+<p>火眼识别到了，直接挂载</p>
+<figure><img src="../assets/posts/2025fic/image-33.png" alt="2025 FIC 初赛 WP 配图" loading="lazy"></figure>
+<figure><img src="../assets/posts/2025fic/image-34.png" alt="2025 FIC 初赛 WP 配图" loading="lazy"></figure>
+<p>自传小说.MP3</p>
+<h3 id="section-0-30">30、请分析检材三 “我的测试机”，最近曾使用过 USB 设备，该设备的名称为？</h3>
+<p>三百块的u盘，真tm有钱</p>
+<figure><img src="../assets/posts/2025fic/image-35.png" alt="2025 FIC 初赛 WP 配图" loading="lazy"></figure>
+<p>TU200Pro 256GB thinkplus SCSI Disk Device</p>
+<h3 id="section-0-31">31、请分析检材三 “我的测试机” 中的音频内容，嫌疑人现任妻子毕业的大学是？</h3>
+<p>牢！最后让夸克（手机）帮我转了文字，豆包帮我分析（nnd神秘剧情。。。）</p>
+<figure><img src="../assets/posts/2025fic/image-36.png" alt="2025 FIC 初赛 WP 配图" loading="lazy"></figure>
+<p>北京大学</p>
+<h3 id="section-0-32">32、请分析检材三 “我的测试机” 中的音频内容，嫌疑人是通过一个朋友认识的陈老板，该朋友姓氏拼音是？</h3>
+<p>同上 wang</p>
+<h3 id="section-0-33">33、请分析检材三 “我的测试机” 中的音频内容，嫌疑人所说的香格里拉大酒店实则是？</h3>
+<p>结合手机检材能猜出来，实际上这几个选项里就这个答案有可能 灰色产业链场所</p>
+<h3 id="section-0-34">34、请分析检材三 “我的测试机” 中的音频内容，嫌疑人银行密码是多少？</h3>
+<p>这tm是人类吗，woc,不看wp能写出来的可以确诊为跟嫌疑人一样的忧郁中二内耗人了 FIC的出题人已经远远超出一般人类的范畴了 音频被分为多段，每段的第一个字组合在一起，谐音就是答案 071492</p>
+<h3 id="section-0-35">35、请分析检材二，找到李某上游人员陈某博客宣传所用域名为？</h3>
+<figure><img src="../assets/posts/2025fic/image-37.png" alt="2025 FIC 初赛 WP 配图" loading="lazy"></figure>
+<p>chen.foren6</p>
+<h3 id="section-0-36">36、请分析陈某宣传所用域名，该域名的顶级域名在以下哪个区块链注册？</h3>
+<p>| 区块链      | 域名系统名称                      | 支持的顶级域名                         | 核心特点                                   | | -------- | --------------------------- | ------------------------------- | -------------------------------------- | | ETH      | ENS (Ethereum Name Service) | .eth、.xyz、.luxe 等               | 基于以太坊智能合约，域名作为 NFT 存储，主要用于解析以太坊地址      | | HNS      | Handshake                   | 任何自定义 TLD（如.com、.org、.foren6 等） | 去中心化根命名系统，无许可制，可注册任意顶级域名，使用 HNS 代币拍卖获得 | | BTC      | Bitcoin                     | 无原生域名系统                         | 比特币区块链仅用于加密货币交易，不支持域名注册功能              | | Namecoin | Namecoin                    | .bit                            | 最早的区块链域名系统，基于比特币分叉，仅支持.bit 顶级域名        | |          |                             |                                 |                                        | HNS</p>
+<h3 id="section-0-37">37、请分析陈某宣传所用域名的顶级域名的域名解析服务器（DNS）共有几个？</h3>
+<p>已经开始不会了。。。菜</p>
+<figure><img src="../assets/posts/2025fic/image-38.png" alt="2025 FIC 初赛 WP 配图" loading="lazy"></figure>
+<p>2</p>
+<h3 id="section-0-38">38、请分析陈某宣传所用域名的顶级域名的 NS1 服务器 ip 为？</h3>
+<h3 id="section-0-39">39、请分析陈某宣传所用域名，该域名 DNS 记录指向邮件服务器域名为？</h3>
+<h3 id="section-0-40">40、请分析陈某宣传所用域名，该域名的 txt 记录中 chen 的值为？</h3>
+<h3 id="section-0-41">41、请分析陈某宣传所用域名，该域名 DNS 记录没有以下哪个域名？</h3>
+<h3 id="section-0-42">42、请分析陈某宣传所用域名，该博客域名最终 DNS 解析指向的 github 仓库名为？</h3>
+<p>偷分成功，嘻嘻嘻</p>
+<figure><img src="../assets/posts/2025fic/image-39.png" alt="2025 FIC 初赛 WP 配图" loading="lazy"></figure>
+<p>chewhaon.github.io</p>
+<h3 id="section-0-43">43、请分析陈某 github 账号，陈某对 jkroepke/2Moons 项目增改了几个文件？</h3>
+<h3 id="section-0-44">44、请分析陈某 github 账号，陈某在修改 2Moons 过程中提到了什么锅底？</h3>
+<h3 id="section-0-45">45、请分析陈某 github 账号，陈某在游戏 2Moons 中放置的后门连接码的密码为？</h3>
+<h3 id="section-0-46">46、请访问陈某当前博客，陈某课程的扫码报名地址的域名为？</h3>
+<figure><img src="../assets/posts/2025fic/image-40.png" alt="2025 FIC 初赛 WP 配图" loading="lazy"></figure>
+<p>fic.forensix.cn</p>
+<h3 id="section-0-47">47、请分析陈某当前博客，通过互联网找到陈某的旧博客网站标题为？</h3>
+<p>生草</p>
+<figure><img src="../assets/posts/2025fic/image-41.png" alt="2025 FIC 初赛 WP 配图" loading="lazy"></figure>
+<p>柳如烟大战霸天虎</p>
+<h3 id="section-0-48">48、请分析陈某旧博客，陈某的姓名为？</h3>
+<figure><img src="../assets/posts/2025fic/image-42.png" alt="2025 FIC 初赛 WP 配图" loading="lazy"></figure>
+<p>陈浩北</p>
+<h3 id="section-0-49">49、请分析陈某旧博客，陈某的邮箱地址为？</h3>
+<figure><img src="../assets/posts/2025fic/image-43.png" alt="2025 FIC 初赛 WP 配图" loading="lazy"></figure>
+<p>mailme@chen.foren6</p>
+<h3 id="section-0-50">50、请分析陈某旧博客，陈某的 11 位手机号为？</h3>
+<p>13170010703</p>
+<h3 id="section-0-51">51、请分析陈某旧博客，陈某最爱的 dota 英雄为？</h3>
+<figure><img src="../assets/posts/2025fic/image-44.png" alt="2025 FIC 初赛 WP 配图" loading="lazy"></figure>
+<p>邪影芳灵</p>
+        </div>
+      </article>
+      <aside class="article-toc" aria-label="文章目录">
+        <div class="toc-card">
+          <p>目录</p>
+          <strong>2025 FIC 初赛 WP</strong>
+          <nav>
+            <a class="toc-item" href="#section-0-1">1、请分析检材一，该取证录像文件的 SHA256 值为？</a>
+            <a class="toc-item" href="#section-0-2">2、请分析检材一，远程取证所使用的 OBS 工具版本号…</a>
+            <a class="toc-item" href="#section-0-3">3、请分析检材一，该检材所使用的远程取证的工具名称为？</a>
+            <a class="toc-item" href="#section-0-4">4、请分析检材一，在该检材中，远程取证过程中校验的北京…</a>
+            <a class="toc-item" href="#section-0-5">5、请分析检材一，远程取证的网站 IP 地址为？</a>
+            <a class="toc-item" href="#section-0-6">6、请分析检材一，在该检材中，远程取证的网站密码为？</a>
+            <a class="toc-item" href="#section-0-7">7、请分析检材二 “手机” 检材，该手机的 devic…</a>
+            <a class="toc-item" href="#section-0-8">8、请分析检材二 “手机” 检材，嫌疑人 pc 开机密…</a>
+            <a class="toc-item" href="#section-0-9">9、请分析检材二 “手机” 检材，嫌疑人接头暗号是什么？</a>
+            <a class="toc-item" href="#section-0-10">10、请分析检材二 “手机” 检材，嫌疑人存放的秘钥环…</a>
+            <a class="toc-item" href="#section-0-11">11、请分析检材二 “手机” 检材，嫌疑人一生中最重要…</a>
+            <a class="toc-item" href="#section-0-12">12、请分析检材三 “手机” 检材，嫌疑人微信生成的聊…</a>
+            <a class="toc-item" href="#section-0-13">13、请分析检材二 “手机” 检材，嫌疑人微信账号对应…</a>
+            <a class="toc-item" href="#section-0-14">14、请分析检材二 “手机” 检材，嫌疑人微信聊天记录…</a>
+            <a class="toc-item" href="#section-0-15">15、请分析检材二 “手机” 检材，嫌疑人 “欠条.r…</a>
+            <a class="toc-item" href="#section-0-16">16、请分析检材二 “手机” 检材，嫌疑人 “欠条.r…</a>
+            <a class="toc-item" href="#section-0-17">17、请分析检材二 “手机” 检材，嫌疑人 “欠条.r…</a>
+            <a class="toc-item" href="#section-0-18">18、请分析检材二 “手机” 检材，嫌疑人李某全名是什…</a>
+            <a class="toc-item" href="#section-0-19">19、请分析检材二 “手机” 检材，嫌疑人欠款金额是多…</a>
+            <a class="toc-item" href="#section-0-20">20、请分析检材三 “电脑” 检材，该电脑最后一次开机…</a>
+            <a class="toc-item" href="#section-0-21">21、请分析检材三 “电脑” 检材，嫌疑人的备用机号码…</a>
+            <a class="toc-item" href="#section-0-22">22、请分析检材三 “电脑” 检材，域名 [dgy02…</a>
+            <a class="toc-item" href="#section-0-23">23、请分析检材三 “电脑” 检材，其电脑安装的微信版…</a>
+            <a class="toc-item" href="#section-0-24">24、请分析检材三 “电脑” 检材，该系统有哪些远程控…</a>
+            <a class="toc-item" href="#section-0-25">25、请分析检材三 “电脑” 检材，电脑 2025 年…</a>
+            <a class="toc-item" href="#section-0-26">26、请分析检材三 “电脑” 检材，电脑 2025 年…</a>
+            <a class="toc-item" href="#section-0-27">27、请分析检材三 “电脑” 检材，某文件的 MD5 …</a>
+            <a class="toc-item" href="#section-0-28">28、请分析检材三 “电脑” 检材，上述文件存放了钱包…</a>
+            <a class="toc-item" href="#section-0-29">29、请分析检材三 “我的测试机”，最近曾访问过的音频…</a>
+            <a class="toc-item" href="#section-0-30">30、请分析检材三 “我的测试机”，最近曾使用过 US…</a>
+            <a class="toc-item" href="#section-0-31">31、请分析检材三 “我的测试机” 中的音频内容，嫌疑…</a>
+            <a class="toc-item" href="#section-0-32">32、请分析检材三 “我的测试机” 中的音频内容，嫌疑…</a>
+            <a class="toc-item" href="#section-0-33">33、请分析检材三 “我的测试机” 中的音频内容，嫌疑…</a>
+            <a class="toc-item" href="#section-0-34">34、请分析检材三 “我的测试机” 中的音频内容，嫌疑…</a>
+            <a class="toc-item" href="#section-0-35">35、请分析检材二，找到李某上游人员陈某博客宣传所用域…</a>
+            <a class="toc-item" href="#section-0-36">36、请分析陈某宣传所用域名，该域名的顶级域名在以下哪…</a>
+            <a class="toc-item" href="#section-0-37">37、请分析陈某宣传所用域名的顶级域名的域名解析服务器…</a>
+            <a class="toc-item" href="#section-0-38">38、请分析陈某宣传所用域名的顶级域名的 NS1 服务…</a>
+            <a class="toc-item" href="#section-0-39">39、请分析陈某宣传所用域名，该域名 DNS 记录指向…</a>
+            <a class="toc-item" href="#section-0-40">40、请分析陈某宣传所用域名，该域名的 txt 记录中…</a>
+            <a class="toc-item" href="#section-0-41">41、请分析陈某宣传所用域名，该域名 DNS 记录没有…</a>
+            <a class="toc-item" href="#section-0-42">42、请分析陈某宣传所用域名，该博客域名最终 DNS …</a>
+            <a class="toc-item" href="#section-0-43">43、请分析陈某 github 账号，陈某对 jkro…</a>
+            <a class="toc-item" href="#section-0-44">44、请分析陈某 github 账号，陈某在修改 2M…</a>
+            <a class="toc-item" href="#section-0-45">45、请分析陈某 github 账号，陈某在游戏 2M…</a>
+            <a class="toc-item" href="#section-0-46">46、请访问陈某当前博客，陈某课程的扫码报名地址的域名…</a>
+            <a class="toc-item" href="#section-0-47">47、请分析陈某当前博客，通过互联网找到陈某的旧博客网…</a>
+            <a class="toc-item" href="#section-0-48">48、请分析陈某旧博客，陈某的姓名为？</a>
+            <a class="toc-item" href="#section-0-49">49、请分析陈某旧博客，陈某的邮箱地址为？</a>
+            <a class="toc-item" href="#section-0-50">50、请分析陈某旧博客，陈某的 11 位手机号为？</a>
+            <a class="toc-item" href="#section-0-51">51、请分析陈某旧博客，陈某最爱的 dota 英雄为？</a>
+          </nav>
+        </div>
+      </aside>
+    </main>
+
+    <footer class="footer">
+      <p>Powered by GitHub Pages · https://hxyz486.github.io/ · © 2026 郝杏芸</p>
+    </footer>
+  </body>
+</html>
