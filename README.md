@@ -19,7 +19,7 @@ python -m http.server 8080
 目标仓库：
 
 ```text
-https://github.com/haoxingyun-cppuisa/hxyz486
+https://github.com/haoxingyun-cppuisa/haoxingyun-cppuisa.github.io
 ```
 
 发布步骤：
@@ -32,7 +32,7 @@ https://github.com/haoxingyun-cppuisa/hxyz486
 几分钟后访问博客：
 
 ```text
-https://haoxingyun-cppuisa.github.io/hxyz486/
+https://haoxingyun-cppuisa.github.io/
 ```
 
 站点域名已经写入 `index.html` 的 `canonical` 和 `og:url`。
