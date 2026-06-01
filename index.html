@@ -56,7 +56,7 @@
         <section class="menu-card widget" aria-label="博客导航">
           <h2>郝杏芸的博客</h2>
           <nav class="side-nav">
-            <a href="#posts">
+            <a href="#archive">
               <svg aria-hidden="true" viewBox="0 0 24 24">
                 <path d="M4 7h16"></path>
                 <path d="M6 7v12h12V7"></path>
@@ -64,20 +64,20 @@
               </svg>
               归档
             </a>
-            <a href="#posts">
+            <a href="#tags">
               <svg aria-hidden="true" viewBox="0 0 24 24">
                 <path d="M20 13 13 20 4 11V4h7z"></path>
                 <circle cx="8.5" cy="8.5" r="1.5"></circle>
               </svg>
               标签
             </a>
-            <a href="#posts">
+            <a href="#categories">
               <svg aria-hidden="true" viewBox="0 0 24 24">
                 <path d="M3 6h7l2 2h9v10H3z"></path>
               </svg>
               分类
             </a>
-            <a href="#home">
+            <a href="#friends">
               <svg aria-hidden="true" viewBox="0 0 24 24">
                 <path d="M10 13a5 5 0 0 0 7.07 0l2.12-2.12a5 5 0 0 0-7.07-7.07L11 4.93"></path>
                 <path d="M14 11a5 5 0 0 0-7.07 0L4.81 13.12a5 5 0 0 0 7.07 7.07L13 19.07"></path>
@@ -92,8 +92,8 @@
           <p class="bio">这里会慢慢记录学习、项目和日常想法。</p>
           <div class="stats">
             <a href="#tags"><strong>2</strong><span>标签</span></a>
-            <a href="#posts"><strong>1</strong><span>分类</span></a>
-            <a href="#posts"><strong>3</strong><span>文章</span></a>
+            <a href="#categories"><strong>1</strong><span>分类</span></a>
+            <a href="#archive"><strong>3</strong><span>文章</span></a>
           </div>
         </section>
         <section class="widget notice">
@@ -103,8 +103,8 @@
         <section class="widget compact-tags">
           <h2>常用标签</h2>
           <div class="tag-cloud">
-            <a href="#posts">Forensics</a>
-            <a href="#posts">Writeup</a>
+            <a href="#tags">Forensics</a>
+            <a href="#tags">Writeup</a>
           </div>
         </section>
       </aside>
@@ -151,6 +151,41 @@
         </article>
       </section>
     </main>
+
+    <section class="sections">
+      <div class="section-block" id="archive">
+        <h2>归档</h2>
+        <ol class="timeline">
+          <li><time>2026-05-31</time><a href="./posts/2025fic.html">2025 FIC 初赛 WP</a></li>
+          <li><time>2026-05-31</time><a href="./posts/2026fic.html">2026 FIC 初赛 WP</a></li>
+          <li><time>2026-05-20</time><a href="./posts/2025pangu.html">2025 盘古石决赛 WP</a></li>
+        </ol>
+      </div>
+
+      <div class="section-block" id="tags">
+        <h2>标签</h2>
+        <div class="tag-cloud">
+          <a href="./posts/2025pangu.html">Forensics</a>
+          <a href="./posts/2025fic.html">Writeup</a>
+          <a href="./posts/2026fic.html">Writeup</a>
+        </div>
+      </div>
+
+      <div class="section-block" id="categories">
+        <h2>分类</h2>
+        <div class="category-grid">
+          <a href="#posts"><strong>取证复现</strong><span>3 篇</span></a>
+        </div>
+      </div>
+
+      <div class="section-block" id="friends">
+        <h2>友链</h2>
+        <div class="category-grid">
+          <a href="https://github.com/hxyz486/hxyz486.github.io"><strong>GitHub 仓库</strong><span>源码与部署</span></a>
+          <a href="https://hxyz486.github.io/"><strong>博客首页</strong><span>当前站点</span></a>
+        </div>
+      </div>
+    </section>
 
     <footer class="footer">
       <p>Powered by GitHub Pages · https://hxyz486.github.io/ · © 2026 郝杏芸</p>
