@@ -404,20 +404,9 @@ h1 {
 }
 
 .profile h2 {
-  margin: 16px 0 0;
+  margin: 16px 0 12px;
   color: #343a40;
   font-size: 24px;
-}
-
-.level {
-  display: inline-flex;
-  margin: 0 0 18px;
-  padding: 0;
-  border-radius: 0;
-  background: transparent;
-  color: #6b7280;
-  font-size: 18px;
-  font-weight: 600;
 }
 
 .bio {
