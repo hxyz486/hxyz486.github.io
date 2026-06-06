@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="2026 FIC 决赛（手机）取证 WP，记录手机检材分析过程与解题思路。">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="2026 FIC 决赛（手机）WP">
+    <meta property="og:description" content="2026 FIC 决赛（手机）取证 WP，记录手机检材分析过程与解题思路。">
+    <meta property="og:url" content="https://hxyz486.github.io/posts/2026fic-final-mobile.html">
+    <link rel="canonical" href="https://hxyz486.github.io/posts/2026fic-final-mobile.html">
+    <link rel="icon" type="image/png" href="../assets/favicon.png">
+    <title>2026 FIC 决赛（手机）WP - 郝杏芸的博客</title>
+    <link rel="stylesheet" href="../styles.css">
+  </head>
+  <body class="article-page">
+    <header class="article-header">
+      <nav class="nav article-nav">
+        <a class="brand" href="../index.html"><img src="../assets/brand-icon.png" alt="" aria-hidden="true">郝杏芸的博客</a>
+        <a class="back-home" href="../index.html#posts">返回首页</a>
+      </nav>
+      <div class="article-hero">
+        <p class="eyebrow">Forensics / Writeup</p>
+        <h1>2026 FIC 决赛（手机）WP</h1>
+        <p class="hero-copy">好难，吓哭了。</p>
+      </div>
+    </header>
+
+    <main class="article-shell">
+      <article class="article-card">
+        <div class="article-meta">
+          <time datetime="2026-06-06">2026-06-06</time>
+          <span>取证复现</span>
+          <span>Writeup</span>
+        </div>
+        <div class="article-body">
+<h2 id="section-1">检材2：手机</h2>
+<p>好难，吓哭了</p>
+<h3 id="section-1-1">1、分析手机检材，该手机设备名称为？</h3>
+<p>经典神秘小手机</p>
+<figure><img src="../assets/posts/2026fic-final-mobile/image-01.png" alt="2026 FIC 决赛（手机）WP 配图" loading="lazy"></figure>
+<p>问问deepseek</p>
+<figure><img src="../assets/posts/2026fic-final-mobile/image-02.png" alt="2026 FIC 决赛（手机）WP 配图" loading="lazy"></figure>
+<p>REDMAGIC 9 Pro+</p>
+<h3 id="section-1-2">2、分析手机检材，该手机系统 `magisk【环境版本】` 为？</h3>
+<p>猜的</p>
+<figure><img src="../assets/posts/2026fic-final-mobile/image-03.png" alt="2026 FIC 决赛（手机）WP 配图" loading="lazy"></figure>
+<p>30.7</p>
+<h3 id="section-1-3">3、分析手机检材，嫌疑人通过盖世游戏 app 安装的《最终幻想》游戏版本是？</h3>
+<p>搜索名称</p>
+<figure><img src="../assets/posts/2026fic-final-mobile/image-04.png" alt="2026 FIC 决赛（手机）WP 配图" loading="lazy"></figure>
+<p>进去一个一个找</p>
+<figure><img src="../assets/posts/2026fic-final-mobile/image-05.png" alt="2026 FIC 决赛（手机）WP 配图" loading="lazy"></figure>
+<figure><img src="../assets/posts/2026fic-final-mobile/image-06.png" alt="2026 FIC 决赛（手机）WP 配图" loading="lazy"></figure>
+<h3 id="section-1-4">4、分析手机检材，5 月 6 日，嫌疑人最后一次使用谷歌套件中的某个 app，其包名是？</h3>
+<p>检索一下google</p>
+<figure><img src="../assets/posts/2026fic-final-mobile/image-07.png" alt="2026 FIC 决赛（手机）WP 配图" loading="lazy"></figure>
+<h3 id="section-1-5">5、分析上述 app 5 月 6 日推送新闻的相关痕迹和缓存，新闻《男子拾获钱包以为天降横财》中事件发生的地点是？</h3>
+<p>卡住了，找不到，看了师傅的wp才找到的。<a href="https://mumuzi.blog/docs/Forensic/%E5%8F%96%E8%AF%81%E6%AF%94%E8%B5%9BWP/07-2026%E7%AC%AC%E5%85%AD%E5%B1%8AFIC%E5%86%B3%E8%B5%9B/%E6%89%8B%E6%9C%BA%E5%8F%96%E8%AF%81#4%E5%88%86%E6%9E%90%E6%89%8B%E6%9C%BA%E6%A3%80%E6%9D%905%E6%9C%886%E6%97%A5%E5%AB%8C%E7%96%91%E4%BA%BA%E6%9C%80%E5%90%8E%E4%B8%80%E6%AC%A1%E4%BD%BF%E7%94%A8%E8%B0%B7%E6%AD%8C%E5%A5%97%E4%BB%B6%E4%B8%AD%E7%9A%84%E6%9F%90%E4%B8%AAapp%E5%85%B6%E5%8C%85%E5%90%8D%E6%98%AF" target="_blank" rel="noopener">手机取证 | mumuzi的blog</a></p>
+<p>也算增加了小知识吧</p>
+<p>在路径检材2.手机.tar\data_151\user\0\com.google.android.googlequicksearchbox下</p>
+<p>cache使用来放缓存的文件夹</p>
+<figure><img src="../assets/posts/2026fic-final-mobile/image-08.png" alt="2026 FIC 决赛（手机）WP 配图" loading="lazy"></figure>
+<h3 id="section-1-6">6、分析该手机关机信息情况，最近一次因电池异常过热导致关机的北京时间为？</h3>
+<p>检索一下</p>
+<figure><img src="../assets/posts/2026fic-final-mobile/image-09.png" alt="2026 FIC 决赛（手机）WP 配图" loading="lazy"></figure>
+<p>2026-01-21 17:28:02.432</p>
+<h3 id="section-1-7">7、分析手机检材，北京时间 `2026-05-06 10:43:38` 左右哪些应用的通知被查看了？</h3>
+<p>好难，完全没有思路。。。</p>
+<h3 id="section-1-8">8、该手机曾进行过一次备份，使用的工具是？</h3>
+<p>搜索一下</p>
+<figure><img src="../assets/posts/2026fic-final-mobile/image-10.png" alt="2026 FIC 决赛（手机）WP 配图" loading="lazy"></figure>
+<p>SeedVault</p>
+<h3 id="section-1-9">9、使用上述工具进行备份的具体日期是？</h3>
+<figure><img src="../assets/posts/2026fic-final-mobile/image-11.png" alt="2026 FIC 决赛（手机）WP 配图" loading="lazy"></figure>
+<p>转换一下时间戳</p>
+<figure><img src="../assets/posts/2026fic-final-mobile/image-12.png" alt="2026 FIC 决赛（手机）WP 配图" loading="lazy"></figure>
+<p>2026-05-09 06:24:27</p>
+<h3 id="section-1-10">10、手机重启过程中，屏幕上除厂商 `logo` 外，还可以看到以下哪些内容？</h3>
+<p>这个真是知识盲区了</p>
+<figure><img src="../assets/posts/2026fic-final-mobile/image-13.png" alt="2026 FIC 决赛（手机）WP 配图" loading="lazy"></figure>
+<p>一般放在bootanimation.zip这个文件里面</p>
+<figure><img src="../assets/posts/2026fic-final-mobile/image-14.png" alt="2026 FIC 决赛（手机）WP 配图" loading="lazy"></figure>
+<figure><img src="../assets/posts/2026fic-final-mobile/image-15.png" alt="2026 FIC 决赛（手机）WP 配图" loading="lazy"></figure>
+<p>二维码，密码</p>
+<h3 id="section-1-11">11、分析上述除 `logo` 外的信息，发现与加密后的助记词有关，这里用来加密助记词使用的对称加密算法为？</h3>
+<p>扫描二维码得到</p>
+<figure><img src="../assets/posts/2026fic-final-mobile/image-16.png" alt="2026 FIC 决赛（手机）WP 配图" loading="lazy"></figure>
+<p>后面的根本想不到，根本不会</p>
+<figure><img src="../assets/posts/2026fic-final-mobile/image-17.png" alt="2026 FIC 决赛（手机）WP 配图" loading="lazy"></figure>
+<p>SM4</p>
+<h3 id="section-1-12">12、助记词有部分残缺，需要补全的助记词数量为？</h3>
+<p>英语不好捏</p>
+<figure><img src="../assets/posts/2026fic-final-mobile/image-18.png" alt="2026 FIC 决赛（手机）WP 配图" loading="lazy"></figure>
+<p>9</p>
+<h3 id="section-1-13">13、嫌疑人近期使用了一款笔记软件，该应用数据加密使用的主要加密算法为？</h3>
+<p>之前翻东西的时候看到了一个note，打开看看</p>
+<figure><img src="../assets/posts/2026fic-final-mobile/image-19.png" alt="2026 FIC 决赛（手机）WP 配图" loading="lazy"></figure>
+<p>找到了，但是看不懂。。。</p>
+<p>问问ai（真好用）</p>
+<figure><img src="../assets/posts/2026fic-final-mobile/image-20.png" alt="2026 FIC 决赛（手机）WP 配图" loading="lazy"></figure>
+<p>XChaCha20-Poly1305</p>
+<h3 id="section-1-14">14、分析该笔记软件，其数据库一次解密密钥为？</h3>
+<p>打开看一下</p>
+<figure><img src="../assets/posts/2026fic-final-mobile/image-21.png" alt="2026 FIC 决赛（手机）WP 配图" loading="lazy"></figure>
+<p>69bf3693d45cd5485cc53cd7ad9c5c5bf769aa48847253c3991ef18bd3f2ae87</p>
+<h3 id="section-1-15">15、用来解密 5 月 8 日的收入的二次解密密钥为？</h3>
+<h3 id="section-1-16">16、笔记软件中记录 5 月 7 日的收入为？</h3>
+<p>雷电可以导入数据，不过我没试过，现在试一下</p>
+<figure><img src="../assets/posts/2026fic-final-mobile/image-22.png" alt="2026 FIC 决赛（手机）WP 配图" loading="lazy"></figure>
+<p>成功了</p>
+<figure><img src="../assets/posts/2026fic-final-mobile/image-23.png" alt="2026 FIC 决赛（手机）WP 配图" loading="lazy"></figure>
+<p>还有个小玩意，记录一下</p>
+<figure><img src="../assets/posts/2026fic-final-mobile/image-24.png" alt="2026 FIC 决赛（手机）WP 配图" loading="lazy"></figure>
+<p>84826.90</p>
+<h3 id="section-1-17">17、笔记软件中记录 5 月 6 日的收入为？</h3>
+<p>好难好难好难好难</p>
+<h3 id="section-1-18">18、手机检材中有一个 AI 助手程序，分析该程序配置与任务，哪个应用程序运行后会清空本地存储内容？</h3>
+<p>之前看到过一个ai文件夹有大量的内容，定位一下</p>
+<figure><img src="../assets/posts/2026fic-final-mobile/image-25.png" alt="2026 FIC 决赛（手机）WP 配图" loading="lazy"></figure>
+<p>这个里面没有，找找别的地方</p>
+<figure><img src="../assets/posts/2026fic-final-mobile/image-26.png" alt="2026 FIC 决赛（手机）WP 配图" loading="lazy"></figure>
+<p>com.tencent.mm</p>
+<h3 id="section-1-19">19、分析 AI 助手程序调用的模型，结合笔记软件中的记录，用来隐藏银行卡密码的模型文件名为？</h3>
+<p>上题没找到的文件里有这一题的信息，打开数据库</p>
+<figure><img src="../assets/posts/2026fic-final-mobile/image-27.png" alt="2026 FIC 决赛（手机）WP 配图" loading="lazy"></figure>
+<p>ultraman-663M-BF16.gguf</p>
+<h3 id="section-1-20">20、嫌疑人曾自行修改上题中的模型，他是通过什么原始模型修改而来的？</h3>
+<p>先搜索伪装名</p>
+<figure><img src="../assets/posts/2026fic-final-mobile/image-28.png" alt="2026 FIC 决赛（手机）WP 配图" loading="lazy"></figure>
+<p>发现是hunyuan，再检索一次</p>
+<figure><img src="../assets/posts/2026fic-final-mobile/image-29.png" alt="2026 FIC 决赛（手机）WP 配图" loading="lazy"></figure>
+<h3 id="section-1-21">21、被修改后的模型量化精度为？</h3>
+<figure><img src="../assets/posts/2026fic-final-mobile/image-30.png" alt="2026 FIC 决赛（手机）WP 配图" loading="lazy"></figure>
+<p>BF16</p>
+<h3 id="section-1-22">22、能够提升修改后模型对话能力的虚拟 token 为？</h3>
+<p>拷打AI可以得到答案</p>
+<figure><img src="../assets/posts/2026fic-final-mobile/image-31.png" alt="2026 FIC 决赛（手机）WP 配图" loading="lazy"></figure>
+<p><｜hy_place▁holder▁no▁2｜></p>
+<h3 id="section-1-23">23、分析 AI 助手与笔记软件中的记录，找出银行卡 6 位数字密码为？</h3>
+<p>继续拷打AI</p>
+<figure><img src="../assets/posts/2026fic-final-mobile/image-32.png" alt="2026 FIC 决赛（手机）WP 配图" loading="lazy"></figure>
+<p>525252</p>        </div>
+        <section class="comments-card">
+          <h2>评论</h2>
+          <p>可以直接用 GitHub 账号留言。</p>
+          <script src="https://utteranc.es/client.js"
+            repo="hxyz486/hxyz486.github.io"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+          </script>
+        </section>
+      </article>
+      <aside class="article-toc" aria-label="文章目录">
+        <div class="toc-card">
+          <p>目录</p>
+          <nav class="toc">
+            <a class="toc-section" href="#section-1">检材2：手机</a>
+            <a class="toc-item" href="#section-1-1">1、分析手机检材，该手机设备名称为？</a>
+            <a class="toc-item" href="#section-1-2">2、分析手机检材，该手机系统 magisk【环境版本】为？</a>
+            <a class="toc-item" href="#section-1-3">3、分析手机检材，嫌疑人通过盖世游戏 app 安装的《最终幻想》游戏版本是？</a>
+            <a class="toc-item" href="#section-1-4">4、分析手机检材，5 月 6 日，嫌疑人最后一次使用谷歌套件中的某个 app，其包名是？</a>
+            <a class="toc-item" href="#section-1-5">5、分析上述 app 5 月 6 日推送新闻的相关痕迹和缓存，新闻《男子拾获钱包以为天降横财》中事件发生的地点是？</a>
+            <a class="toc-item" href="#section-1-6">6、分析该手机关机信息情况，最近一次因电池异常过热导致关机的北京时间为？</a>
+            <a class="toc-item" href="#section-1-7">7、分析手机检材，北京时间 2026-05-06 10:43:38 左右哪些应用的通知被查看了？</a>
+            <a class="toc-item" href="#section-1-8">8、该手机曾进行过一次备份，使用的工具是？</a>
+            <a class="toc-item" href="#section-1-9">9、使用上述工具进行备份的具体日期是？</a>
+            <a class="toc-item" href="#section-1-10">10、手机重启过程中，屏幕上除厂商 logo 外，还可以看到以下哪些内容？</a>
+            <a class="toc-item" href="#section-1-11">11、分析上述除 logo 外的信息，发现与加密后的助记词有关，这里用来加密助记词使用的对称加密算法为？</a>
+            <a class="toc-item" href="#section-1-12">12、助记词有部分残缺，需要补全的助记词数量为？</a>
+            <a class="toc-item" href="#section-1-13">13、嫌疑人近期使用了一款笔记软件，该应用数据加密使用的主要加密算法为？</a>
+            <a class="toc-item" href="#section-1-14">14、分析该笔记软件，其数据库一次解密密钥为？</a>
+            <a class="toc-item" href="#section-1-15">15、用来解密 5 月 8 日的收入的二次解密密钥为？</a>
+            <a class="toc-item" href="#section-1-16">16、笔记软件中记录 5 月 7 日的收入为？</a>
+            <a class="toc-item" href="#section-1-17">17、笔记软件中记录 5 月 6 日的收入为？</a>
+            <a class="toc-item" href="#section-1-18">18、手机检材中有一个 AI 助手程序，分析该程序配置与任务，哪个应用程序运行后会清空本地存储内容？</a>
+            <a class="toc-item" href="#section-1-19">19、分析 AI 助手程序调用的模型，结合笔记软件中的记录，用来隐藏银行卡密码的模型文件名为？</a>
+            <a class="toc-item" href="#section-1-20">20、嫌疑人曾自行修改上题中的模型，他是通过什么原始模型修改而来的？</a>
+            <a class="toc-item" href="#section-1-21">21、被修改后的模型量化精度为？</a>
+            <a class="toc-item" href="#section-1-22">22、能够提升修改后模型对话能力的虚拟 token 为？</a>
+            <a class="toc-item" href="#section-1-23">23、分析 AI 助手与笔记软件中的记录，找出银行卡 6 位数字密码为？</a>
+          </nav>
+        </div>
+      </aside>
+    </main>
+    <footer class="footer">
+      <div class="footer-meta">
+        <p>共撰写了 <strong>6</strong> 篇文章 共 <strong>16.3k</strong> 字</p>
+        <p>博客已运行 <span data-site-runtime data-start="2026-05-31T09:28:56+08:00">0 天 0 小时 0 分钟 0 秒</span></p>
+      </div>
+      <p>Powered by GitHub Pages · <a href="https://hxyz486.github.io/">https://hxyz486.github.io/</a> · © 2026 郝杏芸</p>
+    </footer>
+    <script src="../site.js"></script>
+  </body>
+</html>
