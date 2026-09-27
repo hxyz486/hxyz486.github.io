@@ -1,0 +1,413 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="2025年四川省大学生大数据采集与分析大赛电子数据取证赛道，手机与电脑检材分析记录。">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="2025年四川省大学生大数据采集与分析大赛（电子数据取证赛道）（手机，电脑）">
+    <meta property="og:description" content="2025年四川省大学生大数据采集与分析大赛电子数据取证赛道，手机与电脑检材分析记录。">
+    <meta property="og:url" content="https://hxyz486.github.io/posts/2025-sichuan-forensics.html">
+    <link rel="canonical" href="https://hxyz486.github.io/posts/2025-sichuan-forensics.html">
+    <link rel="icon" type="image/png" href="../assets/favicon.png">
+    <title>2025年四川省大学生大数据采集与分析大赛（电子数据取证赛道）（手机，电脑） - 郝杏芸的博客</title>
+    <link rel="stylesheet" href="../styles.css">
+  </head>
+  <body class="article-page">
+    <header class="article-header">
+      <nav class="nav article-nav">
+        <a class="brand" href="../index.html"><img src="../assets/brand-icon.png" alt="" aria-hidden="true">郝杏芸的博客</a>
+        <a class="back-home" href="../index.html#posts">返回首页</a>
+      </nav>
+      <div class="article-hero">
+        <p class="eyebrow">Forensics / Writeup</p>
+        <h1>2025年四川省大学生大数据采集与分析大赛（电子数据取证赛道）（手机，电脑）</h1>
+        <p class="hero-copy">电子数据取证赛道的手机、电脑及其他检材分析记录。</p>
+      </div>
+    </header>
+    <main class="article-shell">
+      <article class="article-card">
+        <div class="article-meta">
+          <time datetime="2026-09-27">2026-09-27</time>
+          <span>取证复现</span>
+          <span>Writeup</span>
+        </div>
+        <div class="article-body">
+<p>前面的比较简单，快速过一下，后面难度就上来了
+本人菜菜，因为网上没有这个比赛的wp，所以就斗胆发出来了
+所有题目都没有官方答案或者其它师傅的答案，所以只能寄希望于我的正确率了
+欢迎各位师傅莅临指导！</p>
+<h2 id="question-1">1. 通过对检材-计算机中“Win10-PC.E01”分析，该操作系统的计算机名为？【参考格式：ABCD#1234】</h2>
+<figure><img alt="题目分析截图" loading="lazy" src="../assets/posts/2025-sichuan-forensics/image-01.png"/></figure>
+<p>DESKTOP-S7P0CEN</p>
+<h2 id="question-2">2. 对计算机检材进行分析，该操作系统登录次数最多用户的登录密码为？【按实际值填写】</h2>
+<p>有两个账号，感觉pc会有意思</p>
+<figure><img alt="题目分析截图" loading="lazy" src="../assets/posts/2025-sichuan-forensics/image-02.png"/></figure>
+<p>Myuser987</p>
+<h2 id="question-3">3. 对计算机检材进行分析，该操作系统安装的Vmware环境配置的Net网络IP地址为？【参考格式：127.0.0.1[1]】</h2>
+<p>仿真我设置的配置太差了，打开好卡</p>
+<figure><img alt="题目分析截图" loading="lazy" src="../assets/posts/2025-sichuan-forensics/image-03.png"/></figure>
+<p>192.168.111.0</p>
+<h2 id="question-4">4. 对计算机检材进行分析，该操作系统配置的密码策略的最长留存期为多少天？【填写数字，参考格式：1234】</h2>
+<figure><img alt="题目分析截图" loading="lazy" src="../assets/posts/2025-sichuan-forensics/image-04.png"/></figure>
+<p>42</p>
+<h2 id="question-5">5. 对计算机检材进行分析，该操作系统在最后一次未正常关机的情况下重新启动的开机时间为？【参考格式：1970-01-01 00:00:00】</h2>
+<figure><img alt="题目分析截图" loading="lazy" src="../assets/posts/2025-sichuan-forensics/image-05.png"/></figure>
+<p>2025-07-02 19:13:44</p>
+<h2 id="question-6">6. 对计算机检材进行分析，用户在操作系统中安装了某即时通讯应用，该应用的版本号为？【请按实际结果填写】</h2>
+<figure><img alt="题目分析截图" loading="lazy" src="../assets/posts/2025-sichuan-forensics/image-06.png"/></figure>
+<p>3.9.12.51</p>
+<h2 id="question-7">7. 对计算机检材进行分析，该操作系统允许开机自启动的程序有几个？【填写数字，参考格式：10】</h2>
+<figure><img alt="题目分析截图" loading="lazy" src="../assets/posts/2025-sichuan-forensics/image-07.png"/></figure>
+<p>7</p>
+<h2 id="question-8">8. 对计算机检材进行分析，IP地址为10.10.115.75的服务器Web后台管理系统的登录密码为？【按实际值填写】</h2>
+<figure><img alt="题目分析截图" loading="lazy" src="../assets/posts/2025-sichuan-forensics/image-08.png"/></figure>
+<p>Admin%1qaz2wsx</p>
+<h2 id="question-9">9. 对计算机检材进行分析，该系统中哪项本地安全审核策略未开启，请填写策略名称？【参考格式：策略名称】</h2>
+<figure><img alt="题目分析截图" loading="lazy" src="../assets/posts/2025-sichuan-forensics/image-09.png"/></figure>
+<p>审核账户管理</p>
+<h2 id="question-10">10. 对计算机检材进行分析，其系统日志文件最大可存储多少MB的日志数据？【填写数字，参考格式：1234】</h2>
+<p>1024kb=1mb</p>
+<figure><img alt="题目分析截图" loading="lazy" src="../assets/posts/2025-sichuan-forensics/image-10.png"/></figure>
+<p>200</p>
+<h2 id="question-11">11. 对计算机检材进行分析，用户通过命令修改了该计算机中某文件的文件名，请写出修改前的文件名为？【请按实际结果填写，包含扩展名】</h2>
+<figure><img alt="题目分析截图" loading="lazy" src="../assets/posts/2025-sichuan-forensics/image-11.png"/></figure>
+<p>12345.txt</p>
+<h2 id="question-12">12. 对计算机检材进行分析，找出该镜像中创建的某虚拟磁盘文件，其扩展分区中共划分了几个逻辑分区？【答案按十进制数值填写，参考格式：1234】</h2>
+<p>360文件夹内</p>
+<figure><img alt="题目分析截图" loading="lazy" src="../assets/posts/2025-sichuan-forensics/image-12.png"/></figure>
+<p>双击就能挂载</p>
+<figure><img alt="题目分析截图" loading="lazy" src="../assets/posts/2025-sichuan-forensics/image-13.png"/></figure>
+<p>5</p>
+<h2 id="question-13">13. 对计算机检材进行分析，找出该镜像中创建的某虚拟磁盘文件，其第6个分区的文件系统类型为？【大写字母与数字组合】</h2>
+<figure><img alt="题目分析截图" loading="lazy" src="../assets/posts/2025-sichuan-forensics/image-14.png"/></figure>
+<p>EXT4</p>
+<h2 id="question-14">14. 对计算机检材进行分析，找出该镜像中创建的某虚拟磁盘文件，其第3个分区结构的FAT表大小为多少字节？【填写数字，参考格式：1234】</h2>
+<figure><img alt="题目分析截图" loading="lazy" src="../assets/posts/2025-sichuan-forensics/image-15.png"/></figure>
+<p>65536</p>
+<h2 id="question-15">15. 对计算机检材进行分析，找出该镜像中创建的某虚拟磁盘文件，其被删除分区的$MFT起始簇号为？【填写数字，参考格式如：1234】</h2>
+<p>这个不会，不知道有没有大手子知道怎么手搓</p>
+<h2 id="question-16">16. 对计算机检材进行分析，已知用户在2025-07-01 15:20至15:38期间，通过UU远程手机端与计算机端互传过某图片与文档文件，请问其中记录的手机号码为？【填写数字，参考格式：1234】</h2>
+<p>在手机检材的uu的数据里面找到</p>
+<figure><img alt="题目分析截图" loading="lazy" src="../assets/posts/2025-sichuan-forensics/image-16.png"/></figure>
+<p>15259291445</p>
+<h2 id="question-17">17. 对计算机检材进行分析，用户记录了一项未完成的任务清单，请写出清单内容。【请按实际结果填写】</h2>
+<p>相当有意思的题目，慢慢来看
+首先，我们在之前打开虚拟磁盘后发现了这个文件</p>
+<figure><img alt="题目分析截图" loading="lazy" src="../assets/posts/2025-sichuan-forensics/image-17.png"/></figure>
+<p>正常打开发现是空的，没有数据，这是因为任务数据<strong>只存在浏览器 localStorage 中</strong>
+换言之，我们需要使用其它浏览器才能看到数据，所以我们在火眼中进行搜寻</p>
+<figure><img alt="题目分析截图" loading="lazy" src="../assets/posts/2025-sichuan-forensics/image-18.png"/></figure>
+<p>找到了，使用豆包打开html文件</p>
+<figure><img alt="题目分析截图" loading="lazy" src="../assets/posts/2025-sichuan-forensics/image-19.png"/></figure>
+<p>3、月度汇报资料整理</p>
+<h2 id="question-18">18. 接上题，该计算机的“任务管理器”应用程序，是通过AI自动编写程序代码生成的，请写出生成该应用程序代码的软件名称可能是？【按实际结果填写】</h2>
+<p>只有一个vibe coding的软件，注意真实名称</p>
+<figure><img alt="题目分析截图" loading="lazy" src="../assets/posts/2025-sichuan-forensics/image-20.png"/></figure>
+<p>Trae CN (User)</p>
+<h2 id="question-19">19. 对计算机检材进行分析，用户关注的某国产仙侠剧看到了第几集？【填写数字，参考格式：1234】</h2>
+<figure><img alt="题目分析截图" loading="lazy" src="../assets/posts/2025-sichuan-forensics/image-21.png"/></figure>
+<p>34</p>
+<h2 id="question-20">20. 对计算机检材进行分析，用户想把哪个商城的网站源码设置加密，请写出该站点在测试环境中设置的域名？【请按实际结果填写】</h2>
+<p>发现有两个商场网站，依次查看发现只有jshop有加密痕迹</p>
+<figure><img alt="题目分析截图" loading="lazy" src="../assets/posts/2025-sichuan-forensics/image-22.png"/></figure>
+<p>jshopmall.com</p>
+<h2 id="question-21">21. 对计算机、手机检材进行综合分析，7月1日晚上，其涉案团伙交流的文件解压密码为？【按实际值填写】</h2>
+<figure><img alt="题目分析截图" loading="lazy" src="../assets/posts/2025-sichuan-forensics/image-23.png"/></figure>
+<p>645564</p>
+<h2 id="question-22">22. 对计算机、手机检材进行综合分析，7月1日晚上，其涉案团伙交流的Word文档的SM3值后八位为？【大写字母与数字组合，参考格式：ABCD1234】</h2>
+<p>从微信看到了聊天记录，文件名称，在pc上找到</p>
+<figure><img alt="题目分析截图" loading="lazy" src="../assets/posts/2025-sichuan-forensics/image-24.png"/></figure>
+<p>4862E987E661C9AA43F78CB3B9ADC32F35DC35FE1818E7462228429E76B9B466</p>
+<h2 id="question-23">23. 对计算机、手机检材进行综合分析，其存储的“文件服务器”的登录密码为？【按实际值填写】</h2>
+<figure><img alt="题目分析截图" loading="lazy" src="../assets/posts/2025-sichuan-forensics/image-25.png"/></figure>
+<p>72936&amp;eVmwR</p>
+<h2 id="question-24">24. 对计算机、手机检材进行综合分析，其在百度网盘下载的文件中添加了新内容，添加的内容中最后一张图片的SHA-256值后八位为？【大写字母与数字组合，参考格式：ABCD1234】</h2>
+<figure><img alt="题目分析截图" loading="lazy" src="../assets/posts/2025-sichuan-forensics/image-26.png"/></figure>
+<p>D5787F7D</p>
+<h2 id="question-25">25. 通过对检材-数据分析中“yzgj.sql”分析，订单取消表中 wy_order_cancel 表中，2020年订单取消数量最高的月份是哪一个月份？【以"月份"提交，格式如：3】</h2>
+<p>使用火眼自带的数据库工具可以把sql文档转换为数据库</p>
+<figure><img alt="题目分析截图" loading="lazy" src="../assets/posts/2025-sichuan-forensics/image-27.png"/></figure>
+<p>找到<code>wy_order_cancel表</code>，数都数出来</p>
+<figure><img alt="题目分析截图" loading="lazy" src="../assets/posts/2025-sichuan-forensics/image-28.png"/></figure>
+<p>7</p>
+<h2 id="question-26">26. 通过对检材-手机中“Phone.E01”分析，找出微信ID为“wxid_f4s0jmpvrc522”的昵称。【参考格式：天天向上】</h2>
+<figure><img alt="题目分析截图" loading="lazy" src="../assets/posts/2025-sichuan-forensics/image-29.png"/></figure>
+<p>满天星</p>
+<h2 id="question-27">27. 根据钱包日志表 wy_wallet_log，统计不同提现状态（申请中、通过、拒绝）下的提现申请总数分别是多少？【填写数字，格式如：10-5999-23】</h2>
+<p>这题目算的上信息差了
+最开始看到staute有三个值，不知道哪个对应哪个
+最后问了ai才知道要看sql文档的解释</p>
+<figure><img alt="题目分析截图" loading="lazy" src="../assets/posts/2025-sichuan-forensics/image-30.png"/></figure>
+<p>去excel看一下
+做这道题的时候发现火眼的sql转csv有问题，转换不准确，所以把这个功能整合进我的工具箱里面了，有兴趣可以看一下
+<a href="https://hxyz486.github.io/posts/%E5%8F%96%E8%AF%81%E5%B7%A5%E5%85%B7.html">取证工具（实验品） - 郝杏芸的博客</a></p>
+<figure><img alt="题目分析截图" loading="lazy" src="../assets/posts/2025-sichuan-forensics/image-31.png"/></figure>
+<p>4-340290-74</p>
+<h2 id="question-28">28. 对手机检材进行分析，找出张波手机号码。【填写数字，参考格式：13600000000】</h2>
+<figure><img alt="题目分析截图" loading="lazy" src="../assets/posts/2025-sichuan-forensics/image-32.png"/></figure>
+<p>18050080707</p>
+<h2 id="question-29">29. 找出usdt转账成功最多的用户的username、姓名和共多少usdt进行转账（保留两位小数）【以"username-姓名-usdt"提交，如：admin-张三-150.23】</h2>
+<p>这题有点小坑，当时做的时候没发现，跟ai对比的时候看到了
+在数据库注释中（27题的图也有）我们发现type=1才是转账，所以要先筛选再排名
+但还是有很多问题，答案没有把握，存疑</p>
+<figure><img alt="题目分析截图" loading="lazy" src="../assets/posts/2025-sichuan-forensics/image-33.png"/></figure>
+<p>34028007-辛汉会-0.00</p>
+<h2 id="question-30">30. 对手机检材进行分析，找出通话时长最长的时间是几秒（服务号除外）？【填写数字，参考格式：200】</h2>
+<figure><img alt="题目分析截图" loading="lazy" src="../assets/posts/2025-sichuan-forensics/image-34.png"/></figure>
+<p>38</p>
+<h2 id="question-31">31. 请分析验证码情况表 wy_sms 中的验证码使用情况，统计未使用验证码的比例？（保留两位小数）【以"数字比例"提交，格式如：45.65%】</h2>
+<figure><img alt="题目分析截图" loading="lazy" src="../assets/posts/2025-sichuan-forensics/image-35.png"/></figure>
+<p>38.64%</p>
+<h2 id="question-32">32. 对手机检材进行分析，找出“小红书”应用的包名。【参考格式：com.tencent.mm】</h2>
+<figure><img alt="题目分析截图" loading="lazy" src="../assets/posts/2025-sichuan-forensics/image-36.png"/></figure>
+<p>com.xingin.xhs</p>
+<h2 id="question-33">33. 请从用户表 wy_user 中提取所有用户的余额信息(usdt、虎币、锁定币)，计算出上述三种余额的平均值分别是多少（只统计到个位数），并统计usdt余额超过平均值的用户数量【以“usdt平均值-虎币平均值-锁定币平均值-用户数量”提交】</h2>
+<p>wps就是神</p>
+<figure><img alt="题目分析截图" loading="lazy" src="../assets/posts/2025-sichuan-forensics/image-37.png"/></figure>
+<p>15-2095-0-465</p>
+<h2 id="question-34">34. 对手机检材进行分析，找出“文件服务器”的IP地址。【参考格式：192.168.10.10】</h2>
+<figure><img alt="题目分析截图" loading="lazy" src="../assets/posts/2025-sichuan-forensics/image-38.png"/></figure>
+<p>163.179.125.25</p>
+<h2 id="question-35">35. 分析用户表 wy_user 中不同市场代理级别（agent_level）对应的团队业绩（team_yj）平均值，找出平均值最高的市场代理级别，以及平均值（平均值保留小数点后两位）【以“市场代理级别-平均值”提交，如：2-20.23】</h2>
+<p>同33
+5-13752333.33</p>
+<h2 id="question-36">36. 对手机检材进行分析，找出“文件服务器”所使用的认证信息，列出认证信息设置的用户名。【参考格式：user】</h2>
+<figure><img alt="题目分析截图" loading="lazy" src="../assets/posts/2025-sichuan-forensics/image-39.png"/></figure>
+<p>root</p>
+<h2 id="question-37">37. 统计用户表 wy_user 中各个注册城市的用户数量，并找出注册用户最多的前三个城市【以城市1-城市2-城市3提交，如：太原-大同-朔州】</h2>
+<p>送分
+北京-上海-新乡</p>
+<h2 id="question-38">38. 对手机检材进行分析，机主通过某应用发送银行卡号给昵称“花好月圆”的好友，请问该应用的数据包名是什么？【参考格式：com.tencent.mm】</h2>
+<p>把几个app都看了一遍，这几乎是唯一怀疑的</p>
+<figure><img alt="题目分析截图" loading="lazy" src="../assets/posts/2025-sichuan-forensics/image-40.png"/></figure>
+<p>com.suirui.zhumu
+ps：网上搜的关于这个app的介绍</p>
+<figure><img alt="题目分析截图" loading="lazy" src="../assets/posts/2025-sichuan-forensics/image-41.png"/></figure>
+<h2 id="question-39">39. 找出登录次数最多的用户，列出该用户的用户名、姓名和最近一次登录的日期（只显示有登录记录的用户）【以"用户名-姓名-最后登录日期"提交，如：admin-张三-2025-04-28】</h2>
+<p>神了，不知道题目逻辑顺序怎么这么乱
+<code>drrz</code> = <strong>登入日志</strong>的拼音缩写（这谁能想到）</p>
+<figure><img alt="题目分析截图" loading="lazy" src="../assets/posts/2025-sichuan-forensics/image-42.png"/></figure>
+<p>51149343-郭艳玲-2021-04-15</p>
+<h2 id="question-40">40. 接上题，存储聊天记录数据的文件打开密码是什么？【参考格式：按实际填写】</h2>
+<p>不会逆向，心态有点炸了
+问了ai，6min给我解出来了</p>
+<figure><img alt="题目分析截图" loading="lazy" src="../assets/posts/2025-sichuan-forensics/image-43.png"/></figure>
+<p>感谢Astra大人让我再一次认识到人与ai的鸿沟
+RM_SQL_PWD</p>
+<h2 id="question-41">41. 通过对检材-数据恢复中“Person.E01”分析，镜像中损坏分区(分区大小3G)的 $MFT 文件 MD5 值是什么？【大写字母与数字组合，格式如：ABD23DE3】</h2>
+<figure><img alt="题目分析截图" loading="lazy" src="../assets/posts/2025-sichuan-forensics/image-44.png"/></figure>
+<p>5FDC9737A92CCA9F4AF547F107A934AC</p>
+<h2 id="question-42">42. 接上题，机主在该APP中提到的银行卡后六位为？【填写数字，参考格式：123456】</h2>
+<figure><img alt="题目分析截图" loading="lazy" src="../assets/posts/2025-sichuan-forensics/image-45.png"/></figure>
+<p>6204114263315643490</p>
+<h2 id="question-43">43. 镜像中有多少个丢失分区？【填写数字，格式如：10】</h2>
+<figure><img alt="题目分析截图" loading="lazy" src="../assets/posts/2025-sichuan-forensics/image-46.png"/></figure>
+<p>2</p>
+<h2 id="question-44">44. 对手机检材进行分析，找出手机安装的金融类APP名称。【参考格式：微信】</h2>
+<figure><img alt="题目分析截图" loading="lazy" src="../assets/posts/2025-sichuan-forensics/image-47.png"/></figure>
+<p>蚂蚁财富</p>
+<h2 id="question-45">45. 镜像中加密容器的密码是什么？【按实际值填写】</h2>
+<p>燃尽了，所有手段都上了</p>
+<figure><img alt="题目分析截图" loading="lazy" src="../assets/posts/2025-sichuan-forensics/image-48.png"/></figure>
+<figure><img alt="题目分析截图" loading="lazy" src="../assets/posts/2025-sichuan-forensics/image-49.png"/></figure>
+<p>1q2w3e4r</p>
+<h2 id="question-46">46. 接上题，该APP中数据文件“chatmsgdb2088152172213330.db”数据库用到的解密算法和模式是什么？【字母小写，参考格式：算法名/密钥长度/模式】</h2>
+<p>唉，真是ai王朝了，佩服当年手搓比赛的师傅们，太强了</p>
+<figure><img alt="题目分析截图" loading="lazy" src="../assets/posts/2025-sichuan-forensics/image-50.png"/></figure>
+<p>aes/128/ecb</p>
+<h2 id="question-47">47. “media”文件夹中有多少个 MP3 文件被删除？【填写数字，格式如：10】</h2>
+<p>45题解开容器后发现media文件夹
+看不懂，问了问ai，掌握新技能了说是</p>
+<figure><img alt="题目分析截图" loading="lazy" src="../assets/posts/2025-sichuan-forensics/image-51.png"/></figure>
+<p>总计是3个</p>
+<figure><img alt="题目分析截图" loading="lazy" src="../assets/posts/2025-sichuan-forensics/image-52.png"/></figure>
+<figure><img alt="题目分析截图" loading="lazy" src="../assets/posts/2025-sichuan-forensics/image-53.png"/></figure>
+<figure><img alt="题目分析截图" loading="lazy" src="../assets/posts/2025-sichuan-forensics/image-54.png"/></figure>
+<p>3</p>
+<h2 id="question-48">48. 接上题，解密该数据库的密钥是什么？【参考格式：按实际填写】</h2>
+<p>见46
+2Zyo3pdOhZ//FSUh</p>
+<h2 id="question-49">49. 镜像中有多少种包含“鸟类”图片的文件类型（需要去重）？【填写数组，格式如：10】</h2>
+<p>尽力了，x-way都用了，真的没招了，手搓好牢</p>
+<figure><img alt="题目分析截图" loading="lazy" src="../assets/posts/2025-sichuan-forensics/image-55.png"/></figure>
+<p>算上火眼解析的，总计5张图片，png和jpeg</p>
+<figure><img alt="五张鸟图核验" loading="lazy" src="../assets/posts/2025-sichuan-forensics/image-56.png"/></figure>
+<p>2</p>
+<h2 id="question-50">50. “小刘”的电话号码是多少？【填写数字，格式如：15353535353】</h2>
+<p>手机检材里没找到，从person.E01检材里面找，里面有一个明显的需要解密的表格和一些提示</p>
+<figure><img alt="题目分析截图" loading="lazy" src="../assets/posts/2025-sichuan-forensics/image-57.png"/></figure>
+<p>挨个看，发现5.png的文件尾写了密码</p>
+<figure><img alt="题目分析截图" loading="lazy" src="../assets/posts/2025-sichuan-forensics/image-58.png"/></figure>
+<figure><img alt="题目分析截图" loading="lazy" src="../assets/posts/2025-sichuan-forensics/image-59.png"/></figure>
+<p>13201000812</p>
+<hr/>
+<p>有一说一，apk我也不会啊，只能硬着头皮写了</p>
+<h2 id="question-51">51. 通过对检材-apk中“检材一.apk”分析，其程序主入口是？【参考格式：com.company.dua.MainActivity】</h2>
+<figure><img alt="题目分析截图" loading="lazy" src="../assets/posts/2025-sichuan-forensics/image-60.png"/></figure>
+<p>org.consenlabs.imtoken.MainActivity</p>
+<h2 id="question-52">52. 请给出检材一.apk的证书MD5值？【大写字母与数字组合，格式如：AB44DE98】</h2>
+<p>。。。我还想着jadx呢，都忘了还有这个可以用</p>
+<figure><img alt="题目分析截图" loading="lazy" src="../assets/posts/2025-sichuan-forensics/image-61.png"/></figure>
+<p>E12803B14249F2DB960E6338C1D9174A</p>
+<h2 id="question-53">53. 请分析检材一.apk是否有系统悬浮窗权限？【答案：有或无】</h2>
+<p>第一个就是</p>
+<figure><img alt="题目分析截图" loading="lazy" src="../assets/posts/2025-sichuan-forensics/image-62.png"/></figure>
+<p>有</p>
+<h2 id="question-54">54. [多选题] 请对比检材一.apk和检材二.apk（已知检材一是伪造的APP），以下哪些条件可以作为判断标准？【选项：A.包名不同；B.证书签名不同；C.MD5值不同；D.版本号不同】</h2>
+<p>对比一下发现都不一样，反正都是雷电做的，就不放图片了
+ABCD</p>
+<h2 id="question-55">55. 分析检材一，已知在org.consenlabs.tokencore.wallet.IdentityWallet类下将用户的敏感数据上传到服务器，请结合拦截到的检材.log文件，给出上传的敏感信息是？【答案大小写与拦截信息中需一致】</h2>
+<p>看不懂，不过可以照着痕迹走
+不过猜一下的话只有这个了</p>
+<figure><img alt="题目分析截图" loading="lazy" src="../assets/posts/2025-sichuan-forensics/image-63.png"/></figure>
+<p>tower ivory bridge zero play digital wisdom silver scrap prepare arrange next</p>
+<h2 id="question-56">56. 请分析发送该敏感数据时使用的网络请求类型为？【字母需大写】</h2>
+<p>按理来说第一反应应该是post
+但是所有请求体大小为0，那就是get了，会这个的大手子还是自己做吧，我的把握不好</p>
+<figure><img alt="题目分析截图" loading="lazy" src="../assets/posts/2025-sichuan-forensics/image-64.png"/></figure>
+<p>GET</p>
+<h2 id="question-57">57. 请给出加密敏感数据使用的算法为？【字母需大写】</h2>
+<p>明牌了</p>
+<figure><img alt="题目分析截图" loading="lazy" src="../assets/posts/2025-sichuan-forensics/image-65.png"/></figure>
+<p>RSA</p>
+<h2 id="question-58">58. 上传敏感数据目标的服务器域名为？【格式如：www.baidu.com】</h2>
+<p>手操app注册的时候发现</p>
+<figure><img alt="题目分析截图" loading="lazy" src="../assets/posts/2025-sichuan-forensics/image-66.png"/></figure>
+<p>推测这个是上传的域名
+www.uniswaper.me</p>
+<hr/>
+<p>服务器就交给有缘人写吧</p>
+<h2 id="question-59">59. 通过对检材-服务器中“server”分析，服务器上程序unzip更新的时间是？【填写时间，格式如：01:20:30】</h2>
+<h2 id="question-60">60. 服务器的sda1分区uuid后8位是？【小写字母与数字组合，格式如：ab34de23】</h2>
+<h2 id="question-61">61. 服务器中mysql的慢日志文件所在路径是？【从根目录开始填写，如：/www/www/root】</h2>
+<h2 id="question-62">62. mysql数据库root密码是多少？【按实际值填写】</h2>
+<h2 id="question-63">63. 服务器上保存的远程root密码是多少？【按实际值填写】</h2>
+<h2 id="question-64">64. 嫌疑平台的访问日志中第300188行请求的地址路径是？【按实际值填写】</h2>
+<h2 id="question-65">65. 继上一题，访问日志中出现“admin”的次数是多少次？【填写数字，格式如：10】</h2>
+<h2 id="question-66">66. 嫌疑平台的前台会员密码的加密方式是？【填写小写字母与数字组合，如：abc123】</h2>
+<h2 id="question-67">67. 嫌疑平台的Apibase.php文件是由什么工具创建的？【填写工具名称，小写字母】</h2>
+<h2 id="question-68">68. 嫌疑平台中在2024-07-19 01:57:49网页登录的是哪个会员？【按实际结果填写】</h2>
+<h2 id="question-69">69. 继上一题，该会员的商品密价是多少？【填写数字，保留二位小数，四舍五入，格式如：10.01】</h2>
+<h2 id="question-70">70. 继上一题，该会员的已完成订单数量是多少？【填写数字，格式如：100】</h2>
+<h2 id="question-71">71. 嫌疑平台中登录日志中在2024年7月份境外城市登录过几次？【填写数字，格式如：10】</h2>
+<h2 id="question-72">72. 嫌疑平台的管理员头像md5值后8位是？【填写大写字母与数字组合，格式如：AB34DE32】</h2>
+<h2 id="question-73">73. 嫌疑平台设置的对接次数是几次？【填写数字，格式如：10】</h2>
+<h2 id="question-74">74. 嫌疑平台的分站到期时间是？【填写日期和时间，格式如：2025-03-20 14:01:10】</h2>
+<h2 id="question-75">75. 嫌疑平台会员总余额的小数点后六位是？【填写数字】</h2>
+<h2 id="question-76">76. 嫌疑平台里退单中的订单总实付金额是多少？【按实际值填写】</h2>
+<h2 id="question-77">77. 嫌疑平台中订单中已付款且对接状态成功的总共有几单？【填写数字，格式如：10】</h2>
+<h2 id="question-78">78. 供货商的后台管理路径是？【参考：/admin】</h2>
+<h2 id="question-79">79. 嫌疑平台提供的谷歌令牌下载网盘密码是多少？【按实际值填写】</h2>
+<h2 id="question-80">80. 供货商账户余额最多的是谁？【填写汉字，如：张三】</h2>
+<h2 id="question-81">81. 继上一题，在2024-10-31这天他的订单分红总共是多少元？【保留小数点后二位，四舍五入，格式如：10.01】</h2>
+<h2 id="question-82">82. 继上一题，分红订单中哪个商品下单最多？【填写汉字】</h2>
+
+        </div>
+        <section class="comments-card">
+          <h2>评论</h2>
+          <p>可以直接用 GitHub 账号留言。</p>
+          <script src="https://utteranc.es/client.js" repo="hxyz486/hxyz486.github.io" issue-term="pathname" theme="github-light" crossorigin="anonymous" async></script>
+        </section>
+      </article>
+      <aside class="article-toc" aria-label="文章目录">
+        <div class="toc-card">
+          <p>目录</p>
+          <strong>2025年四川省大学生大数据采集与分析大赛（电子数据取证赛道）（手机，电脑）</strong>
+          <nav>
+              <a class="toc-item" href="#question-1">1. 通过对检材-计算机中“Win10-PC.E01”分析，该操作系统的计算…</a>
+              <a class="toc-item" href="#question-2">2. 对计算机检材进行分析，该操作系统登录次数最多用户的登录密码为？【按实际…</a>
+              <a class="toc-item" href="#question-3">3. 对计算机检材进行分析，该操作系统安装的Vmware环境配置的Net网络…</a>
+              <a class="toc-item" href="#question-4">4. 对计算机检材进行分析，该操作系统配置的密码策略的最长留存期为多少天？【…</a>
+              <a class="toc-item" href="#question-5">5. 对计算机检材进行分析，该操作系统在最后一次未正常关机的情况下重新启动的…</a>
+              <a class="toc-item" href="#question-6">6. 对计算机检材进行分析，用户在操作系统中安装了某即时通讯应用，该应用的版…</a>
+              <a class="toc-item" href="#question-7">7. 对计算机检材进行分析，该操作系统允许开机自启动的程序有几个？【填写数字…</a>
+              <a class="toc-item" href="#question-8">8. 对计算机检材进行分析，IP地址为10.10.115.75的服务器Web…</a>
+              <a class="toc-item" href="#question-9">9. 对计算机检材进行分析，该系统中哪项本地安全审核策略未开启，请填写策略名…</a>
+              <a class="toc-item" href="#question-10">10. 对计算机检材进行分析，其系统日志文件最大可存储多少MB的日志数据？【…</a>
+              <a class="toc-item" href="#question-11">11. 对计算机检材进行分析，用户通过命令修改了该计算机中某文件的文件名，请…</a>
+              <a class="toc-item" href="#question-12">12. 对计算机检材进行分析，找出该镜像中创建的某虚拟磁盘文件，其扩展分区中…</a>
+              <a class="toc-item" href="#question-13">13. 对计算机检材进行分析，找出该镜像中创建的某虚拟磁盘文件，其第6个分区…</a>
+              <a class="toc-item" href="#question-14">14. 对计算机检材进行分析，找出该镜像中创建的某虚拟磁盘文件，其第3个分区…</a>
+              <a class="toc-item" href="#question-15">15. 对计算机检材进行分析，找出该镜像中创建的某虚拟磁盘文件，其被删除分区…</a>
+              <a class="toc-item" href="#question-16">16. 对计算机检材进行分析，已知用户在2025-07-01 15:20至1…</a>
+              <a class="toc-item" href="#question-17">17. 对计算机检材进行分析，用户记录了一项未完成的任务清单，请写出清单内容…</a>
+              <a class="toc-item" href="#question-18">18. 接上题，该计算机的“任务管理器”应用程序，是通过AI自动编写程序代码…</a>
+              <a class="toc-item" href="#question-19">19. 对计算机检材进行分析，用户关注的某国产仙侠剧看到了第几集？【填写数字…</a>
+              <a class="toc-item" href="#question-20">20. 对计算机检材进行分析，用户想把哪个商城的网站源码设置加密，请写出该站…</a>
+              <a class="toc-item" href="#question-21">21. 对计算机、手机检材进行综合分析，7月1日晚上，其涉案团伙交流的文件解…</a>
+              <a class="toc-item" href="#question-22">22. 对计算机、手机检材进行综合分析，7月1日晚上，其涉案团伙交流的Wor…</a>
+              <a class="toc-item" href="#question-23">23. 对计算机、手机检材进行综合分析，其存储的“文件服务器”的登录密码为？…</a>
+              <a class="toc-item" href="#question-24">24. 对计算机、手机检材进行综合分析，其在百度网盘下载的文件中添加了新内容…</a>
+              <a class="toc-item" href="#question-25">25. 通过对检材-数据分析中“yzgj.sql”分析，订单取消表中 wy_…</a>
+              <a class="toc-item" href="#question-26">26. 通过对检材-手机中“Phone.E01”分析，找出微信ID为“wxi…</a>
+              <a class="toc-item" href="#question-27">27. 根据钱包日志表 wy_wallet_log，统计不同提现状态（申请中…</a>
+              <a class="toc-item" href="#question-28">28. 对手机检材进行分析，找出张波手机号码。【填写数字，参考格式：1360…</a>
+              <a class="toc-item" href="#question-29">29. 找出usdt转账成功最多的用户的username、姓名和共多少usd…</a>
+              <a class="toc-item" href="#question-30">30. 对手机检材进行分析，找出通话时长最长的时间是几秒（服务号除外）？【填…</a>
+              <a class="toc-item" href="#question-31">31. 请分析验证码情况表 wy_sms 中的验证码使用情况，统计未使用验证…</a>
+              <a class="toc-item" href="#question-32">32. 对手机检材进行分析，找出“小红书”应用的包名。【参考格式：com.t…</a>
+              <a class="toc-item" href="#question-33">33. 请从用户表 wy_user 中提取所有用户的余额信息(usdt、虎币…</a>
+              <a class="toc-item" href="#question-34">34. 对手机检材进行分析，找出“文件服务器”的IP地址。【参考格式：192…</a>
+              <a class="toc-item" href="#question-35">35. 分析用户表 wy_user 中不同市场代理级别（agent_leve…</a>
+              <a class="toc-item" href="#question-36">36. 对手机检材进行分析，找出“文件服务器”所使用的认证信息，列出认证信息…</a>
+              <a class="toc-item" href="#question-37">37. 统计用户表 wy_user 中各个注册城市的用户数量，并找出注册用户…</a>
+              <a class="toc-item" href="#question-38">38. 对手机检材进行分析，机主通过某应用发送银行卡号给昵称“花好月圆”的好…</a>
+              <a class="toc-item" href="#question-39">39. 找出登录次数最多的用户，列出该用户的用户名、姓名和最近一次登录的日期…</a>
+              <a class="toc-item" href="#question-40">40. 接上题，存储聊天记录数据的文件打开密码是什么？【参考格式：按实际填写…</a>
+              <a class="toc-item" href="#question-41">41. 通过对检材-数据恢复中“Person.E01”分析，镜像中损坏分区(…</a>
+              <a class="toc-item" href="#question-42">42. 接上题，机主在该APP中提到的银行卡后六位为？【填写数字，参考格式：…</a>
+              <a class="toc-item" href="#question-43">43. 镜像中有多少个丢失分区？【填写数字，格式如：10】</a>
+              <a class="toc-item" href="#question-44">44. 对手机检材进行分析，找出手机安装的金融类APP名称。【参考格式：微信…</a>
+              <a class="toc-item" href="#question-45">45. 镜像中加密容器的密码是什么？【按实际值填写】</a>
+              <a class="toc-item" href="#question-46">46. 接上题，该APP中数据文件“chatmsgdb20881521722…</a>
+              <a class="toc-item" href="#question-47">47. “media”文件夹中有多少个 MP3 文件被删除？【填写数字，格式…</a>
+              <a class="toc-item" href="#question-48">48. 接上题，解密该数据库的密钥是什么？【参考格式：按实际填写】</a>
+              <a class="toc-item" href="#question-49">49. 镜像中有多少种包含“鸟类”图片的文件类型（需要去重）？【填写数组，格…</a>
+              <a class="toc-item" href="#question-50">50. “小刘”的电话号码是多少？【填写数字，格式如：15353535353…</a>
+              <a class="toc-item" href="#question-51">51. 通过对检材-apk中“检材一.apk”分析，其程序主入口是？【参考格…</a>
+              <a class="toc-item" href="#question-52">52. 请给出检材一.apk的证书MD5值？【大写字母与数字组合，格式如：A…</a>
+              <a class="toc-item" href="#question-53">53. 请分析检材一.apk是否有系统悬浮窗权限？【答案：有或无】</a>
+              <a class="toc-item" href="#question-54">54. [多选题] 请对比检材一.apk和检材二.apk（已知检材一是伪造的…</a>
+              <a class="toc-item" href="#question-55">55. 分析检材一，已知在org.consenlabs.tokencore.…</a>
+              <a class="toc-item" href="#question-56">56. 请分析发送该敏感数据时使用的网络请求类型为？【字母需大写】</a>
+              <a class="toc-item" href="#question-57">57. 请给出加密敏感数据使用的算法为？【字母需大写】</a>
+              <a class="toc-item" href="#question-58">58. 上传敏感数据目标的服务器域名为？【格式如：www.baidu.com…</a>
+              <a class="toc-item" href="#question-59">59. 通过对检材-服务器中“server”分析，服务器上程序unzip更新…</a>
+              <a class="toc-item" href="#question-60">60. 服务器的sda1分区uuid后8位是？【小写字母与数字组合，格式如：…</a>
+              <a class="toc-item" href="#question-61">61. 服务器中mysql的慢日志文件所在路径是？【从根目录开始填写，如：/…</a>
+              <a class="toc-item" href="#question-62">62. mysql数据库root密码是多少？【按实际值填写】</a>
+              <a class="toc-item" href="#question-63">63. 服务器上保存的远程root密码是多少？【按实际值填写】</a>
+              <a class="toc-item" href="#question-64">64. 嫌疑平台的访问日志中第300188行请求的地址路径是？【按实际值填写…</a>
+              <a class="toc-item" href="#question-65">65. 继上一题，访问日志中出现“admin”的次数是多少次？【填写数字，格…</a>
+              <a class="toc-item" href="#question-66">66. 嫌疑平台的前台会员密码的加密方式是？【填写小写字母与数字组合，如：a…</a>
+              <a class="toc-item" href="#question-67">67. 嫌疑平台的Apibase.php文件是由什么工具创建的？【填写工具名…</a>
+              <a class="toc-item" href="#question-68">68. 嫌疑平台中在2024-07-19 01:57:49网页登录的是哪个会…</a>
+              <a class="toc-item" href="#question-69">69. 继上一题，该会员的商品密价是多少？【填写数字，保留二位小数，四舍五入…</a>
+              <a class="toc-item" href="#question-70">70. 继上一题，该会员的已完成订单数量是多少？【填写数字，格式如：100】</a>
+              <a class="toc-item" href="#question-71">71. 嫌疑平台中登录日志中在2024年7月份境外城市登录过几次？【填写数字…</a>
+              <a class="toc-item" href="#question-72">72. 嫌疑平台的管理员头像md5值后8位是？【填写大写字母与数字组合，格式…</a>
+              <a class="toc-item" href="#question-73">73. 嫌疑平台设置的对接次数是几次？【填写数字，格式如：10】</a>
+              <a class="toc-item" href="#question-74">74. 嫌疑平台的分站到期时间是？【填写日期和时间，格式如：2025-03-…</a>
+              <a class="toc-item" href="#question-75">75. 嫌疑平台会员总余额的小数点后六位是？【填写数字】</a>
+              <a class="toc-item" href="#question-76">76. 嫌疑平台里退单中的订单总实付金额是多少？【按实际值填写】</a>
+              <a class="toc-item" href="#question-77">77. 嫌疑平台中订单中已付款且对接状态成功的总共有几单？【填写数字，格式如…</a>
+              <a class="toc-item" href="#question-78">78. 供货商的后台管理路径是？【参考：/admin】</a>
+              <a class="toc-item" href="#question-79">79. 嫌疑平台提供的谷歌令牌下载网盘密码是多少？【按实际值填写】</a>
+              <a class="toc-item" href="#question-80">80. 供货商账户余额最多的是谁？【填写汉字，如：张三】</a>
+              <a class="toc-item" href="#question-81">81. 继上一题，在2024-10-31这天他的订单分红总共是多少元？【保留…</a>
+              <a class="toc-item" href="#question-82">82. 继上一题，分红订单中哪个商品下单最多？【填写汉字】</a>
+          </nav>
+        </div>
+      </aside>
+    </main>
+    <footer class="footer">
+      <div class="footer-meta">
+        <p>共撰写了 <strong>9</strong> 篇文章</p>
+        <p>博客已运行 <span data-site-runtime data-start="2026-05-31T09:28:56+08:00">0 天 0 小时 0 分钟 0 秒</span></p>
+      </div>
+      <p>Powered by GitHub Pages · <a href="https://hxyz486.github.io/">https://hxyz486.github.io/</a> · © 2026 郝杏芸</p>
+    </footer>
+    <script src="../site.js"></script>
+  </body>
+</html>
