@@ -33,10 +33,10 @@
           <span>Writeup</span>
         </div>
         <div class="article-body">
-<p>前面的比较简单，快速过一下，后面难度就上来了<br/>
-本人菜菜，因为网上没有这个比赛的wp，所以就斗胆发出来了<br/>
-所有题目都没有官方答案或者其它师傅的答案，所以只能寄希望于我的正确率了<br/>
-欢迎各位师傅莅临指导！</p>
+<p>前面的比较简单，快速过一下，后面难度就上来了</p>
+<p>本人菜菜，因为网上没有这个比赛的wp，所以就斗胆发出来了</p>
+<p>所有题目都没有官方答案或者其它师傅的答案，所以只能寄希望于我的正确率了</p>
+<p>欢迎各位师傅莅临指导！</p>
 <h2 id="question-1">1. 通过对检材-计算机中“Win10-PC.E01”分析，该操作系统的计算机名为？【参考格式：ABCD#1234】</h2>
 <figure><img alt="题目分析截图" loading="lazy" src="../assets/posts/2025-sichuan-forensics/image-01.png"/></figure>
 <p>DESKTOP-S7P0CEN</p>
@@ -92,11 +92,11 @@
 <figure><img alt="题目分析截图" loading="lazy" src="../assets/posts/2025-sichuan-forensics/image-16.png"/></figure>
 <p>15259291445</p>
 <h2 id="question-17">17. 对计算机检材进行分析，用户记录了一项未完成的任务清单，请写出清单内容。【请按实际结果填写】</h2>
-<p>相当有意思的题目，慢慢来看<br/>
-首先，我们在之前打开虚拟磁盘后发现了这个文件</p>
+<p>相当有意思的题目，慢慢来看</p>
+<p>首先，我们在之前打开虚拟磁盘后发现了这个文件</p>
 <figure><img alt="题目分析截图" loading="lazy" src="../assets/posts/2025-sichuan-forensics/image-17.png"/></figure>
-<p>正常打开发现是空的，没有数据，这是因为任务数据<strong>只存在浏览器 localStorage 中</strong><br/>
-换言之，我们需要使用其它浏览器才能看到数据，所以我们在火眼中进行搜寻</p>
+<p>正常打开发现是空的，没有数据，这是因为任务数据<strong>只存在浏览器 localStorage 中</strong></p>
+<p>换言之，我们需要使用其它浏览器才能看到数据，所以我们在火眼中进行搜寻</p>
 <figure><img alt="题目分析截图" loading="lazy" src="../assets/posts/2025-sichuan-forensics/image-18.png"/></figure>
 <p>找到了，使用豆包打开html文件</p>
 <figure><img alt="题目分析截图" loading="lazy" src="../assets/posts/2025-sichuan-forensics/image-19.png"/></figure>
@@ -135,22 +135,22 @@
 <figure><img alt="题目分析截图" loading="lazy" src="../assets/posts/2025-sichuan-forensics/image-29.png"/></figure>
 <p>满天星</p>
 <h2 id="question-27">27. 根据钱包日志表 wy_wallet_log，统计不同提现状态（申请中、通过、拒绝）下的提现申请总数分别是多少？【填写数字，格式如：10-5999-23】</h2>
-<p>这题目算的上信息差了<br/>
-最开始看到staute有三个值，不知道哪个对应哪个<br/>
-最后问了ai才知道要看sql文档的解释</p>
+<p>这题目算的上信息差了</p>
+<p>最开始看到staute有三个值，不知道哪个对应哪个</p>
+<p>最后问了ai才知道要看sql文档的解释</p>
 <figure><img alt="题目分析截图" loading="lazy" src="../assets/posts/2025-sichuan-forensics/image-30.png"/></figure>
-<p>去excel看一下<br/>
-做这道题的时候发现火眼的sql转csv有问题，转换不准确，所以把这个功能整合进我的工具箱里面了，有兴趣可以看一下<br/>
-<a href="https://hxyz486.github.io/posts/%E5%8F%96%E8%AF%81%E5%B7%A5%E5%85%B7.html">取证工具（实验品） - 郝杏芸的博客</a></p>
+<p>去excel看一下</p>
+<p>做这道题的时候发现火眼的sql转csv有问题，转换不准确，所以把这个功能整合进我的工具箱里面了，有兴趣可以看一下</p>
+<p><a href="https://hxyz486.github.io/posts/%E5%8F%96%E8%AF%81%E5%B7%A5%E5%85%B7.html">取证工具（实验品） - 郝杏芸的博客</a></p>
 <figure><img alt="题目分析截图" loading="lazy" src="../assets/posts/2025-sichuan-forensics/image-31.png"/></figure>
 <p>4-340290-74</p>
 <h2 id="question-28">28. 对手机检材进行分析，找出张波手机号码。【填写数字，参考格式：13600000000】</h2>
 <figure><img alt="题目分析截图" loading="lazy" src="../assets/posts/2025-sichuan-forensics/image-32.png"/></figure>
 <p>18050080707</p>
 <h2 id="question-29">29. 找出usdt转账成功最多的用户的username、姓名和共多少usdt进行转账（保留两位小数）【以"username-姓名-usdt"提交，如：admin-张三-150.23】</h2>
-<p>这题有点小坑，当时做的时候没发现，跟ai对比的时候看到了<br/>
-在数据库注释中（27题的图也有）我们发现type=1才是转账，所以要先筛选再排名<br/>
-但还是有很多问题，答案没有把握，存疑</p>
+<p>这题有点小坑，当时做的时候没发现，跟ai对比的时候看到了</p>
+<p>在数据库注释中（27题的图也有）我们发现type=1才是转账，所以要先筛选再排名</p>
+<p>但还是有很多问题，答案没有把握，存疑</p>
 <figure><img alt="题目分析截图" loading="lazy" src="../assets/posts/2025-sichuan-forensics/image-33.png"/></figure>
 <p>34028007-辛汉会-0.00</p>
 <h2 id="question-30">30. 对手机检材进行分析，找出通话时长最长的时间是几秒（服务号除外）？【填写数字，参考格式：200】</h2>
@@ -170,31 +170,31 @@
 <figure><img alt="题目分析截图" loading="lazy" src="../assets/posts/2025-sichuan-forensics/image-38.png"/></figure>
 <p>163.179.125.25</p>
 <h2 id="question-35">35. 分析用户表 wy_user 中不同市场代理级别（agent_level）对应的团队业绩（team_yj）平均值，找出平均值最高的市场代理级别，以及平均值（平均值保留小数点后两位）【以“市场代理级别-平均值”提交，如：2-20.23】</h2>
-<p>同33<br/>
-5-13752333.33</p>
+<p>同33</p>
+<p>5-13752333.33</p>
 <h2 id="question-36">36. 对手机检材进行分析，找出“文件服务器”所使用的认证信息，列出认证信息设置的用户名。【参考格式：user】</h2>
 <figure><img alt="题目分析截图" loading="lazy" src="../assets/posts/2025-sichuan-forensics/image-39.png"/></figure>
 <p>root</p>
 <h2 id="question-37">37. 统计用户表 wy_user 中各个注册城市的用户数量，并找出注册用户最多的前三个城市【以城市1-城市2-城市3提交，如：太原-大同-朔州】</h2>
-<p>送分<br/>
-北京-上海-新乡</p>
+<p>送分</p>
+<p>北京-上海-新乡</p>
 <h2 id="question-38">38. 对手机检材进行分析，机主通过某应用发送银行卡号给昵称“花好月圆”的好友，请问该应用的数据包名是什么？【参考格式：com.tencent.mm】</h2>
 <p>把几个app都看了一遍，这几乎是唯一怀疑的</p>
 <figure><img alt="题目分析截图" loading="lazy" src="../assets/posts/2025-sichuan-forensics/image-40.png"/></figure>
-<p>com.suirui.zhumu<br/>
-ps：网上搜的关于这个app的介绍</p>
+<p>com.suirui.zhumu</p>
+<p>ps：网上搜的关于这个app的介绍</p>
 <figure><img alt="题目分析截图" loading="lazy" src="../assets/posts/2025-sichuan-forensics/image-41.png"/></figure>
 <h2 id="question-39">39. 找出登录次数最多的用户，列出该用户的用户名、姓名和最近一次登录的日期（只显示有登录记录的用户）【以"用户名-姓名-最后登录日期"提交，如：admin-张三-2025-04-28】</h2>
-<p>神了，不知道题目逻辑顺序怎么这么乱<br/>
-<code>drrz</code> = <strong>登入日志</strong>的拼音缩写（这谁能想到）</p>
+<p>神了，不知道题目逻辑顺序怎么这么乱</p>
+<p><code>drrz</code> = <strong>登入日志</strong>的拼音缩写（这谁能想到）</p>
 <figure><img alt="题目分析截图" loading="lazy" src="../assets/posts/2025-sichuan-forensics/image-42.png"/></figure>
 <p>51149343-郭艳玲-2021-04-15</p>
 <h2 id="question-40">40. 接上题，存储聊天记录数据的文件打开密码是什么？【参考格式：按实际填写】</h2>
-<p>不会逆向，心态有点炸了<br/>
-问了ai，6min给我解出来了</p>
+<p>不会逆向，心态有点炸了</p>
+<p>问了ai，6min给我解出来了</p>
 <figure><img alt="题目分析截图" loading="lazy" src="../assets/posts/2025-sichuan-forensics/image-43.png"/></figure>
-<p>感谢Astra大人让我再一次认识到人与ai的鸿沟<br/>
-RM_SQL_PWD</p>
+<p>感谢Astra大人让我再一次认识到人与ai的鸿沟</p>
+<p>RM_SQL_PWD</p>
 <h2 id="question-41">41. 通过对检材-数据恢复中“Person.E01”分析，镜像中损坏分区(分区大小3G)的 $MFT 文件 MD5 值是什么？【大写字母与数字组合，格式如：ABD23DE3】</h2>
 <figure><img alt="题目分析截图" loading="lazy" src="../assets/posts/2025-sichuan-forensics/image-44.png"/></figure>
 <p>5FDC9737A92CCA9F4AF547F107A934AC</p>
@@ -217,8 +217,8 @@ RM_SQL_PWD</p>
 <figure><img alt="题目分析截图" loading="lazy" src="../assets/posts/2025-sichuan-forensics/image-50.png"/></figure>
 <p>aes/128/ecb</p>
 <h2 id="question-47">47. “media”文件夹中有多少个 MP3 文件被删除？【填写数字，格式如：10】</h2>
-<p>45题解开容器后发现media文件夹<br/>
-看不懂，问了问ai，掌握新技能了说是</p>
+<p>45题解开容器后发现media文件夹</p>
+<p>看不懂，问了问ai，掌握新技能了说是</p>
 <figure><img alt="题目分析截图" loading="lazy" src="../assets/posts/2025-sichuan-forensics/image-51.png"/></figure>
 <p>总计是3个</p>
 <figure><img alt="题目分析截图" loading="lazy" src="../assets/posts/2025-sichuan-forensics/image-52.png"/></figure>
@@ -226,8 +226,8 @@ RM_SQL_PWD</p>
 <figure><img alt="题目分析截图" loading="lazy" src="../assets/posts/2025-sichuan-forensics/image-54.png"/></figure>
 <p>3</p>
 <h2 id="question-48">48. 接上题，解密该数据库的密钥是什么？【参考格式：按实际填写】</h2>
-<p>见46<br/>
-2Zyo3pdOhZ//FSUh</p>
+<p>见46</p>
+<p>2Zyo3pdOhZ//FSUh</p>
 <h2 id="question-49">49. 镜像中有多少种包含“鸟类”图片的文件类型（需要去重）？【填写数组，格式如：10】</h2>
 <p>尽力了，x-way都用了，真的没招了，手搓好牢</p>
 <figure><img alt="题目分析截图" loading="lazy" src="../assets/posts/2025-sichuan-forensics/image-55.png"/></figure>
@@ -255,16 +255,16 @@ RM_SQL_PWD</p>
 <figure><img alt="题目分析截图" loading="lazy" src="../assets/posts/2025-sichuan-forensics/image-62.png"/></figure>
 <p>有</p>
 <h2 id="question-54">54. [多选题] 请对比检材一.apk和检材二.apk（已知检材一是伪造的APP），以下哪些条件可以作为判断标准？【选项：A.包名不同；B.证书签名不同；C.MD5值不同；D.版本号不同】</h2>
-<p>对比一下发现都不一样，反正都是雷电做的，就不放图片了<br/>
-ABCD</p>
+<p>对比一下发现都不一样，反正都是雷电做的，就不放图片了</p>
+<p>ABCD</p>
 <h2 id="question-55">55. 分析检材一，已知在org.consenlabs.tokencore.wallet.IdentityWallet类下将用户的敏感数据上传到服务器，请结合拦截到的检材.log文件，给出上传的敏感信息是？【答案大小写与拦截信息中需一致】</h2>
-<p>看不懂，不过可以照着痕迹走<br/>
-不过猜一下的话只有这个了</p>
+<p>看不懂，不过可以照着痕迹走</p>
+<p>不过猜一下的话只有这个了</p>
 <figure><img alt="题目分析截图" loading="lazy" src="../assets/posts/2025-sichuan-forensics/image-63.png"/></figure>
 <p>tower ivory bridge zero play digital wisdom silver scrap prepare arrange next</p>
 <h2 id="question-56">56. 请分析发送该敏感数据时使用的网络请求类型为？【字母需大写】</h2>
-<p>按理来说第一反应应该是post<br/>
-但是所有请求体大小为0，那就是get了，会这个的大手子还是自己做吧，我的把握不好</p>
+<p>按理来说第一反应应该是post</p>
+<p>但是所有请求体大小为0，那就是get了，会这个的大手子还是自己做吧，我的把握不好</p>
 <figure><img alt="题目分析截图" loading="lazy" src="../assets/posts/2025-sichuan-forensics/image-64.png"/></figure>
 <p>GET</p>
 <h2 id="question-57">57. 请给出加密敏感数据使用的算法为？【字母需大写】</h2>
@@ -274,8 +274,8 @@ ABCD</p>
 <h2 id="question-58">58. 上传敏感数据目标的服务器域名为？【格式如：www.baidu.com】</h2>
 <p>手操app注册的时候发现</p>
 <figure><img alt="题目分析截图" loading="lazy" src="../assets/posts/2025-sichuan-forensics/image-66.png"/></figure>
-<p>推测这个是上传的域名<br/>
-www.uniswaper.me</p>
+<p>推测这个是上传的域名</p>
+<p>www.uniswaper.me</p>
 <hr/>
 <p>服务器就交给有缘人写吧</p>
 <h2 id="question-59">59. 通过对检材-服务器中“server”分析，服务器上程序unzip更新的时间是？【填写时间，格式如：01:20:30】</h2>
