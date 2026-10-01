@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="2026盘古石决赛计算机检材分析与解题记录。">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="2026盘古石决赛（计算机）">
+    <meta property="og:description" content="2026盘古石决赛计算机检材分析与解题记录。">
+    <meta property="og:url" content="https://hxyz486.github.io/posts/2026-pangu-final-pc.html">
+    <link rel="canonical" href="https://hxyz486.github.io/posts/2026-pangu-final-pc.html">
+    <link rel="icon" type="image/png" href="../assets/favicon.png">
+    <title>2026盘古石决赛（计算机） - 郝杏芸的博客</title>
+    <link rel="stylesheet" href="../styles.css">
+  </head>
+  <body class="article-page">
+    <header class="article-header">
+      <nav class="nav article-nav">
+        <a class="brand" href="../index.html"><img src="../assets/brand-icon.png" alt="" aria-hidden="true">郝杏芸的博客</a>
+        <a class="back-home" href="../index.html#posts">返回首页</a>
+      </nav>
+      <div class="article-hero">
+        <p class="eyebrow">Forensics / Writeup</p>
+        <h1>2026盘古石决赛（计算机）</h1>
+        <p class="hero-copy">计算机检材分析与解题记录。</p>
+      </div>
+    </header>
+    <main class="article-shell">
+      <article class="article-card">
+        <div class="article-meta">
+          <time datetime="2026-10-01">2026-10-01</time>
+          <span>取证复现</span>
+          <span>Writeup</span>
+        </div>
+        <div class="article-body">
+<p>写FIC决赛的服务器破大防了，转做盘古石调整一下</p>
+<p>md这个也不简单</p>
+<h2 id="section-computer">计算机</h2>
+<h3 id="question-1">1.分析陈志鹏的pc检材，找出换脸程序的对外服务端口号，[答案格式：四位数字]</h3>
+<figure><img src="../assets/posts/2026-pangu-final-pc/image-01.png" alt="题目分析截图" loading="lazy"></figure>
+<p>C:\Users\Administrator\Documents\facefusion-3.6.0\read.txt中记载了打开方式</p>
+<p>7860</p>
+<h3 id="question-2">2.分析陈志鹏的pc检材，找出换脸程序的版本号，[答案格式：X.X]</h3>
+<figure><img src="../assets/posts/2026-pangu-final-pc/image-02.png" alt="题目分析截图" loading="lazy"></figure>
+<p>打开后可以看到3.6.0</p>
+<p>3.6</p>
+<h3 id="question-3">3.分析陈志鹏的pc检材，换脸程序默认配置了多少个不同的换脸模型，[答案格式：两位数字]</h3>
+<figure><img src="../assets/posts/2026-pangu-final-pc/image-03.png" alt="题目分析截图" loading="lazy"></figure>
+<p>总计十四个</p>
+<h3 id="question-4">4.分析陈志鹏的pc检材，换脸程序处理完成后默认保存输出文件的文件夹路径是？[答案格式：绝对路径]</h3>
+<figure><img src="../assets/posts/2026-pangu-final-pc/image-04.png" alt="题目分析截图" loading="lazy"></figure>
+<p>C:\Users\Administrator\Documents</p>
+<h3 id="question-5">5.分析陈志鹏的pc检材，用户在2026年4月30日最后一次换脸操作生成的文件名是什么？[答案格式：文件名.扩展名]</h3>
+<p>在C:\Users\Administrator\Documents\facefusion-3.6.0\.jobs\completed的路径下</p>
+<figure><img src="../assets/posts/2026-pangu-final-pc/image-05.png" alt="题目分析截图" loading="lazy"></figure>
+<p>看软件日志</p>
+<p>c6f02d62.mp4</p>
+<h3 id="question-6">6.分析陈志鹏的pc检材，给出本地声音生成工具的对外服务端口号？[答案格式：四位数字]</h3>
+<p>路径C:\Users\Administrator\Documents\ChatTTS-webui-main</p>
+<figure><img src="../assets/posts/2026-pangu-final-pc/image-06.png" alt="题目分析截图" loading="lazy"></figure>
+<p>8080</p>
+<h3 id="question-7">7.分析陈志鹏的pc检材，给出音频生成工具创建语音时使用的默认随机种子数值？[答案格式：数字]</h3>
+<p>感觉应该是这个</p>
+<figure><img src="../assets/posts/2026-pangu-final-pc/image-07.png" alt="题目分析截图" loading="lazy"></figure>
+<p>2</p>
+<h3 id="question-8">8.分析陈志鹏的pc检材，给出音频生成工具生成的音频文件默认保存的文件名？[答案格式：纯英文文件名]</h3>
+<p>666，我辛苦半天看文件，原来可以直接打开。。。</p>
+<figure><img src="../assets/posts/2026-pangu-final-pc/image-08.png" alt="题目分析截图" loading="lazy"></figure>
+<p>audio.wav</p>
+<h3 id="question-9">9.分析陈志鹏的pc检材，给出存放在桌面上的密码备忘文件的内容？[答案格式：纯数字字符串]</h3>
+<p>nmlgb的，桌面上哪来的检材啊</p>
+<h3 id="question-10">10.分析陈志鹏的pc检材，用户使用文件粉碎工具彻底删除了一个文件，给出该粉碎工具的版本号？[答案格式：版本号如X.X.X.X]</h3>
+<p>第一个就找对了</p>
+<figure><img src="../assets/posts/2026-pangu-final-pc/image-09.png" alt="题目分析截图" loading="lazy"></figure>
+<p>6.0.9.5</p>
+<h3 id="question-11">11.分析陈志鹏的pc检材，给出使用直播软件时的音频输出码率设置值？[答案格式：123]</h3>
+<figure><img src="../assets/posts/2026-pangu-final-pc/image-10.png" alt="题目分析截图" loading="lazy"></figure>
+<p>128</p>
+<h3 id="question-12">12.分析韦明辉计算机检材，请给出磁盘的总扇区数？[答案格式：100,00]</h3>
+<figure><img src="../assets/posts/2026-pangu-final-pc/image-11.png" alt="题目分析截图" loading="lazy"></figure>
+<p>536,870,912</p>
+<h3 id="question-13">13.分析韦明辉计算机检材，请给出系统安装时间（UTC+8）？[答案格式：YYYY-MM-DD-HH:mm:ss]</h3>
+<figure><img src="../assets/posts/2026-pangu-final-pc/image-12.png" alt="题目分析截图" loading="lazy"></figure>
+<p>2025-08-08 12:20:35 +0800 CST</p>
+<h3 id="question-14">14.分析韦明辉计算机检材，电脑内曾接入过一个1.8T的移动磁盘，请给出该磁盘的序列号的后六位？[答案格式：字母大写]</h3>
+<figure><img src="../assets/posts/2026-pangu-final-pc/image-13.png" alt="题目分析截图" loading="lazy"></figure>
+<p>B5C5H5</p>
+<h3 id="question-15">15.分析韦明辉计算机检材，请给出嫌疑人登录github所使用的账号？[答案格式：xxx@xx.xx]</h3>
+<p>结合历史记录时间，确定答案</p>
+<figure><img src="../assets/posts/2026-pangu-final-pc/image-14.png" alt="题目分析截图" loading="lazy"></figure>
+<p>1723696192@qq.com</p>
+<h3 id="question-16">16.分析韦明辉计算机检材，请给出嫌疑人计算机内默认浏览器的版本号？[答案格式：xxx.x.xxxx.xx]</h3>
+<figure><img src="../assets/posts/2026-pangu-final-pc/image-15.png" alt="题目分析截图" loading="lazy"></figure>
+<p>147.0.3912.72</p>
+<h3 id="question-17">17.分析韦明辉计算机检材，请给出嫌疑人计算机内安装过的AI编程助手默认使用的模型名？[答案格式：gtp-v1.0]</h3>
+<figure><img src="../assets/posts/2026-pangu-final-pc/image-16.png" alt="题目分析截图" loading="lazy"></figure>
+<p>deepseek-v3.1</p>
+<h3 id="question-18">18.分析韦明辉计算机检材，请给出嫌疑人计算机内安装过的AI编程助手对接OpenAI所使用的token ？[答案格式：sk-xxxxxxx]</h3>
+<figure><img src="../assets/posts/2026-pangu-final-pc/image-17.png" alt="题目分析截图" loading="lazy"></figure>
+<p>sk-wddK6jkRKXgImXJ4UleePKKUi06whsVDStxdABBvz4Rvc2CG</p>
+<h3 id="question-19">19.分析韦明辉计算机检材，请给出嫌疑人最后使用AI编程助手从互联网上搜索视频直播网站源码的时间（UTC+8）？[答案格式：YYYY-MM-DD-HH:mm:ss]</h3>
+<figure><img src="../assets/posts/2026-pangu-final-pc/image-18.png" alt="题目分析截图" loading="lazy"></figure>
+<p>2026-04-21 17:46:37</p>
+<h3 id="question-20">20.分析韦明辉计算机检材，请给出嫌疑人电脑内翻墙软件内配置文件名？[答案格式：xxx.yaml]</h3>
+<p>在软件目录里找到可疑项</p>
+<figure><img src="../assets/posts/2026-pangu-final-pc/image-19.png" alt="题目分析截图" loading="lazy"></figure>
+<p>应该就是了</p>
+<figure><img src="../assets/posts/2026-pangu-final-pc/image-20.png" alt="题目分析截图" loading="lazy"></figure>
+<p>longtengsihai.yaml</p>
+<h3 id="question-21">21.分析韦明辉计算机检材，请给出嫌疑人电脑内翻墙软件所用端口号？[答案格式：8000]</h3>
+<figure><img src="../assets/posts/2026-pangu-final-pc/image-21.png" alt="题目分析截图" loading="lazy"></figure>
+<p>7890</p>
+<h3 id="question-22">22.分析韦明辉计算机检材，请给出嫌疑人计算机D盘的Bitlocker恢复密钥的后6位？[答案格式：6位数字]</h3>
+<figure><img src="../assets/posts/2026-pangu-final-pc/image-22.png" alt="题目分析截图" loading="lazy"></figure>
+<p>080894</p>
+<h3 id="question-23">23.分析韦明辉计算机检材，请给出博彩网站盛世皇朝后台端口号？[答案格式：8000]</h3>
+<figure><img src="../assets/posts/2026-pangu-final-pc/image-23.png" alt="题目分析截图" loading="lazy"></figure>
+<p>8091</p>
+<h3 id="question-24">24.分析韦明辉计算机检材，请给出博彩网站盛世皇朝后台登录密码？[答案格式：password]</h3>
+<p>这题也是真离谱，直到后面解出日记才能看到提示。。。</p>
+<p>最后36题才得到的开机密码</p>
+<figure><img src="../assets/posts/2026-pangu-final-pc/image-24.png" alt="题目分析截图" loading="lazy"></figure>
+<p>shhc123!@#</p>
+<h3 id="question-25">25.分析韦明辉计算机检材，请给出嫌疑人计算机内加密笔记的打开密码？[答案格式：P@ssw0rd]</h3>
+<p>找到配置文件</p>
+<figure><img src="../assets/posts/2026-pangu-final-pc/image-25.png" alt="题目分析截图" loading="lazy"></figure>
+<p>解码发现</p>
+<figure><img src="../assets/posts/2026-pangu-final-pc/image-26.png" alt="题目分析截图" loading="lazy"></figure>
+<p>&quot;password_hash&quot;: &quot;7e8b770712a078b4d540282c1a8a4852ee51c5abb3977f86d0cf9ee3fe5d618c&quot;</p>
+<p>反编译exe得到</p>
+<figure><img src="../assets/posts/2026-pangu-final-pc/image-27.png" alt="题目分析截图" loading="lazy"></figure>
+<figure><img src="../assets/posts/2026-pangu-final-pc/image-28.png" alt="题目分析截图" loading="lazy"></figure>
+<p>LongTeng@2026</p>
+<h3 id="question-26">26.分析韦明辉计算机检材，请给出嫌疑人计算机内加密笔记的打开密码的加密类型？[答案格式：MD5]</h3>
+<p>见上题</p>
+<p>SHA256</p>
+<h3 id="question-27">27.分析韦明辉计算机检材，请给出嫌疑人计算机内加密笔记的密码哈希计算的盐值？[答案格式：Salt_pass]</h3>
+<p>同上</p>
+<p>JinQin_Secret</p>
+<h3 id="question-28">28.分析韦明辉计算机检材，请给出服务器45.33.22.11的root密码？[答案格式：P@ssw0rd]</h3>
+<figure><img src="../assets/posts/2026-pangu-final-pc/image-29.png" alt="题目分析截图" loading="lazy"></figure>
+<p>JinQin@Server2024!</p>
+<h3 id="question-29">29.分析韦明辉计算机检材，请给出现嫌疑人计算机内VeraCrypt的密钥文件MD5的前6位？[答案格式：字母小写]</h3>
+<p>还是做题做少了，没有找到，直到看了其它师傅的wp才知道藏在信息流里面</p>
+<figure><img src="../assets/posts/2026-pangu-final-pc/image-30.png" alt="题目分析截图" loading="lazy"></figure>
+<p>ea87ee</p>
+<h3 id="question-30">30.分析韦明辉计算机检材，嫌疑人使用自定义工具对 Veracrypt 加密容器文件进行了混淆处理，请给出该混淆处理使用的位运算名称 [答案格式：XOR]</h3>
+<figure><img src="../assets/posts/2026-pangu-final-pc/image-31.png" alt="题目分析截图" loading="lazy"></figure>
+<p>NOT</p>
+<h3 id="question-31">31.分析韦明辉计算机检材，请给出解密混淆加密后的VeraCrypt容器文件的MD5的前6位？[答案格式：字母小写]</h3>
+<figure><img src="../assets/posts/2026-pangu-final-pc/image-32.png" alt="题目分析截图" loading="lazy"></figure>
+<p>d8a2c3</p>
+<h3 id="question-32">32.分析韦明辉计算机检材，请给出郑秀荣的电话号码？[答案格式：11位数字]</h3>
+<p>等到最后内存把密码爆出来才知道的生日</p>
+<figure><img src="../assets/posts/2026-pangu-final-pc/image-33.png" alt="题目分析截图" loading="lazy"></figure>
+<p>18086579322</p>
+<h3 id="question-33">33.分析韦明辉计算机检材，请给出郑秀荣共提现多少钱？[答案格式：10000.00]</h3>
+<figure><img src="../assets/posts/2026-pangu-final-pc/image-34.png" alt="题目分析截图" loading="lazy"></figure>
+<p>4174.82</p>
+<h3 id="question-34">34.分析韦明辉计算机内存镜像，请给出内存镜像创建时间（UTC+8）？[答案格式：YYYY-MM-DD-HH:mm:ss]</h3>
+<p>这个题目感觉有争议</p>
+<p>lovelymem里面记录的是2026-04-22T22:56:27.285+08:00</p>
+<figure><img src="../assets/posts/2026-pangu-final-pc/image-35.png" alt="题目分析截图" loading="lazy"></figure>
+<p>但是，时间线最新的已经超过了这个时间</p>
+<figure><img src="../assets/posts/2026-pangu-final-pc/image-36.png" alt="题目分析截图" loading="lazy"></figure>
+<p>直接看镜像文件属性</p>
+<figure><img src="../assets/posts/2026-pangu-final-pc/image-37.png" alt="352" loading="lazy"></figure>
+<p>不知道选哪个了</p>
+<h3 id="question-35">35.分析韦明辉计算机内存镜像，请给出SAM文件的虚拟地址？[答案格式：0xxxxxx]</h3>
+<p>长脑子了，虚拟地址要在NTFS时间线里面找</p>
+<figure><img src="../assets/posts/2026-pangu-final-pc/image-38.png" alt="题目分析截图" loading="lazy"></figure>
+<p>0x1031e1400</p>
+<h3 id="question-36">36.分析韦明辉计算机内存镜像，请破译用户韦明辉的开机密码？[答案格式：P@ssw0rd]</h3>
+<p>现在lovelymem里面找到密码的hash</p>
+<figure><img src="../assets/posts/2026-pangu-final-pc/image-39.png" alt="题目分析截图" loading="lazy"></figure>
+<p>4a883b492b526e3cc38cfce73a327d66，NTLM</p>
+<figure><img src="../assets/posts/2026-pangu-final-pc/image-40.png" alt="题目分析截图" loading="lazy"></figure>
+<p>wmh@950303</p>
+        </div>
+        <section class="comments-card">
+          <h2>评论</h2>
+          <p>可以直接用 GitHub 账号留言。</p>
+          <script src="https://utteranc.es/client.js" repo="hxyz486/hxyz486.github.io" issue-term="pathname" theme="github-light" crossorigin="anonymous" async></script>
+        </section>
+      </article>
+      <aside class="article-toc" aria-label="文章目录">
+        <div class="toc-card">
+          <p>目录</p>
+          <strong>2026盘古石决赛（计算机）</strong>
+          <nav>
+              <a class="toc-section" href="#section-computer">计算机</a>
+              <a class="toc-item" href="#question-1">1.分析陈志鹏的pc检材，找出换脸程序的对外服务端口号，[答案格式：四位数字…</a>
+              <a class="toc-item" href="#question-2">2.分析陈志鹏的pc检材，找出换脸程序的版本号，[答案格式：X.X]</a>
+              <a class="toc-item" href="#question-3">3.分析陈志鹏的pc检材，换脸程序默认配置了多少个不同的换脸模型，[答案格式…</a>
+              <a class="toc-item" href="#question-4">4.分析陈志鹏的pc检材，换脸程序处理完成后默认保存输出文件的文件夹路径是？…</a>
+              <a class="toc-item" href="#question-5">5.分析陈志鹏的pc检材，用户在2026年4月30日最后一次换脸操作生成的文…</a>
+              <a class="toc-item" href="#question-6">6.分析陈志鹏的pc检材，给出本地声音生成工具的对外服务端口号？[答案格式：…</a>
+              <a class="toc-item" href="#question-7">7.分析陈志鹏的pc检材，给出音频生成工具创建语音时使用的默认随机种子数值？…</a>
+              <a class="toc-item" href="#question-8">8.分析陈志鹏的pc检材，给出音频生成工具生成的音频文件默认保存的文件名？[…</a>
+              <a class="toc-item" href="#question-9">9.分析陈志鹏的pc检材，给出存放在桌面上的密码备忘文件的内容？[答案格式：…</a>
+              <a class="toc-item" href="#question-10">10.分析陈志鹏的pc检材，用户使用文件粉碎工具彻底删除了一个文件，给出该粉…</a>
+              <a class="toc-item" href="#question-11">11.分析陈志鹏的pc检材，给出使用直播软件时的音频输出码率设置值？[答案格…</a>
+              <a class="toc-item" href="#question-12">12.分析韦明辉计算机检材，请给出磁盘的总扇区数？[答案格式：100,00]</a>
+              <a class="toc-item" href="#question-13">13.分析韦明辉计算机检材，请给出系统安装时间（UTC+8）？[答案格式：Y…</a>
+              <a class="toc-item" href="#question-14">14.分析韦明辉计算机检材，电脑内曾接入过一个1.8T的移动磁盘，请给出该磁…</a>
+              <a class="toc-item" href="#question-15">15.分析韦明辉计算机检材，请给出嫌疑人登录github所使用的账号？[答案…</a>
+              <a class="toc-item" href="#question-16">16.分析韦明辉计算机检材，请给出嫌疑人计算机内默认浏览器的版本号？[答案格…</a>
+              <a class="toc-item" href="#question-17">17.分析韦明辉计算机检材，请给出嫌疑人计算机内安装过的AI编程助手默认使用…</a>
+              <a class="toc-item" href="#question-18">18.分析韦明辉计算机检材，请给出嫌疑人计算机内安装过的AI编程助手对接Op…</a>
+              <a class="toc-item" href="#question-19">19.分析韦明辉计算机检材，请给出嫌疑人最后使用AI编程助手从互联网上搜索视…</a>
+              <a class="toc-item" href="#question-20">20.分析韦明辉计算机检材，请给出嫌疑人电脑内翻墙软件内配置文件名？[答案格…</a>
+              <a class="toc-item" href="#question-21">21.分析韦明辉计算机检材，请给出嫌疑人电脑内翻墙软件所用端口号？[答案格式…</a>
+              <a class="toc-item" href="#question-22">22.分析韦明辉计算机检材，请给出嫌疑人计算机D盘的Bitlocker恢复密…</a>
+              <a class="toc-item" href="#question-23">23.分析韦明辉计算机检材，请给出博彩网站盛世皇朝后台端口号？[答案格式：8…</a>
+              <a class="toc-item" href="#question-24">24.分析韦明辉计算机检材，请给出博彩网站盛世皇朝后台登录密码？[答案格式：…</a>
+              <a class="toc-item" href="#question-25">25.分析韦明辉计算机检材，请给出嫌疑人计算机内加密笔记的打开密码？[答案格…</a>
+              <a class="toc-item" href="#question-26">26.分析韦明辉计算机检材，请给出嫌疑人计算机内加密笔记的打开密码的加密类型…</a>
+              <a class="toc-item" href="#question-27">27.分析韦明辉计算机检材，请给出嫌疑人计算机内加密笔记的密码哈希计算的盐值…</a>
+              <a class="toc-item" href="#question-28">28.分析韦明辉计算机检材，请给出服务器45.33.22.11的root密码…</a>
+              <a class="toc-item" href="#question-29">29.分析韦明辉计算机检材，请给出现嫌疑人计算机内VeraCrypt的密钥文…</a>
+              <a class="toc-item" href="#question-30">30.分析韦明辉计算机检材，嫌疑人使用自定义工具对 Veracrypt 加密…</a>
+              <a class="toc-item" href="#question-31">31.分析韦明辉计算机检材，请给出解密混淆加密后的VeraCrypt容器文件…</a>
+              <a class="toc-item" href="#question-32">32.分析韦明辉计算机检材，请给出郑秀荣的电话号码？[答案格式：11位数字]</a>
+              <a class="toc-item" href="#question-33">33.分析韦明辉计算机检材，请给出郑秀荣共提现多少钱？[答案格式：10000…</a>
+              <a class="toc-item" href="#question-34">34.分析韦明辉计算机内存镜像，请给出内存镜像创建时间（UTC+8）？[答案…</a>
+              <a class="toc-item" href="#question-35">35.分析韦明辉计算机内存镜像，请给出SAM文件的虚拟地址？[答案格式：0x…</a>
+              <a class="toc-item" href="#question-36">36.分析韦明辉计算机内存镜像，请破译用户韦明辉的开机密码？[答案格式：P@…</a>
+          </nav>
+        </div>
+      </aside>
+    </main>
+    <footer class="footer">
+      <div class="footer-meta">
+        <p>共撰写了 <strong>10</strong> 篇文章</p>
+        <p>博客已运行 <span data-site-runtime data-start="2026-05-31T09:28:56+08:00">0 天 0 小时 0 分钟 0 秒</span></p>
+      </div>
+      <p>Powered by GitHub Pages · <a href="https://hxyz486.github.io/">https://hxyz486.github.io/</a> · © 2026 郝杏芸</p>
+    </footer>
+    <script src="../site.js"></script>
+  </body>
+</html>
