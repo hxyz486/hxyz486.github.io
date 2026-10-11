@@ -1,0 +1,855 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="第十一届美亚杯个人赛（线上）电子数据取证题目与分析记录。">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="“美亚杯”第十一届中国电子数据取证大赛个人赛（线上）">
+    <meta property="og:description" content="第十一届美亚杯个人赛（线上）电子数据取证题目与分析记录。">
+    <meta property="og:url" content="https://hxyz486.github.io/posts/11th-maya-cup-online.html">
+    <link rel="canonical" href="https://hxyz486.github.io/posts/11th-maya-cup-online.html">
+    <link rel="icon" type="image/png" href="../assets/favicon.png">
+    <title>“美亚杯”第十一届中国电子数据取证大赛个人赛（线上） - 郝杏芸的博客</title>
+    <link rel="stylesheet" href="../styles.css">
+  </head>
+  <body class="article-page">
+    <header class="article-header">
+      <nav class="nav article-nav">
+        <a class="brand" href="../index.html"><img src="../assets/brand-icon.png" alt="" aria-hidden="true">郝杏芸的博客</a>
+        <a class="back-home" href="../index.html#posts">返回首页</a>
+      </nav>
+      <div class="article-hero">
+        <p class="eyebrow">Forensics / Writeup</p>
+        <h1>“美亚杯”第十一届中国电子数据取证大赛个人赛（线上）</h1>
+        <p class="hero-copy">个人赛题目与解题记录。</p>
+      </div>
+    </header>
+    <main class="article-shell">
+      <article class="article-card">
+        <div class="article-meta">
+          <time datetime="2026-10-11">2026-10-11</time>
+          <span>取证复现</span>
+          <span>Writeup</span>
+        </div>
+        <div class="article-body">
+<p>快要到26美亚杯的比赛了，临时突击一下知识点</p>
+<h2 id="question-1">1. 【单选题】（1分） 香港警方接到报案，西贡区布袋澳有人持木棍袭击他人，警方到达现场发现冯子超头部受伤昏迷，身上只有一部智能手机但没有身份证明文件。调查后香港警方以伤人罪拘捕了陈民浩。陈民浩被捕后保持沉默，拒绝交代案情，身上搜获一部智能手机，冯子超则被送往医院救治。警方检查了两人的智能手机，并由检验人员进行了检验。冯子超的智能手机资料储存在FUNG_CC_mobile.zip文件中，而陈民浩的智能手机资料则储存在CHAN_MH.zip文件中。警方希望运用你的电子数据检验知识，在两个人的智能手机中查找办案线索。请你使用CHAN_MH.zip检材回答以下问题 这个智能手机是什么操作系统?</h2>
+<ul>
+<li><strong>A.</strong> iOS 17.1.1</li>
+<li><strong>B.</strong> iOS 17.2.1</li>
+<li><strong>C.</strong> iOS 17.3.1</li>
+<li><strong>D.</strong> iOS 17.0.1</li>
+</ul>
+<figure><img src="../assets/posts/11th-maya-cup-online/image-001.png" alt="题目分析截图" loading="lazy"></figure>
+<p>A</p>
+<h2 id="question-2">2. 【填空题】（1分） 在这个手机中，有多少组国际移动设备识别码(IMEI)号码? (请以阿拉伯数字作答)</h2>
+<p>在iDevice_info.txt记录了两个IMEI</p>
+<p>357328098205226和357328099153748</p>
+<figure><img src="../assets/posts/11th-maya-cup-online/image-002.png" alt="题目分析截图" loading="lazy"></figure>
+<p>2</p>
+<h2 id="question-3">3. 【单选题】（1分） 承上题，以下哪一个才是正确的国际移动设备识别码(IMEI)号码?</h2>
+<ul>
+<li><strong>A.</strong> 357328098205226</li>
+<li><strong>B.</strong> 357328097205226</li>
+<li><strong>C.</strong> 357328096205226</li>
+<li><strong>D.</strong> 357328095205226</li>
+</ul>
+<p>为什么会有两个imei值?</p>
+<p>IMEI全称是InternationalMobileEquipmentIdentity</p>
+<p>因为对于<strong>双卡双待手机</strong>，每个SIM卡槽都可以插入SIM卡，网络会将其视为两个独立的设备。因此，每个卡槽都需要一个IMEI号与对应的SIM卡（IMSI）</p>
+<p>这种设计保证了：</p>
+<ul>
+<li><strong>运营商识别</strong>：网络可以区分哪张SIM卡在使用哪台设备，防止混淆。</li>
+<li><strong>安全性</strong>：如果两个SIM卡共用一个IMEI，可能在某些国家（如印度）被视为不合法，导致网络接入问题</li>
+<li><strong>功能管理</strong>：用户可以分别管理两张卡的数据和通话，例如一张用于数据、一张用于通话，或在不同国家使用不同运营商的SIM卡</li>
+</ul>
+<p>那么从做题场景的角度出发，我们可以在<code>iDevice_info.txt</code>和<code>Info.plist</code>两个文件中都找到imei值，而<strong>357328098205226</strong>出现了两次，那么应该就是它了</p>
+<p>md最后发现选项根本不需要考虑这个点，唉，还是吃了新人的亏</p>
+<p>357328098205226</p>
+<h2 id="question-4">4. 【单选题】（1分） 请指出最后使用的使用者身分模组(SIM)的集成电路卡识别码(ICCID)</h2>
+<ul>
+<li><strong>A.</strong> 89852122206020998419</li>
+<li><strong>B.</strong> 89852122205020998419</li>
+<li><strong>C.</strong> 89852122204020998419</li>
+<li><strong>D.</strong> 89852122203020998419</li>
+</ul>
+<figure><img src="../assets/posts/11th-maya-cup-online/image-003.png" alt="题目分析截图" loading="lazy"></figure>
+<p>A</p>
+<h2 id="question-5">5. 【填空题】（1分） 请指出最后使用的Apple ID是多少？ (请依照参赛材料中的原文作答，注意区分大小写、空格及符号)</h2>
+<figure><img src="../assets/posts/11th-maya-cup-online/image-004.png" alt="题目分析截图" loading="lazy"></figure>
+<p>whoishogan@gmail.com</p>
+<h2 id="question-6">6. 【填空题】（1分） 蓝牙模组中的蓝牙地址是多少？ (请以下格式作答:xx:xx:xx:xx:xx:xx)</h2>
+<figure><img src="../assets/posts/11th-maya-cup-online/image-005.png" alt="题目分析截图" loading="lazy"></figure>
+<p>C0:9A:D0:DA:B9:18</p>
+<h2 id="question-7">7. 【填空题】（1分） 这个智能手机曾经启动「个人热点」分享网络，请问他的「热点」名称？ (请依照参赛材料中的原文作答，注意区分大小写、空格及符号)</h2>
+<p>又是一个知识盲区</p>
+<figure><img src="../assets/posts/11th-maya-cup-online/image-006.png" alt="题目分析截图" loading="lazy"></figure>
+<p>知道了这点之后还是很好找到的</p>
+<figure><img src="../assets/posts/11th-maya-cup-online/image-007.png" alt="题目分析截图" loading="lazy"></figure>
+<p>12345678</p>
+<h2 id="question-8">8. 【单选题】（1分） 这个智能手机没有连接过以下哪一个服务集标识符(SSID)</h2>
+<ul>
+<li><strong>A.</strong> Hongn Home</li>
+<li><strong>B.</strong> CMHK</li>
+<li><strong>C.</strong> 1010 free wifi</li>
+<li><strong>D.</strong> ErrorError</li>
+</ul>
+<p>CD选项都可以在火眼里面找到</p>
+<figure><img src="../assets/posts/11th-maya-cup-online/image-008.png" alt="题目分析截图" loading="lazy"></figure>
+<p>至于B嘛，有点无语，信息差说是，那就补充一下</p>
+<p>中国移动通信-----chinamobile CMCC</p>
+<p>中国联通通讯-----chinaunicom CUCC</p>
+<p>中国电信 ------CHINATELECOM CTCC</p>
+<figure><img src="../assets/posts/11th-maya-cup-online/image-009.png" alt="题目分析截图" loading="lazy"></figure>
+<p>所以选A</p>
+<h2 id="question-9">9. 【填空题】（1分） 请指出首次连接服务集识别码(SSID)名称为&quot; CMHK&quot;的无线区域网络(Wi-Fi)的日期及时间 (请以GMT +8时区及以下格式作答: yyyy-MM-dd HH:mm:ss)</h2>
+<p>找不到</p>
+<h2 id="question-10">10. 【单选题】（1分） 安装了以下即时哪个通讯软件? i) WhatsApp ii) WeChat iii) WhatsApp Business iv) QQ</h2>
+<ul>
+<li><strong>A.</strong> 只有 i) 和 ii)</li>
+<li><strong>B.</strong> 只有 i), ii) 和 iii)</li>
+<li><strong>C.</strong> 只有 i), ii) 和 iv)</li>
+<li><strong>D.</strong> 以上皆是</li>
+</ul>
+<figure><img src="../assets/posts/11th-maya-cup-online/image-010.png" alt="题目分析截图" loading="lazy"></figure>
+<p>A</p>
+<h2 id="question-11">11. 【填空题】（1分） 承上题，请指出即时通讯软件&quot;WhatsApp&quot;的版本 (请依照参赛材料中的原文作答，注意区分大小写、空格及符号)</h2>
+<p>在<em>mobile.tar/var/mobile/Applications/group.net.whatsapp.WhatsApp.shared/Library/Preferences/group.net.whatsapp.WhatsApp.shared.plist</em>中可以找到</p>
+<figure><img src="../assets/posts/11th-maya-cup-online/image-011.png" alt="题目分析截图" loading="lazy"></figure>
+<p>2.25.14.79</p>
+<h2 id="question-12">12. 【单选题】（2分） 陈民浩的手机中，总共安装3个文件传输软件，封包名称分别为com.apple.Sharing.AirDropUI、com.lenovo.anyshare、com.estmob.paprika，其中有哪一个软件曾经用来传送/接收文件功能?</h2>
+<ul>
+<li><strong>A.</strong> com.apple.Sharing.AirDropUI</li>
+<li><strong>B.</strong> com.lenovo.anyshare</li>
+<li><strong>C.</strong> com.estmob.paprika</li>
+</ul>
+<p>检索发现只有C项有传输文件</p>
+<figure><img src="../assets/posts/11th-maya-cup-online/image-012.png" alt="题目分析截图" loading="lazy"></figure>
+<p>C</p>
+<h2 id="question-13">13. 【填空题】（2分） 承上题，与其有传送/接收过资料装置的装置ID是多少? (请依照参赛材料中的原文作答，注意区分大小写、空格及符号)</h2>
+<h2 id="question-14">14. 【填空题】（2分） 承上题，这个装置名称是? (请依照参赛材料中的原文作答，注意区分大小写、空格及符号)</h2>
+<h2 id="question-15">15. 【填空题】（2分） 承上题，本机装置的装置ID是多少? (请依照参赛材料中的原文作答，注意区分大小写、空格及符号)</h2>
+<p>直接检索device就行</p>
+<figure><img src="../assets/posts/11th-maya-cup-online/image-013.png" alt="题目分析截图" loading="lazy"></figure>
+<p>3836403626142</p>
+<h2 id="question-16">16. 【单选题】（2分） 承上题，陈民浩的手机(CHAN_MH_mobile.zip)是传送方或是接收方?</h2>
+<ul>
+<li><strong>A.</strong> 传送方</li>
+<li><strong>B.</strong> 接收方</li>
+<li><strong>C.</strong> 传送及接收方</li>
+</ul>
+<h2 id="question-17">17. 【单选题】（2分） 根据传送档案的名称，判断是以下哪一类型? (单选)</h2>
+<ul>
+<li><strong>A.</strong> 屏幕截图</li>
+<li><strong>B.</strong> 手机拍摄影片</li>
+<li><strong>C.</strong> PDF文件</li>
+<li><strong>D.</strong> zip压缩文件</li>
+</ul>
+<h2 id="question-18">18. 【单选题】（2分） 承上题，接收至哪一个装置?</h2>
+<ul>
+<li><strong>A.</strong> CHAN_MH_mobile.zip</li>
+<li><strong>B.</strong> blk0_sda.bin</li>
+<li><strong>C.</strong> FUNG_CC_mobile.zip</li>
+<li><strong>D.</strong> LAM_KH_Mobile.zip</li>
+<li><strong>E.</strong> WONG_CW_mobile.zip</li>
+</ul>
+<h2 id="question-19">19. 【单选题】（2分） 承上题，传送方是通过此文档传输软件的哪个模式作出传送?</h2>
+<ul>
+<li><strong>A.</strong> SEND_PARTIALLY</li>
+<li><strong>B.</strong> SEND_PAPRIKA</li>
+<li><strong>C.</strong> SEND_DIRECTLY</li>
+<li><strong>D.</strong> SEND_BYCLOUD</li>
+<li><strong>E.</strong> SEND_BLUETOOTH</li>
+</ul>
+<h2 id="question-20">20. 【多选题】（2分） 从来没有安装以下哪个网络浏览器？</h2>
+<ul>
+<li><strong>A.</strong> Safari</li>
+<li><strong>B.</strong> Chrome</li>
+<li><strong>C.</strong> Firefox</li>
+<li><strong>D.</strong> edge</li>
+</ul>
+<p>一个一个检索就行了，发现只有Safari</p>
+<figure><img src="../assets/posts/11th-maya-cup-online/image-014.png" alt="题目分析截图" loading="lazy"></figure>
+<p>BCD</p>
+<h2 id="question-21">21. 【填空题】（2分） 承上题，网络浏览器Safari有多少个书签(Bookmark)记录？ (请以阿拉伯数字作答)</h2>
+<figure><img src="../assets/posts/11th-maya-cup-online/image-015.png" alt="题目分析截图" loading="lazy"></figure>
+<p>9</p>
+<h2 id="question-22">22. 【多选题】（2分） 承上题，曾经通过Safari浏览器用下列哪一个字词进行过搜索?</h2>
+<ul>
+<li><strong>A.</strong> 非法处理尸体最高刑罚</li>
+<li><strong>B.</strong> escape room hong kong</li>
+<li><strong>C.</strong> cypto wallet</li>
+<li><strong>D.</strong> 非法处理尸体</li>
+</ul>
+<p>检索</p>
+<figure><img src="../assets/posts/11th-maya-cup-online/image-016.png" alt="题目分析截图" loading="lazy"></figure>
+<figure><img src="../assets/posts/11th-maya-cup-online/image-017.png" alt="题目分析截图" loading="lazy"></figure>
+<figure><img src="../assets/posts/11th-maya-cup-online/image-018.png" alt="题目分析截图" loading="lazy"></figure>
+<p>ABC</p>
+<h2 id="question-23">23. 【填空题】（1分） 有多少个图片文件曾经储存到iCloud? (请以阿拉伯数字作答)</h2>
+<p>在<em>var/mobile/Library/Mobile Documents/com~apple~CloudDocs</em>路径下</p>
+<figure><img src="../assets/posts/11th-maya-cup-online/image-019.png" alt="题目分析截图" loading="lazy"></figure>
+<p>2</p>
+<h2 id="question-24">24. 【填空题】（1分） 相册中有多少张图片是通过屏幕截图功能取得？ (请以阿拉伯数字作答)</h2>
+<figure><img src="../assets/posts/11th-maya-cup-online/image-020.png" alt="题目分析截图" loading="lazy"></figure>
+<p>15</p>
+<h2 id="question-25">25. 【填空题】（1分） 请参考参赛材料FUNG_CC_mobile.zip回答以下问题 这部智能手机连接过多少个 Wi-Fi 网络？ (请以阿拉伯数字作答)</h2>
+<figure><img src="../assets/posts/11th-maya-cup-online/image-021.png" alt="题目分析截图" loading="lazy"></figure>
+<p>2</p>
+<h2 id="question-26">26. 【单选题】（2分） 这部智能手机曾经连接过以下哪个无线网络？ i) THREE_WIFI ii) wanchai iii)iPhone(2) iv) Router</h2>
+<ul>
+<li><strong>A.</strong> 只有 i)</li>
+<li><strong>B.</strong> 只有 ii) 和 iii)</li>
+<li><strong>C.</strong> 只有 ii), iii) 和 iv)</li>
+<li><strong>D.</strong> 以上皆是</li>
+</ul>
+<p>见上题</p>
+<p>B</p>
+<h2 id="question-27">27. 【填空题】（2分） 这部手提手机最早连接(非热点)Wi-Fi的时间是什么？ (请以GMT +8时区及以下格式作答: yyyy-MM-dd HH:mm:ss)</h2>
+<figure><img src="../assets/posts/11th-maya-cup-online/image-022.png" alt="题目分析截图" loading="lazy"></figure>
+<p>2025-04-15 19:29:23</p>
+<h2 id="question-28">28. 【填空题】（2分） 承上题，请列出这个连接的服务集识别码(SSID)? (请依照参赛材料中的原文作答，注意区分大小写、空格及符号)</h2>
+<p>就是wifi名称而已</p>
+<p>wanchai</p>
+<h2 id="question-29">29. 【填空题】（2分） 承上题，请列出这个连接的登入金钥? (请依照参赛材料中的原文作答，注意区分大小写、空格及符号)</h2>
+<p>Airport在iPhone中代表无线网络</p>
+<figure><img src="../assets/posts/11th-maya-cup-online/image-023.png" alt="题目分析截图" loading="lazy"></figure>
+<p>hellowanchai</p>
+<h2 id="question-30">30. 【单选题】（2分） 相册中有两张图像互换格式图片(gif)「IMG_0057.GIF」及「IMG_0062.GIF」，请指出由哪一个软件拍摄?</h2>
+<ul>
+<li><strong>A.</strong> Infltr</li>
+<li><strong>B.</strong> Discreet</li>
+<li><strong>C.</strong> Meitu</li>
+<li><strong>D.</strong> Prisma</li>
+</ul>
+<figure><img src="../assets/posts/11th-maya-cup-online/image-024.png" alt="题目分析截图" loading="lazy"></figure>
+<p>A</p>
+<h2 id="question-31">31. 【单选题】（2分） 曾经以空投(AirDrop)方式成功传送了文件到另外一个装置，以下哪一个陈述是正确的？</h2>
+<ul>
+<li><strong>A.</strong> 传送了一个图片文件</li>
+<li><strong>B.</strong> 传送了两个图片文件</li>
+<li><strong>C.</strong> 传送了一个图片文件及一个文件</li>
+<li><strong>D.</strong> 传送了一个图片文件及两个文件</li>
+</ul>
+<p>先检索一下这个airdrop，发现有这么几个数据库文件</p>
+<figure><img src="../assets/posts/11th-maya-cup-online/image-025.png" alt="题目分析截图" loading="lazy"></figure>
+<p>挨个查看后找到</p>
+<figure><img src="../assets/posts/11th-maya-cup-online/image-026.png" alt="题目分析截图" loading="lazy"></figure>
+<p>有点懵，问问ai这是什么</p>
+<figure><img src="../assets/posts/11th-maya-cup-online/image-027.png" alt="题目分析截图" loading="lazy"></figure>
+<p>C</p>
+<h2 id="question-32">32. 【填空题】（2分） 原生APP「相片」中，有一个图片文件曾经通过空投&quot;AirDrop&quot;方式成功传送，请指出这个图片文件的文件全名 (请包含扩展名，依照参赛材料中的原文作答，注意区分大小写、空格及符号)</h2>
+<p>知识盲区，不知道怎么找了，看了看其它师傅的wp才找到</p>
+<p>就在photos.sqlite数据库里面，之前做美亚题目的时候也考察过这个文件，没记住</p>
+<figure><img src="../assets/posts/11th-maya-cup-online/image-028.png" alt="题目分析截图" loading="lazy"></figure>
+<p>大致思路就是在<code>ZASSET</code>表找到ZLASTSHAREDDATE字段，看是否为空值</p>
+<p>IMG_0083.HEIC</p>
+<h2 id="question-33">33. 【填空题】（2分） 承上题，请写出这个图片文件的开始传送的日期及时间？ (请以GMT +8时区及以下格式作答: yyyy-MM-dd HH:mm:ss)</h2>
+<figure><img src="../assets/posts/11th-maya-cup-online/image-029.png" alt="题目分析截图" loading="lazy"></figure>
+<p>2025-04-17 09:10:03</p>
+<h2 id="question-34">34. 【填空题】（2分） 请指出哪一个多媒体文件同时储存在APP「文件」(套件识别码: com.apple.DocumentsApp)及APP「照片」(套件识别码:                           com.apple.mobileslideshow)中？ (请包含扩展名，依照参赛材料中的原文作答，注意区分大小写、空格及符号)</h2>
+<p>找一下之前的photos.sqlite数据库</p>
+<figure><img src="../assets/posts/11th-maya-cup-online/image-030.png" alt="题目分析截图" loading="lazy"></figure>
+<p>再看一下“文件”的路径</p>
+<figure><img src="../assets/posts/11th-maya-cup-online/image-031.png" alt="题目分析截图" loading="lazy"></figure>
+<p>IMG_0008.heic/IMG_0010.MOV</p>
+<h2 id="question-35">35. 【填空题】（2分） 请指出在APP「照片」(套件识别码: com.apple.mobileslideshow)中的图片文件「IMG_0079.JPG」是由哪一个APP拍摄？ (请依照参赛材料中的原文作答，注意区分大小写、空格及符号)</h2>
+<figure><img src="../assets/posts/11th-maya-cup-online/image-032.png" alt="题目分析截图" loading="lazy"></figure>
+<p>Discreet</p>
+<h2 id="question-36">36. 【填空题】（2分） 承上题，已知该图片文件是由上述APP所拍摄，并其后储存在APP「照片」(套件识别码: com.apple.mobileslideshow)成「IMG_0079.JPG」，请问该图片的原文件名称？ (请依照参赛材料中的原文作答，注意区分大小写、空格及符号)</h2>
+<p>看一下文件大小</p>
+<figure><img src="../assets/posts/11th-maya-cup-online/image-033.png" alt="题目分析截图" loading="lazy"></figure>
+<p>三个一样的，666</p>
+<figure><img src="../assets/posts/11th-maya-cup-online/image-034.png" alt="题目分析截图" loading="lazy"></figure>
+<p>DiscreetCameraApp_1744790959352.png</p>
+<h2 id="question-37">37. 【填空题】（2分） 承上题，请指出原文件的建立时间？ (请以GMT +8时区及以下格式作答: yyyy-MM-dd HH:mm:ss)</h2>
+<p>修改时间应该就是创建时间吧，大概</p>
+<p>2025-04-16 16:09:19</p>
+<h2 id="question-38">38. 【单选题】（2分） 请指出在APP「照片」(套件识别码: com.apple.mobileslideshow)中，储存多媒体文件「IMG_0014.MOV」与储存「IMG_0016.MOV」之间有没有其他多媒体文件储存到APP「照片」中？</h2>
+<ul>
+<li><strong>A.</strong> 有</li>
+<li><strong>B.</strong> 没有</li>
+<li><strong>C.</strong> 有拍摄，但没有储存</li>
+<li>D:无法确认</li>
+</ul>
+<p>Z_PK连续，没有其他文件</p>
+<figure><img src="../assets/posts/11th-maya-cup-online/image-035.png" alt="题目分析截图" loading="lazy"></figure>
+<p>B</p>
+<h2 id="question-39">39. 【单选题】（2分） 承上题，以下哪个陈述是正确描述上一题的答案？</h2>
+<ul>
+<li><strong>A.</strong> 制作多媒体文件「IMG_0015.MOV」时，直接储存到隐藏相册中</li>
+<li><strong>B.</strong> 制作作多媒体文件「IMG_0015.MOV」时，直接上传到iCloud</li>
+<li><strong>C.</strong> 制作多媒体文件「IMG_0014.MOV」时用了缩时摄影</li>
+<li><strong>D.</strong> 制作多媒体文件「IMG_0015.MOV」时名称被更改为「IMG_0016.MOV」</li>
+</ul>
+<p>延时摄影</p>
+<figure><img src="../assets/posts/11th-maya-cup-online/image-036.png" alt="题目分析截图" loading="lazy"></figure>
+<p>C</p>
+<h2 id="question-40">40. 【单选题】（2分） APP「照片」(套件识别码: com.apple.mobileslideshow)中，「IMG_0027.HEIC」的原地理位置信息(WGS84)是？</h2>
+<ul>
+<li><strong>A.</strong> (22.2816569, 114.1756115)</li>
+<li><strong>B.</strong> (22.2826366666667, 114.168503333333)</li>
+<li><strong>C.</strong> (22.2826216666667, 114.168525)</li>
+<li><strong>D.</strong> (22.2826216666667, 114.168503333333)</li>
+</ul>
+<p>好眼熟的题目</p>
+<figure><img src="../assets/posts/11th-maya-cup-online/image-037.png" alt="题目分析截图" loading="lazy"></figure>
+<p>A</p>
+<h2 id="question-41">41. 【单选题】（1分） 曾经通过网络浏览器「Safari」下载了多少个图片文件？</h2>
+<ul>
+<li><strong>A.</strong> 1</li>
+<li><strong>B.</strong> 2</li>
+<li><strong>C.</strong> 3</li>
+<li><strong>D.</strong> 4</li>
+</ul>
+<figure><img src="../assets/posts/11th-maya-cup-online/image-038.png" alt="题目分析截图" loading="lazy"></figure>
+<p>2</p>
+<h2 id="question-42">42. 【单选题】（2分） 多媒体文件「 IMG_0004.MOV」曾被修改后再储存成另一个文件，该文件名称是?</h2>
+<ul>
+<li><strong>A.</strong> IMG_0085.mov</li>
+<li><strong>B.</strong> IMG_0086.mov</li>
+<li><strong>C.</strong> IMG_0087.mov</li>
+<li><strong>D.</strong> IMG_0088.mov</li>
+</ul>
+<p>不会，看了其它师傅的wp才做出来</p>
+<p>查询IMG_0004.MOV，得到它的Z_PK值，然后再检索这个值，得到答案</p>
+<figure><img src="../assets/posts/11th-maya-cup-online/image-039.png" alt="题目分析截图" loading="lazy"></figure>
+<figure><img src="../assets/posts/11th-maya-cup-online/image-040.png" alt="题目分析截图" loading="lazy"></figure>
+<p>A</p>
+<h2 id="question-43">43. 【填空题】（2分） 曾经通过人工智能聊天APP &quot;POE&quot;查询一个问题，请列出这个问题的完整句子？ (请依照参赛材料中的原文作答，注意区分大小写、空格及符号)</h2>
+<p>先找到POE是什么东西</p>
+<figure><img src="../assets/posts/11th-maya-cup-online/image-041.png" alt="题目分析截图" loading="lazy"></figure>
+<p>翻找文件可以看到一个数据库，查询得到</p>
+<figure><img src="../assets/posts/11th-maya-cup-online/image-042.png" alt="题目分析截图" loading="lazy"></figure>
+<p>What’s that mean</p>
+<h2 id="question-44">44. 【填空题】（2分） 承上题，请指出提问的日期及时间 (答题格式: yyyy-MM-dd HH:mm:ss 作答, GMT+8)</h2>
+<figure><img src="../assets/posts/11th-maya-cup-online/image-043.png" alt="题目分析截图" loading="lazy"></figure>
+<p>2025-04-16 05:50:06</p>
+<h2 id="question-45">45. 【填空题】（2分） 承上题，当时使用的是哪一个机器人? (请依照参赛材料中的原文作答，注意区分大小写、空格及符号)</h2>
+<p>打开数据全部，可以看到有个bot</p>
+<figure><img src="../assets/posts/11th-maya-cup-online/image-044.png" alt="题目分析截图" loading="lazy"></figure>
+<p>推断这是同一个对话的记录</p>
+<figure><img src="../assets/posts/11th-maya-cup-online/image-045.png" alt="题目分析截图" loading="lazy"></figure>
+<p>claude_3_haiku</p>
+<h2 id="question-46">46. 【填空题】（2分） 承上题，当时的使用者名称是？ (请依照参赛材料中的原文作答，注意区分大小写、空格及符号)</h2>
+<p>继续搜</p>
+<figure><img src="../assets/posts/11th-maya-cup-online/image-046.png" alt="题目分析截图" loading="lazy"></figure>
+<p>很明显这只是个学号一样的玩意，那就检索这个，得到答案</p>
+<figure><img src="../assets/posts/11th-maya-cup-online/image-047.png" alt="题目分析截图" loading="lazy"></figure>
+<p>Duncan</p>
+<h2 id="question-47">47. 【填空题】（1分） 请指出即时通讯软件&quot;WeChat&quot;的 &quot;WeChat ID&quot; (请依照参赛材料中的原文作答，注意区分大小写、空格及符号)</h2>
+<figure><img src="../assets/posts/11th-maya-cup-online/image-048.png" alt="题目分析截图" loading="lazy"></figure>
+<p>wxid_c9xyspglub7512</p>
+<h2 id="question-48">48. 【单选题】（1分） 承上题，这个&quot;WeChat ID&quot;关注了多少个「视频号」？</h2>
+<ul>
+<li><strong>A.</strong> 1</li>
+<li><strong>B.</strong> 2</li>
+<li><strong>C.</strong> 3</li>
+<li><strong>D.</strong> 4</li>
+</ul>
+<p>右键直接找到源文件进行阅读</p>
+<figure><img src="../assets/posts/11th-maya-cup-online/image-049.png" alt="题目分析截图" loading="lazy"></figure>
+<figure><img src="../assets/posts/11th-maya-cup-online/image-050.png" alt="题目分析截图" loading="lazy"></figure>
+<p>B</p>
+<h2 id="question-49">49. 【填空题】（1分） 请指出即时通讯软件WhatsApp的WhatsApp ID (请依照参赛材料中的原文作答，注意区分大小写、空格及符号)</h2>
+<figure><img src="../assets/posts/11th-maya-cup-online/image-051.png" alt="题目分析截图" loading="lazy"></figure>
+<p>85254974406@s.whatsapp.net</p>
+<h2 id="question-50">50. 【单选题】（1分） 即时通讯软件WhatsApp中，封存了下列哪个聊天群？</h2>
+<ul>
+<li><strong>A.</strong> 凤凰VIP会员心得交流群</li>
+<li><strong>B.</strong> 币淘 群组1</li>
+<li><strong>C.</strong> Sportsmen</li>
+<li><strong>D.</strong> Titus Wong Manson Finance</li>
+</ul>
+<p>md什么小众动词，搞半天就是隐藏</p>
+<figure><img src="../assets/posts/11th-maya-cup-online/image-052.png" alt="题目分析截图" loading="lazy"></figure>
+<p>这是被封存的标识</p>
+<figure><img src="../assets/posts/11th-maya-cup-online/image-053.png" alt="题目分析截图" loading="lazy"></figure>
+<figure><img src="../assets/posts/11th-maya-cup-online/image-054.png" alt="题目分析截图" loading="lazy"></figure>
+<p>A</p>
+<h2 id="question-51">51. 【填空题】（1分） 即时通讯软件WhatsApp中，总共追踪了多少个频道？ (请以阿拉伯数字作答)</h2>
+<figure><img src="../assets/posts/11th-maya-cup-online/image-055.png" alt="题目分析截图" loading="lazy"></figure>
+<p>19</p>
+<h2 id="question-52">52. 【单选题】（3分） 即时通讯软件「WhatsApp」中，下列哪个是群组 &quot;Investors&quot; 的管理员？ i) <a href="mailto:85254974406@s.whatsapp.net">85254974406@s.whatsapp.net</a> ii) <a href="mailto:85260927726@s.whatsapp.net">85260927726@s.whatsapp.net</a> iii) <a href="mailto:85254961408@s.whatsapp.net">85254961408@s.whatsapp.net</a></h2>
+<ul>
+<li><strong>A.</strong> 只有 i)</li>
+<li><strong>B.</strong> 只有 i) 和 ii)</li>
+<li><strong>C.</strong> 只有 ii) 和 iii)</li>
+<li><strong>D.</strong> 以上皆是</li>
+</ul>
+<p>群主也算管理员吗，行吧</p>
+<figure><img src="../assets/posts/11th-maya-cup-online/image-056.png" alt="题目分析截图" loading="lazy"></figure>
+<p>B</p>
+<h2 id="question-53">53. 【填空题】（2分） 即时通讯软件「WhatsApp」中，群组 &quot;Investors&quot; 的群组ID？ (请依照参赛材料中的原文作答，注意区分大小写、空格及符号)</h2>
+<figure><img src="../assets/posts/11th-maya-cup-online/image-057.png" alt="题目分析截图" loading="lazy"></figure>
+<p>120363417204753192@g.us</p>
+<h2 id="question-54">54. 【填空题】（2分） 即时通讯软件「WhatsApp」中，「社群」名称是什么？ (请依照参赛材料中的原文作答，注意区分大小写、空格及符号)</h2>
+<figure><img src="../assets/posts/11th-maya-cup-online/image-058.png" alt="题目分析截图" loading="lazy"></figure>
+<p>We are 3</p>
+<h2 id="question-55">55. 【单选题】（2分） 承上题，请指出这个社群的群组图案的哈希值（SHA256格式）。</h2>
+<ul>
+<li><strong>A.</strong> B1A3706C574F81A3EE084FB9509997E06349E86D904D1DC10B879D1D5ED83125</li>
+<li><strong>B.</strong> B8BA258402925E139CAFBBBBBC809EC160B70BB03DBD4D0F3063F58F69D0B956</li>
+<li><strong>C.</strong> E43ADC646295BC5011577D4E733B6289D31A5E11ACB45285BE1FF530260DF383</li>
+<li><strong>D.</strong> 20E64C78F9926548CEEFB1783991A4AD71A6631F3C86002254342E323A898C6A</li>
+</ul>
+<p>真给我翻到了，还有两张，但是第一张的hash值不对，神了</p>
+<figure><img src="../assets/posts/11th-maya-cup-online/image-059.png" alt="题目分析截图" loading="lazy"></figure>
+<figure><img src="../assets/posts/11th-maya-cup-online/image-060.png" alt="题目分析截图" loading="lazy"></figure>
+<p>问了问ai</p>
+<figure><img src="../assets/posts/11th-maya-cup-online/image-061.png" alt="题目分析截图" loading="lazy"></figure>
+<p>A</p>
+<h2 id="question-56">56. 【填空题】（1分） 即时通讯软件「WhatsApp」中，找出WhatsApp ID:<a href="mailto:85254961408@s.whatsapp.net">85254961408@s.whatsapp.net</a>曾经是在而现在已经不在的群组，请指出该群组的名称。 (请依照参赛材料中的原文作答，注意区分大小写、空格及符号)</h2>
+<p>这个id是陈民浩</p>
+<figure><img src="../assets/posts/11th-maya-cup-online/image-062.png" alt="题目分析截图" loading="lazy"></figure>
+<p>找到去看各个群聊，找到了，不知道要不要加上中括号的内容</p>
+<figure><img src="../assets/posts/11th-maya-cup-online/image-063.png" alt="题目分析截图" loading="lazy"></figure>
+<p>Sportsmen[We are 3]</p>
+<h2 id="question-57">57. 【填空题】（1分） 即时通讯软件「WhatsApp」中，总共出现了多少个「投票」活动？ (请以阿拉伯数字作答)</h2>
+<p>有一个是新闻广告，去掉</p>
+<figure><img src="../assets/posts/11th-maya-cup-online/image-064.png" alt="题目分析截图" loading="lazy"></figure>
+<p>15</p>
+<h2 id="question-58">58. 【填空题】（1分） 承上题，总共在多少个「投票」活动中作出了投票？ (请以阿拉伯数字作答)</h2>
+<p>这集神了，不知道多少人跟我一样一脸懵的（虽然已经有很多题目一脸懵了），又是观摩其它师傅wp的一集</p>
+<p>现在火眼里找到投票，话说真的有人能把这个判断为投票吗</p>
+<figure><img src="../assets/posts/11th-maya-cup-online/image-065.png" alt="题目分析截图" loading="lazy"></figure>
+<p>看到之后直接翻数据库，发现代号是280，找279的信息，发现type是46</p>
+<figure><img src="../assets/posts/11th-maya-cup-online/image-066.png" alt="题目分析截图" loading="lazy"></figure>
+<figure><img src="../assets/posts/11th-maya-cup-online/image-067.png" alt="题目分析截图" loading="lazy"></figure>
+<p>navicat太臃肿了，换成db brower，以type=46过滤发现刚好是15个投票消息</p>
+<figure><img src="../assets/posts/11th-maya-cup-online/image-068.png" alt="题目分析截图" loading="lazy"></figure>
+<p>发现ZISFROMME列，翻译过来就是“来自我”，推测这个是投票状态，1代表只有这个</p>
+<figure><img src="../assets/posts/11th-maya-cup-online/image-069.png" alt="题目分析截图" loading="lazy"></figure>
+<figure><img src="../assets/posts/11th-maya-cup-online/image-070.png" alt="题目分析截图" loading="lazy"></figure>
+<p>1</p>
+<h2 id="question-59">59. 【单选题】（3分） 即时通讯软件「WhatsApp」中，根据群组「 IQ COIN 💰💰💰💰」对话内容正在策划，哪一种犯罪计划？</h2>
+<ul>
+<li><strong>A.</strong> 诈骗</li>
+<li><strong>B.</strong> 抢劫</li>
+<li><strong>C.</strong> 谋杀</li>
+<li><strong>D.</strong> 以上都不对</li>
+</ul>
+<figure><img src="../assets/posts/11th-maya-cup-online/image-071.png" alt="题目分析截图" loading="lazy"></figure>
+<p>A</p>
+<h2 id="question-60">60. 【填空题】（2分） 承上题，该群组建立者的WhatsApp ID是什么？ (请依照参赛材料中的原文作答，注意区分大小写、空格及符号)</h2>
+<figure><img src="../assets/posts/11th-maya-cup-online/image-072.png" alt="题目分析截图" loading="lazy"></figure>
+<p>85254974406@s.whatsapp.net</p>
+<h2 id="question-61">61. 【填空题】（2分） 承上题，该群组的建立时间是什么？ (请以GMT +8时区及以下格式作答: yyyy-MM-dd HH:mm:ss)</h2>
+<figure><img src="../assets/posts/11th-maya-cup-online/image-073.png" alt="题目分析截图" loading="lazy"></figure>
+<p>2025-04-25 16:57:55</p>
+<h2 id="question-62">62. 【单选题】（1分） 根据你嘅分析结果。三人因感情瓜葛内讧因而发生这次袭击事件。你怀疑梁燕玲曾到袭击现场，你将你的发现通知警察。 警察扩大现场搜索范围，终于在案发现场附近，发现陈民浩名下的小汽车，车上发现一部智能手机。请你以参赛材料LEUNG_YL_Mobile.zip回答以下问题 参考LEUNG_YL_Mobile.zip，该手机用作注册iCloud的email?</h2>
+<ul>
+<li><strong>A.</strong> <a href="mailto:lingleung1502@gmail.com">lingleung1502@gmail.com</a></li>
+<li><strong>B.</strong> <a href="mailto:lingleung1502@yahoo.com.hk">lingleung1502@yahoo.com.hk</a></li>
+<li><strong>C.</strong> <a href="mailto:lingleung1503@gmail.com">lingleung1503@gmail.com</a></li>
+<li><strong>D.</strong> <a href="mailto:lingl1502@gmail.com">lingl1502@gmail.com</a></li>
+</ul>
+<figure><img src="../assets/posts/11th-maya-cup-online/image-074.png" alt="题目分析截图" loading="lazy"></figure>
+<p>A</p>
+<h2 id="question-63">63. 【单选题】（1分） 参考LEUNG_YL_Mobile.zip，文件IMG_0021.HEIC 所拍摄的相机型号是甚么?</h2>
+<ul>
+<li><strong>A.</strong> iPhone SE (3rd generation)</li>
+<li><strong>B.</strong> iPhone SE (2nd generation)</li>
+<li><strong>C.</strong> iPhone 12 mini</li>
+<li><strong>D.</strong> iPhone XR</li>
+</ul>
+<p>先找照片编号，21，再去检索筛选得到是iPhone SE (3rd generation) back camera 3.99mm f/1.8</p>
+<figure><img src="../assets/posts/11th-maya-cup-online/image-075.png" alt="题目分析截图" loading="lazy"></figure>
+<figure><img src="../assets/posts/11th-maya-cup-online/image-076.png" alt="题目分析截图" loading="lazy"></figure>
+<figure><img src="../assets/posts/11th-maya-cup-online/image-077.png" alt="题目分析截图" loading="lazy"></figure>
+<p>A</p>
+<h2 id="question-64">64. 【填空题】（1分） 参考LEUNG_YL_Mobile.zip，文件IMG_0005.JPG所拍摄的座标(WGS 84) 是多少？ (请以纬度,经度的顺序及以下格式作答xx.xxxxxx,xx.xxxxxx)</h2>
+<p>数据库真是越做越熟练，现在看到题目都有肌肉记忆了，取证真的是经验比赛</p>
+<figure><img src="../assets/posts/11th-maya-cup-online/image-078.png" alt="题目分析截图" loading="lazy"></figure>
+<p>22.337655，114.139441</p>
+<h2 id="question-65">65. 【单选题】（1分） 参考LEUNG_YL_Mobile.zip，文件IMG_0022.JPG是以下哪种方向拍摄?</h2>
+<ul>
+<li><strong>A.</strong> 不旋转</li>
+<li><strong>B.</strong> 旋转180度</li>
+<li><strong>C.</strong> 顺时针90度</li>
+<li><strong>D.</strong> 逆时针90度</li>
+</ul>
+<p>很明显没有旋转手机过</p>
+<figure><img src="../assets/posts/11th-maya-cup-online/image-079.png" alt="题目分析截图" loading="lazy"></figure>
+<p>A</p>
+<h2 id="question-66">66. 【填空题】（1分） 文件IMG_0022.JPG的建立时间(GMT +08:00)是? (请以GMT +8时区及以下格式作答: yyyy-MM-dd HH:mm:ss)</h2>
+<p>找到创建时间，转换一下时间戳</p>
+<figure><img src="../assets/posts/11th-maya-cup-online/image-080.png" alt="题目分析截图" loading="lazy"></figure>
+<figure><img src="../assets/posts/11th-maya-cup-online/image-081.png" alt="题目分析截图" loading="lazy"></figure>
+<p>突然发现火眼也能查看，甚至连镜头型号和相簿名称都有，有点多次一举了，还是火眼这种集成度高的工具好</p>
+<figure><img src="../assets/posts/11th-maya-cup-online/image-082.png" alt="题目分析截图" loading="lazy"></figure>
+<p>2025-05-16 11:33:15</p>
+<h2 id="question-67">67. 【填空题】（2分） 参考LEUNG_YL_Mobile.zip，在WhatsApp 与”<a href="mailto:85254974406@s.whatsapp.net">85254974406@s.whatsapp.net</a>”聊天对话中，于2025-05-16 11:33:39时的信息所传送的座标(WGS 84)是多少? (请以纬度,经度顺序及以下格式作答xx.xxxxxxxxxxxx, xxx.xxxxxxxxxxxx)</h2>
+<figure><img src="../assets/posts/11th-maya-cup-online/image-083.png" alt="题目分析截图" loading="lazy"></figure>
+<p>发送了一个定位，在数据库里面找找</p>
+<figure><img src="../assets/posts/11th-maya-cup-online/image-084.png" alt="题目分析截图" loading="lazy"></figure>
+<p>114.295440673828，22.2760486602783</p>
+<h2 id="question-68">68. 【填空题】（2分） 参考LEUNG_YL_Mobile.zip，在WhatsApp 与 &quot;<a href="mailto:85254974406@s.whatsapp.net">85254974406@s.whatsapp.net</a>”聊天对话中，于2025-05-16 11:33:39时的信息所传送的座标(WGS 84)所指的餐厅英文名称是? (请依照参赛材料中的原文作答，注意区分大小写、空格及符号)</h2>
+<p>见上题</p>
+<p>Fai Kee Seafood Restaurant</p>
+<h2 id="question-69">69. 【填空题】（3分） 参考LEUNG_YL_Mobile.zip，在WhatsApp 中聊天群组ID 120363401289578356里，于2025-04-29 08:31:02，机主传送了一个PDF 文件，该PDF的内容是什么？ (请依照参赛材料中的原文作答，注意区分大小写、空格及符号)</h2>
+<p>先找到聊天记录，右键在资源管理器里面打开就能找到pdf（以前都不知道）</p>
+<figure><img src="../assets/posts/11th-maya-cup-online/image-085.png" alt="题目分析截图" loading="lazy"></figure>
+<p>打开发现是空白的，先调一下颜色，看到了地址</p>
+<figure><img src="../assets/posts/11th-maya-cup-online/image-086.png" alt="题目分析截图" loading="lazy"></figure>
+<p>0xe36D4bCf0132B8Dc7317C2Fb9bfa1845629F6638</p>
+<h2 id="question-70">70. 【单选题】（1分） 参考LEUNG_YL_Mobile.zip，在WhatsApp 中聊天群组ID 120363401289578356里，有多少个参加者？</h2>
+<ul>
+<li><strong>A.</strong> 2</li>
+<li><strong>B.</strong> 3</li>
+<li><strong>C.</strong> 4</li>
+<li><strong>D.</strong> 5</li>
+</ul>
+<figure><img src="../assets/posts/11th-maya-cup-online/image-087.png" alt="题目分析截图" loading="lazy"></figure>
+<p>B</p>
+<h2 id="question-71">71. 【单选题】（1分） 参考LEUNG_YL_Mobile.zip，于2025-04-25 17:11:37 时使用WhatsApp 所拨打的手机号码是多少?</h2>
+<ul>
+<li><strong>A.</strong> 85254962307</li>
+<li><strong>B.</strong> 85254961408</li>
+<li><strong>C.</strong> 85254974406</li>
+<li><strong>D.</strong> 85254993306</li>
+</ul>
+<figure><img src="../assets/posts/11th-maya-cup-online/image-088.png" alt="题目分析截图" loading="lazy"></figure>
+<p>C</p>
+<h2 id="question-72">72. 【单选题】（1分） 参考LEUNG_YL_Mobile.zip，总共有多少个WhatsApp的通话记录? (包括拨打、接收及未接来电)</h2>
+<ul>
+<li><strong>A.</strong> 4</li>
+<li><strong>B.</strong> 5</li>
+<li><strong>C.</strong> 6</li>
+<li><strong>D.</strong> 7</li>
+</ul>
+<p>见上题</p>
+<p>D</p>
+<h2 id="question-73">73. 【单选题】（1分） 参考LEUNG_YL_Mobile.zip，WhatsApp 聊天群组ID 120363400622997111 的群组名称是?</h2>
+<ul>
+<li><strong>A.</strong> Investors</li>
+<li><strong>B.</strong> Foodies</li>
+<li><strong>C.</strong> We are 3</li>
+<li><strong>D.</strong> Happy Sharing within 3</li>
+</ul>
+<figure><img src="../assets/posts/11th-maya-cup-online/image-089.png" alt="题目分析截图" loading="lazy"></figure>
+<p>D</p>
+<h2 id="question-74">74. 【单选题】（1分） 参考LEUNG_YL_Mobile.zip，WhatsApp 聊天群组Happy Sharing within 3 于2025-04-17 10:12:34 传送的WGS 84座标是多少?</h2>
+<ul>
+<li><strong>A.</strong> 22.323436345441, 113.276894376508</li>
+<li><strong>B.</strong> 22.326923370361, 114.168403625488</li>
+<li><strong>C.</strong> 21.239876452236, 115.925422314543</li>
+<li><strong>D.</strong> 20.124955642236, 114.168403625488</li>
+</ul>
+<p>找到名称，然后去数据库里面找</p>
+<figure><img src="../assets/posts/11th-maya-cup-online/image-090.png" alt="题目分析截图" loading="lazy"></figure>
+<figure><img src="../assets/posts/11th-maya-cup-online/image-091.png" alt="题目分析截图" loading="lazy"></figure>
+<p>22.3269233703613，114.168403625488</p>
+<p>B</p>
+<h2 id="question-75">75. 【单选题】（1分） 参考LEUNG_YL_Mobile.zip，Instagram 的版本是?</h2>
+<ul>
+<li><strong>A.</strong> 375.2.0.15.82 (722575504)</li>
+<li><strong>B.</strong> 376.1.0.14.56 (722575504)</li>
+<li><strong>C.</strong> 376.1.0.27.82 (722575504)</li>
+<li><strong>D.</strong> 376.0.0.17.23 (722575504)</li>
+</ul>
+<p>还是很好定位的，376.1.0.27.82</p>
+<figure><img src="../assets/posts/11th-maya-cup-online/image-092.png" alt="题目分析截图" loading="lazy"></figure>
+<p>C</p>
+<h2 id="question-76">76. 【填空题】（1分） 参考LEUNG_YL_Mobile.zip，社交媒体软件Instagram 的安装时间? (请以GMT+8时区及格式YYYY-MM-DD hh:mm:ss作答)</h2>
+<figure><img src="../assets/posts/11th-maya-cup-online/image-093.png" alt="题目分析截图" loading="lazy"></figure>
+<p>2025-04-26 11:50:47</p>
+<h2 id="question-77">77. 【填空题】（2分） 跟据你的分析，警察在香港西贡蕉坑，找到一个行李箱，内藏一名女子尸体，身上没有任何身份证明文件，裤袋内搜获一个U盘，根据法医初步检验，死者头部及颈部有明显瘀伤，相信曾发生激烈争执，死因为气管受压导致窒息，死亡时间相信是在2025-05-16 0900时至1000时 。调查人员初步检查这个U盘，没有发现可疑资料，现在交由你进行电子数据鉴定工作。请参考参赛材料LEUNG_YL_USB.E01，答以下问题 参考LEUNG_YL_USB.E01，这个U盘里有多少个分区？ (请以阿拉伯数字作答)</h2>
+<p><a href="https://mp.weixin.qq.com/s/_UyMjDHS1G7j_eZ_00VGhQ?scene=18click_id=1">25美亚个人赛u盘仿真</a>跟着大佬学习u盘镜像</p>
+<p>两个分区</p>
+<figure><img src="../assets/posts/11th-maya-cup-online/image-094.png" alt="题目分析截图" loading="lazy"></figure>
+<p>2</p>
+<h2 id="question-78">78. 【填空题】（2分） 参考LEUNG_YL_USB.E01，这个U盘里的分区结构是什么？ (请以英文大写作答)</h2>
+<figure><img src="../assets/posts/11th-maya-cup-online/image-095.png" alt="题目分析截图" loading="lazy"></figure>
+<p>MBR</p>
+<h2 id="question-79">79. 【单选题】（2分） 参考LEUNG_YL_USB.E01，以下哪项描述是正确的？ i) U盘的总容量是16GB ii) 文件系统包括 FAT32、exFAT 和 NTFS iii) exFAT 分区的容量是 16GB iv) 分区标签名是 &quot;SanDisk&quot;</h2>
+<ul>
+<li><strong>A.</strong> 只有 i) 和 ii)</li>
+<li><strong>B.</strong> 只有 i) 和 iii)</li>
+<li><strong>C.</strong> 只有 ii) 和 iv)</li>
+<li><strong>D.</strong> 以上皆非</li>
+</ul>
+<p>错得都挺明显的</p>
+<p>i:</p>
+<figure><img src="../assets/posts/11th-maya-cup-online/image-096.png" alt="题目分析截图" loading="lazy"></figure>
+<p>ii:</p>
+<figure><img src="../assets/posts/11th-maya-cup-online/image-097.png" alt="题目分析截图" loading="lazy"></figure>
+<p>iii:见上图</p>
+<p>iv:</p>
+<figure><img src="../assets/posts/11th-maya-cup-online/image-098.png" alt="题目分析截图" loading="lazy"></figure>
+<p>D</p>
+<h2 id="question-80">80. 【单选题】（3分） 参考LEUNG_YL_USB.E01，以下哪项描述是正确的？ i) 此U盘曾连接到一台名为 &quot;PC&quot; 的电脑 ii) U盘内存有一个已加密的压缩文件 iii) 已加密的压缩文件的创建日期系 2025-05-15</h2>
+<ul>
+<li><strong>A.</strong> 只有 ii)</li>
+<li><strong>B.</strong> 只有 iii)</li>
+<li><strong>C.</strong> 只有 ii) 和 iii)</li>
+<li><strong>D.</strong> 以上皆是</li>
+</ul>
+<p>i我找不到。。。</p>
+<figure><img src="../assets/posts/11th-maya-cup-online/image-099.png" alt="题目分析截图" loading="lazy"></figure>
+<p>C</p>
+<h2 id="question-81">81. 【填空题】（3分）𠄘上题，该压缩文件的解压密码是多少？ (请依照参赛材料中的原文作答，注意区分大小写、空格及符号)</h2>
+<p>密码就是桌面壁纸</p>
+<figure><img src="../assets/posts/11th-maya-cup-online/image-100.png" alt="题目分析截图" loading="lazy"></figure>
+<p>54d#e(nm</p>
+<h2 id="question-82">82. 【单选题】（3分） 参考LEUNG_YL_USB.E01，以下哪项描述是正确的？ i) 这是一个可引导U盘 ii) 有一个分区标签名为 &quot;EFI&quot; iii) 卷标日期为 2025-05-15 (UTC +8) iv) 有一个分区的总容量小于 500 MB</h2>
+<ul>
+<li><strong>A.</strong> 只有 i)</li>
+<li><strong>B.</strong> 只有 i) 和 ii)</li>
+<li><strong>C.</strong> 只有 i), iii) 和 iv)</li>
+<li><strong>D.</strong> 以上皆是</li>
+</ul>
+<p>i:可引导u盘是什么？</p>
+<figure><img src="../assets/posts/11th-maya-cup-online/image-101.png" alt="题目分析截图" loading="lazy"></figure>
+<figure><img src="../assets/posts/11th-maya-cup-online/image-102.png" alt="题目分析截图" loading="lazy"></figure>
+<p>ii:</p>
+<figure><img src="../assets/posts/11th-maya-cup-online/image-103.png" alt="题目分析截图" loading="lazy"></figure>
+<p>iii:</p>
+<figure><img src="../assets/posts/11th-maya-cup-online/image-104.png" alt="题目分析截图" loading="lazy"></figure>
+<p>iv:</p>
+<figure><img src="../assets/posts/11th-maya-cup-online/image-105.png" alt="题目分析截图" loading="lazy"></figure>
+<p>D</p>
+<h2 id="question-83">83. 【填空题】（2分） tammy.txt文件的内容是什么？ (请依照参赛材料中的原文作答，注意区分大小写、空格及符号)</h2>
+<figure><img src="../assets/posts/11th-maya-cup-online/image-106.png" alt="题目分析截图" loading="lazy"></figure>
+<p>due_diligence</p>
+<h2 id="question-84">84. 【填空题】（3分） 文件“xcontainer”的加密算法是什么？ (请依照参赛材料中的原文作答，注意区分大小写、空格及符号)</h2>
+<p>在火眼里面找到密钥（很明显）</p>
+<figure><img src="../assets/posts/11th-maya-cup-online/image-107.png" alt="题目分析截图" loading="lazy"></figure>
+<p>不是文本的话就是文件密钥了，挂载成功，因为不知道怎么给VeraCrypt截图就没放图片了，反正在VeraCrypt软件上能看到</p>
+<p>反正都解出来了，把容器里面的信息汇总一下，</p>
+<p>二维码是0x548dafDe4B17d7d3C9485E79B3B5018801C7855E</p>
+<p>txt是助记词：</p>
+<p>jelly</p>
+<p>pudding</p>
+<p>vibrant</p>
+<p>guitar</p>
+<p>enable</p>
+<p>creek</p>
+<p>harmony</p>
+<p>dragon</p>
+<p>olive</p>
+<p>sunset</p>
+<p>rookie</p>
+<p>fabric</p>
+<figure><img src="../assets/posts/11th-maya-cup-online/image-108.png" alt="题目分析截图" loading="lazy"></figure>
+<p>AES(Twofish)</p>
+<h2 id="question-85">85. 【单选题】（3分） 分析文档 &quot;xcontainer&quot; 的属性。关于此磁盘镜像，以下哪项描述是正确的？ i) 大小为 4943872 字节 ii) 文件系统是 FAT iii) 没有嵌入式备份头 iv) 块大小为 128 位</h2>
+<ul>
+<li><strong>A.</strong> 只有 i) 和 ii)</li>
+<li><strong>B.</strong> 只有 ii) 和 iv)</li>
+<li><strong>C.</strong> 只有 ii), iii) 和 iv)</li>
+<li><strong>D.</strong> 以上皆是</li>
+</ul>
+<p>i:在VeraCrypt上面可以看到，错的</p>
+<p>ii:</p>
+<figure><img src="../assets/posts/11th-maya-cup-online/image-109.png" alt="题目分析截图" loading="lazy"></figure>
+<p>，对的</p>
+<p>iii:在VeraCrypt上面可以看到，错的</p>
+<p>iv:在VeraCrypt上面可以看到，对的</p>
+<p>B</p>
+<h2 id="question-86">86. 【单选题】（3分） WinPE 启动后，系统会自动将核心映像挂载在哪个虚拟机？</h2>
+<ul>
+<li><strong>A.</strong> C:\</li>
+<li><strong>B.</strong> D:\</li>
+<li><strong>C.</strong> X:\</li>
+<li><strong>D.</strong> Z:\</li>
+</ul>
+<figure><img src="../assets/posts/11th-maya-cup-online/image-110.png" alt="题目分析截图" loading="lazy"></figure>
+<p>C</p>
+<h2 id="question-87">87. 【单选题】（3分） 下列哪些 Windows PE 指令在预设环境下无法执行？ i) Powershell ii). Eventvwr iii). Hostname iV). Diskpart</h2>
+<ul>
+<li><strong>A.</strong> 只有 i) 和 ii)</li>
+<li><strong>B.</strong> 只有 iii) 和 iv)</li>
+<li><strong>C.</strong> 只有 i), ii) 和 iii)</li>
+<li><strong>D.</strong> 以上皆是</li>
+</ul>
+<p>穷举就行了</p>
+<figure><img src="../assets/posts/11th-maya-cup-online/image-111.png" alt="题目分析截图" loading="lazy"></figure>
+<p>C</p>
+<h2 id="question-88">88. 【单选题】（3分） 必须包含哪个文件，才能启动 Windows PE环境？</h2>
+<ul>
+<li><strong>A.</strong> WEPE64.wim</li>
+<li><strong>B.</strong> install.wim</li>
+<li><strong>C.</strong> WinPE.log</li>
+<li><strong>D.</strong> hiberfil.sys</li>
+</ul>
+<p>基础知识题目，不过我不知道:(</p>
+<figure><img src="../assets/posts/11th-maya-cup-online/image-112.png" alt="题目分析截图" loading="lazy"></figure>
+<p>A</p>
+<h2 id="question-89">89. 【单选题】（3分） 若要判断一个U盘是否为可开机的Windows PE，以下哪些文件必须存在？ i) WEPE64.wim 或 boot.wim ii) bootmgr iii) EFI\Boot\bootx64.efi iv) hiberfil.sys</h2>
+<ul>
+<li><strong>A.</strong> 只有 ii 和 iv</li>
+<li><strong>B.</strong> 只有 i), ii) 和 iii)</li>
+<li><strong>C.</strong> 只有 i) 和 iv)</li>
+<li><strong>D.</strong> 以上皆是</li>
+</ul>
+<figure><img src="../assets/posts/11th-maya-cup-online/image-113.png" alt="题目分析截图" loading="lazy"></figure>
+<p>B</p>
+<h2 id="question-90">90. 【单选题】（3分） 这个 WinPE U盘的操作环境 (Operating Environment) 是基于哪一个 Windows 版本？</h2>
+<ul>
+<li><strong>A.</strong> Windows 7</li>
+<li><strong>B.</strong> Windows 8.1</li>
+<li><strong>C.</strong> Windows 10 PE</li>
+<li><strong>D.</strong> Windows 11 PE</li>
+</ul>
+<p>仿真后就能看出来</p>
+<p>C</p>
+<h2 id="question-91">91. 【填空题】（3分） 根据你综合多项通讯软件的对话记录，浏览记录及资料分析，发现冯子超、陈民浩伙同女子梁燕玲共同做了一宗涉及加密货币投资的诈骗案件，因东窗事发打算携赃而逃。女子梁燕玲负责处理有关清洗黑钱事项，警察相信梁燕玲携带同相关材料逃跑，请你运用电子数据鉴定技巧寻找与加密货币相关的材料，尽快启动冻结程序。 参考LEUNG_YL_USB.E01，该U盘盘有一个加密的文件，该文件所用的加密软件名称是? (只需回答软件名称，不需要回答软件版本，(请依照参赛材料中的原文作答，注意区分大小写、空格及符号)</h2>
+<p>说的应该就是vc容器了</p>
+<figure><img src="../assets/posts/11th-maya-cup-online/image-114.png" alt="题目分析截图" loading="lazy"></figure>
+<p>VeraCrypt</p>
+<h2 id="question-92">92. 【填空题】（3分） 参考LEUNG_YL_USB.E01，请列出与IQ Coin有关的虚拟钱包的地址 (请依照参赛材料中的原文作答，注意区分大小写、空格及符号)</h2>
+<figure><img src="../assets/posts/11th-maya-cup-online/image-115.png" alt="题目分析截图" loading="lazy"></figure>
+<p>0x548dafDe4B17d7d3C9485E79B3B5018801C7855E</p>
+<h2 id="question-93">93. 【填空题】（3分） 承上题，这个钱包属于哪一种加密货币 (请以英文大写作答)</h2>
+<p>刚好我的成都链安账号还没到期，顺路写了</p>
+<figure><img src="../assets/posts/11th-maya-cup-online/image-116.png" alt="题目分析截图" loading="lazy"></figure>
+<p>BNB</p>
+<h2 id="question-94">94. 【填空题】（3分） 承上题，这个钱包总共有多少次存入记录？ (请以阿拉伯数字作答)</h2>
+<figure><img src="../assets/posts/11th-maya-cup-online/image-117.png" alt="题目分析截图" loading="lazy"></figure>
+<figure><img src="../assets/posts/11th-maya-cup-online/image-118.png" alt="题目分析截图" loading="lazy"></figure>
+<p>3</p>
+<h2 id="question-95">95. 【填空题】（3分） 承上题，存入款项的支账地址是什么？ (请依照参赛材料中的原文作答，注意区分大小写、空格及符号)</h2>
+<p>有一说一，就是这里开始有疑问了，发现和其他师傅不一样</p>
+<p>我有两个存入记录，但是其它人只有一个。。。值对不上，时间也对不上</p>
+<figure><img src="../assets/posts/11th-maya-cup-online/image-119.png" alt="题目分析截图" loading="lazy"></figure>
+<p>0x96DAA8de384c1d2bD09EA45589fA1cE05F3d2246</p>
+<h2 id="question-96">96. 【填空题】（3分） 承上题，这项交易传送了多少BEP-20 IQ Coin? (请以阿拉伯数字依照参赛材料中的原文作答，注意区分大小写、空格及符号和不用标点符号 )</h2>
+<figure><img src="../assets/posts/11th-maya-cup-online/image-120.png" alt="题目分析截图" loading="lazy"></figure>
+<p>1000000000</p>
+<h2 id="question-97">97. 【判断题】（3分） 助记词是由加密货币钱包生成的一系列单词，帮助用户恢复其私钥。助记词通常由12到24个单词组成</h2>
+<ul>
+<li><strong>A.</strong> 正确</li>
+<li><strong>B.</strong> 错误</li>
+</ul>
+<p>理论题了</p>
+<p>A</p>
+<h2 id="question-98">98. 【填空题】（3分） 根据你的信息警察查知这个加密钱包涉及近期一宗巨额诈骗案，请你查出这个钱包余额额度，警察将会进行冻结程序 请指出包含有疑似助记词的文件的希哈值(MD5格式) (请以阿拉伯数字和英文大写作答)</h2>
+<p>就是这个txt</p>
+<figure><img src="../assets/posts/11th-maya-cup-online/image-121.png" alt="题目分析截图" loading="lazy"></figure>
+<p>183B8E0C6365FEE834479269141A3F91</p>
+        </div>
+        <section class="comments-card">
+          <h2>评论</h2>
+          <p>可以直接用 GitHub 账号留言。</p>
+          <script src="https://utteranc.es/client.js" repo="hxyz486/hxyz486.github.io" issue-term="pathname" theme="github-light" crossorigin="anonymous" async></script>
+        </section>
+      </article>
+      <aside class="article-toc" aria-label="文章目录">
+        <div class="toc-card">
+          <p>目录</p>
+          <strong>“美亚杯”第十一届中国电子数据取证大赛个人赛（线上）</strong>
+          <nav>
+              <a class="toc-item" href="#question-1">1. 【单选题】（1分） 香港警方接到报案，西贡区布袋澳有人持木棍袭击他人，…</a>
+              <a class="toc-item" href="#question-2">2. 【填空题】（1分） 在这个手机中，有多少组国际移动设备识别码(IMEI…</a>
+              <a class="toc-item" href="#question-3">3. 【单选题】（1分） 承上题，以下哪一个才是正确的国际移动设备识别码(I…</a>
+              <a class="toc-item" href="#question-4">4. 【单选题】（1分） 请指出最后使用的使用者身分模组(SIM)的集成电路…</a>
+              <a class="toc-item" href="#question-5">5. 【填空题】（1分） 请指出最后使用的Apple ID是多少？ (请依照…</a>
+              <a class="toc-item" href="#question-6">6. 【填空题】（1分） 蓝牙模组中的蓝牙地址是多少？ (请以下格式作答:x…</a>
+              <a class="toc-item" href="#question-7">7. 【填空题】（1分） 这个智能手机曾经启动「个人热点」分享网络，请问他的…</a>
+              <a class="toc-item" href="#question-8">8. 【单选题】（1分） 这个智能手机没有连接过以下哪一个服务集标识符(SS…</a>
+              <a class="toc-item" href="#question-9">9. 【填空题】（1分） 请指出首次连接服务集识别码(SSID)名称为&quot; C…</a>
+              <a class="toc-item" href="#question-10">10. 【单选题】（1分） 安装了以下即时哪个通讯软件? i) WhatsA…</a>
+              <a class="toc-item" href="#question-11">11. 【填空题】（1分） 承上题，请指出即时通讯软件&quot;WhatsApp&quot;的…</a>
+              <a class="toc-item" href="#question-12">12. 【单选题】（2分） 陈民浩的手机中，总共安装3个文件传输软件，封包名…</a>
+              <a class="toc-item" href="#question-13">13. 【填空题】（2分） 承上题，与其有传送/接收过资料装置的装置ID是多…</a>
+              <a class="toc-item" href="#question-14">14. 【填空题】（2分） 承上题，这个装置名称是? (请依照参赛材料中的原…</a>
+              <a class="toc-item" href="#question-15">15. 【填空题】（2分） 承上题，本机装置的装置ID是多少? (请依照参赛…</a>
+              <a class="toc-item" href="#question-16">16. 【单选题】（2分） 承上题，陈民浩的手机(CHAN_MH_mobil…</a>
+              <a class="toc-item" href="#question-17">17. 【单选题】（2分） 根据传送档案的名称，判断是以下哪一类型? (单选…</a>
+              <a class="toc-item" href="#question-18">18. 【单选题】（2分） 承上题，接收至哪一个装置?</a>
+              <a class="toc-item" href="#question-19">19. 【单选题】（2分） 承上题，传送方是通过此文档传输软件的哪个模式作出…</a>
+              <a class="toc-item" href="#question-20">20. 【多选题】（2分） 从来没有安装以下哪个网络浏览器？</a>
+              <a class="toc-item" href="#question-21">21. 【填空题】（2分） 承上题，网络浏览器Safari有多少个书签(Bo…</a>
+              <a class="toc-item" href="#question-22">22. 【多选题】（2分） 承上题，曾经通过Safari浏览器用下列哪一个字…</a>
+              <a class="toc-item" href="#question-23">23. 【填空题】（1分） 有多少个图片文件曾经储存到iCloud? (请以…</a>
+              <a class="toc-item" href="#question-24">24. 【填空题】（1分） 相册中有多少张图片是通过屏幕截图功能取得？ (请…</a>
+              <a class="toc-item" href="#question-25">25. 【填空题】（1分） 请参考参赛材料FUNG_CC_mobile.zi…</a>
+              <a class="toc-item" href="#question-26">26. 【单选题】（2分） 这部智能手机曾经连接过以下哪个无线网络？ i) …</a>
+              <a class="toc-item" href="#question-27">27. 【填空题】（2分） 这部手提手机最早连接(非热点)Wi-Fi的时间是…</a>
+              <a class="toc-item" href="#question-28">28. 【填空题】（2分） 承上题，请列出这个连接的服务集识别码(SSID)…</a>
+              <a class="toc-item" href="#question-29">29. 【填空题】（2分） 承上题，请列出这个连接的登入金钥? (请依照参赛…</a>
+              <a class="toc-item" href="#question-30">30. 【单选题】（2分） 相册中有两张图像互换格式图片(gif)「IMG_…</a>
+              <a class="toc-item" href="#question-31">31. 【单选题】（2分） 曾经以空投(AirDrop)方式成功传送了文件到…</a>
+              <a class="toc-item" href="#question-32">32. 【填空题】（2分） 原生APP「相片」中，有一个图片文件曾经通过空投…</a>
+              <a class="toc-item" href="#question-33">33. 【填空题】（2分） 承上题，请写出这个图片文件的开始传送的日期及时间…</a>
+              <a class="toc-item" href="#question-34">34. 【填空题】（2分） 请指出哪一个多媒体文件同时储存在APP「文件」(…</a>
+              <a class="toc-item" href="#question-35">35. 【填空题】（2分） 请指出在APP「照片」(套件识别码: com.a…</a>
+              <a class="toc-item" href="#question-36">36. 【填空题】（2分） 承上题，已知该图片文件是由上述APP所拍摄，并其…</a>
+              <a class="toc-item" href="#question-37">37. 【填空题】（2分） 承上题，请指出原文件的建立时间？ (请以GMT …</a>
+              <a class="toc-item" href="#question-38">38. 【单选题】（2分） 请指出在APP「照片」(套件识别码: com.a…</a>
+              <a class="toc-item" href="#question-39">39. 【单选题】（2分） 承上题，以下哪个陈述是正确描述上一题的答案？</a>
+              <a class="toc-item" href="#question-40">40. 【单选题】（2分） APP「照片」(套件识别码: com.apple…</a>
+              <a class="toc-item" href="#question-41">41. 【单选题】（1分） 曾经通过网络浏览器「Safari」下载了多少个图…</a>
+              <a class="toc-item" href="#question-42">42. 【单选题】（2分） 多媒体文件「 IMG_0004.MOV」曾被修改…</a>
+              <a class="toc-item" href="#question-43">43. 【填空题】（2分） 曾经通过人工智能聊天APP &quot;POE&quot;查询一个问…</a>
+              <a class="toc-item" href="#question-44">44. 【填空题】（2分） 承上题，请指出提问的日期及时间 (答题格式: y…</a>
+              <a class="toc-item" href="#question-45">45. 【填空题】（2分） 承上题，当时使用的是哪一个机器人? (请依照参赛…</a>
+              <a class="toc-item" href="#question-46">46. 【填空题】（2分） 承上题，当时的使用者名称是？ (请依照参赛材料中…</a>
+              <a class="toc-item" href="#question-47">47. 【填空题】（1分） 请指出即时通讯软件&quot;WeChat&quot;的 &quot;WeCh…</a>
+              <a class="toc-item" href="#question-48">48. 【单选题】（1分） 承上题，这个&quot;WeChat ID&quot;关注了多少个「…</a>
+              <a class="toc-item" href="#question-49">49. 【填空题】（1分） 请指出即时通讯软件WhatsApp的WhatsA…</a>
+              <a class="toc-item" href="#question-50">50. 【单选题】（1分） 即时通讯软件WhatsApp中，封存了下列哪个聊…</a>
+              <a class="toc-item" href="#question-51">51. 【填空题】（1分） 即时通讯软件WhatsApp中，总共追踪了多少个…</a>
+              <a class="toc-item" href="#question-52">52. 【单选题】（3分） 即时通讯软件「WhatsApp」中，下列哪个是群…</a>
+              <a class="toc-item" href="#question-53">53. 【填空题】（2分） 即时通讯软件「WhatsApp」中，群组 &quot;In…</a>
+              <a class="toc-item" href="#question-54">54. 【填空题】（2分） 即时通讯软件「WhatsApp」中，「社群」名称…</a>
+              <a class="toc-item" href="#question-55">55. 【单选题】（2分） 承上题，请指出这个社群的群组图案的哈希值（SHA…</a>
+              <a class="toc-item" href="#question-56">56. 【填空题】（1分） 即时通讯软件「WhatsApp」中，找出What…</a>
+              <a class="toc-item" href="#question-57">57. 【填空题】（1分） 即时通讯软件「WhatsApp」中，总共出现了多…</a>
+              <a class="toc-item" href="#question-58">58. 【填空题】（1分） 承上题，总共在多少个「投票」活动中作出了投票？ …</a>
+              <a class="toc-item" href="#question-59">59. 【单选题】（3分） 即时通讯软件「WhatsApp」中，根据群组「 …</a>
+              <a class="toc-item" href="#question-60">60. 【填空题】（2分） 承上题，该群组建立者的WhatsApp ID是什…</a>
+              <a class="toc-item" href="#question-61">61. 【填空题】（2分） 承上题，该群组的建立时间是什么？ (请以GMT …</a>
+              <a class="toc-item" href="#question-62">62. 【单选题】（1分） 根据你嘅分析结果。三人因感情瓜葛内讧因而发生这次…</a>
+              <a class="toc-item" href="#question-63">63. 【单选题】（1分） 参考LEUNG_YL_Mobile.zip，文件…</a>
+              <a class="toc-item" href="#question-64">64. 【填空题】（1分） 参考LEUNG_YL_Mobile.zip，文件…</a>
+              <a class="toc-item" href="#question-65">65. 【单选题】（1分） 参考LEUNG_YL_Mobile.zip，文件…</a>
+              <a class="toc-item" href="#question-66">66. 【填空题】（1分） 文件IMG_0022.JPG的建立时间(GMT …</a>
+              <a class="toc-item" href="#question-67">67. 【填空题】（2分） 参考LEUNG_YL_Mobile.zip，在W…</a>
+              <a class="toc-item" href="#question-68">68. 【填空题】（2分） 参考LEUNG_YL_Mobile.zip，在W…</a>
+              <a class="toc-item" href="#question-69">69. 【填空题】（3分） 参考LEUNG_YL_Mobile.zip，在W…</a>
+              <a class="toc-item" href="#question-70">70. 【单选题】（1分） 参考LEUNG_YL_Mobile.zip，在W…</a>
+              <a class="toc-item" href="#question-71">71. 【单选题】（1分） 参考LEUNG_YL_Mobile.zip，于2…</a>
+              <a class="toc-item" href="#question-72">72. 【单选题】（1分） 参考LEUNG_YL_Mobile.zip，总共…</a>
+              <a class="toc-item" href="#question-73">73. 【单选题】（1分） 参考LEUNG_YL_Mobile.zip，Wh…</a>
+              <a class="toc-item" href="#question-74">74. 【单选题】（1分） 参考LEUNG_YL_Mobile.zip，Wh…</a>
+              <a class="toc-item" href="#question-75">75. 【单选题】（1分） 参考LEUNG_YL_Mobile.zip，In…</a>
+              <a class="toc-item" href="#question-76">76. 【填空题】（1分） 参考LEUNG_YL_Mobile.zip，社交…</a>
+              <a class="toc-item" href="#question-77">77. 【填空题】（2分） 跟据你的分析，警察在香港西贡蕉坑，找到一个行李箱…</a>
+              <a class="toc-item" href="#question-78">78. 【填空题】（2分） 参考LEUNG_YL_USB.E01，这个U盘里…</a>
+              <a class="toc-item" href="#question-79">79. 【单选题】（2分） 参考LEUNG_YL_USB.E01，以下哪项描…</a>
+              <a class="toc-item" href="#question-80">80. 【单选题】（3分） 参考LEUNG_YL_USB.E01，以下哪项描…</a>
+              <a class="toc-item" href="#question-81">81. 【填空题】（3分）𠄘上题，该压缩文件的解压密码是多少？ (请依照参赛…</a>
+              <a class="toc-item" href="#question-82">82. 【单选题】（3分） 参考LEUNG_YL_USB.E01，以下哪项描…</a>
+              <a class="toc-item" href="#question-83">83. 【填空题】（2分） tammy.txt文件的内容是什么？ (请依照参…</a>
+              <a class="toc-item" href="#question-84">84. 【填空题】（3分） 文件“xcontainer”的加密算法是什么？ …</a>
+              <a class="toc-item" href="#question-85">85. 【单选题】（3分） 分析文档 &quot;xcontainer&quot; 的属性。关于…</a>
+              <a class="toc-item" href="#question-86">86. 【单选题】（3分） WinPE 启动后，系统会自动将核心映像挂载在哪…</a>
+              <a class="toc-item" href="#question-87">87. 【单选题】（3分） 下列哪些 Windows PE 指令在预设环境下…</a>
+              <a class="toc-item" href="#question-88">88. 【单选题】（3分） 必须包含哪个文件，才能启动 Windows PE…</a>
+              <a class="toc-item" href="#question-89">89. 【单选题】（3分） 若要判断一个U盘是否为可开机的Windows P…</a>
+              <a class="toc-item" href="#question-90">90. 【单选题】（3分） 这个 WinPE U盘的操作环境 (Operat…</a>
+              <a class="toc-item" href="#question-91">91. 【填空题】（3分） 根据你综合多项通讯软件的对话记录，浏览记录及资料…</a>
+              <a class="toc-item" href="#question-92">92. 【填空题】（3分） 参考LEUNG_YL_USB.E01，请列出与I…</a>
+              <a class="toc-item" href="#question-93">93. 【填空题】（3分） 承上题，这个钱包属于哪一种加密货币 (请以英文大…</a>
+              <a class="toc-item" href="#question-94">94. 【填空题】（3分） 承上题，这个钱包总共有多少次存入记录？ (请以阿…</a>
+              <a class="toc-item" href="#question-95">95. 【填空题】（3分） 承上题，存入款项的支账地址是什么？ (请依照参赛…</a>
+              <a class="toc-item" href="#question-96">96. 【填空题】（3分） 承上题，这项交易传送了多少BEP-20 IQ C…</a>
+              <a class="toc-item" href="#question-97">97. 【判断题】（3分） 助记词是由加密货币钱包生成的一系列单词，帮助用户…</a>
+              <a class="toc-item" href="#question-98">98. 【填空题】（3分） 根据你的信息警察查知这个加密钱包涉及近期一宗巨额…</a>
+          </nav>
+        </div>
+      </aside>
+    </main>
+    <footer class="footer">
+      <div class="footer-meta">
+        <p>共撰写了 <strong>11</strong> 篇文章</p>
+        <p>博客已运行 <span data-site-runtime data-start="2026-05-31T09:28:56+08:00">0 天 0 小时 0 分钟 0 秒</span></p>
+      </div>
+      <p>Powered by GitHub Pages · <a href="https://hxyz486.github.io/">https://hxyz486.github.io/</a> · © 2026 郝杏芸</p>
+    </footer>
+    <script src="../site.js"></script>
+  </body>
+</html>
