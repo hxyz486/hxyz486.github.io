@@ -943,6 +943,7 @@ h1 {
 .article-body {
   color: var(--text);
   font-size: 17px;
+  overflow-wrap: anywhere;
 }
 
 .article-body h2 {
