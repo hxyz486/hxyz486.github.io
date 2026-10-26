@@ -884,7 +884,27 @@ h1 {
   font-family: Consolas, "SFMono-Regular", monospace;
 }
 
-@media (max-width: 1799px) {
+@media (min-width: 861px) and (max-width: 1799px) {
+  .article-hero {
+    width: min(1468px, calc(100% - 32px));
+    padding-right: 288px;
+  }
+
+  .article-shell {
+    grid-template-columns: minmax(0, 1180px) 260px;
+    width: min(1468px, calc(100% - 32px));
+  }
+
+  .article-card {
+    grid-column: 1;
+  }
+
+  .article-toc {
+    grid-column: 2;
+  }
+}
+
+@media (max-width: 860px) {
   .article-shell {
     grid-template-columns: minmax(0, 1fr);
     width: min(1180px, calc(100% - 32px));
@@ -904,9 +924,7 @@ h1 {
   .toc-card {
     max-height: 320px;
   }
-}
 
-@media (max-width: 860px) {
   .site-header {
     min-height: 540px;
     background-attachment: scroll;
