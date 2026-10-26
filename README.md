@@ -43,3 +43,4 @@ https://hxyz486.github.io/
 - 站点标题：修改 `index.html` 中的 `郝杏芸的博客`
 - 文章列表：编辑 `index.html` 里的 `.post-card`
 - 配色与布局：编辑 `styles.css`
+- 文章目录：在文章页的 `.article-toc` 中添加目录链接；不需要目录时可删除该元素或加上 `hidden`。未提供目录或目录为空时，正文会自动以最大 1180px 的单栏居中显示。

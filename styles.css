@@ -887,7 +887,6 @@ h1 {
 @media (min-width: 861px) and (max-width: 1799px) {
   .article-hero {
     width: min(1468px, calc(100% - 32px));
-    padding-right: 288px;
   }
 
   .article-shell {
@@ -902,6 +901,24 @@ h1 {
   .article-toc {
     grid-column: 2;
   }
+}
+
+/* Articles without a visible, populated TOC use a centered single column. */
+.article-shell:not(:has(> .article-toc:not([hidden]) nav a)) {
+  grid-template-columns: minmax(0, 1fr);
+  width: min(1180px, calc(100% - 32px));
+}
+
+.article-shell:not(:has(> .article-toc:not([hidden]) nav a)) > .article-card {
+  grid-column: 1;
+}
+
+.article-shell:not(:has(> .article-toc:not([hidden]) nav a)) > .article-toc {
+  display: none;
+}
+
+.article-page:not(:has(.article-toc:not([hidden]) nav a)) .article-hero {
+  width: min(1180px, calc(100% - 32px));
 }
 
 @media (max-width: 860px) {
